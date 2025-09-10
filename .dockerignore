@@ -1,0 +1,25 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+.pytest_cache
+
+# Development
+.vscode
+.idea
+notebooks/
+
+# Data (don't copy large files)
+data/raw/*
+data/processed/*
+outputs/*
+
+# Secrets
+.env
+
+# Documentation
+docs/
+*.md

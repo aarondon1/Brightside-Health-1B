@@ -1,0 +1,37 @@
+# Core dependencies for Brightside Health AI Studio (Simplified)
+# Python 3.9+
+
+# Data Processing & Parsing
+docling>=1.0.0
+PyPDF2>=3.0.1
+pandas>=2.0.0
+numpy>=1.24.0
+
+# LLM & ML
+openai>=1.30.0
+pydantic>=2.0.0
+tiktoken>=0.5.0
+
+# Graph Database & Analysis
+kuzu>=0.4.0
+networkx>=3.1.0
+
+# Medical Ontologies
+biothings-client>=0.3.0
+requests>=2.31.0
+
+# Visualization & UI
+streamlit>=1.28.0
+plotly>=5.17.0
+matplotlib>=3.7.0
+
+# Development & Testing
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+click>=8.1.0
+tqdm>=4.66.0
+pyyaml>=6.0.0

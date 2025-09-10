@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.Python
+build/
+dist/
+*.egg-info/
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+
+# Data & Outputs (keep structure, ignore content)
+data/raw/*.pdf
+data/processed/**/*
+!data/processed/.gitkeep
+data/ontologies/**/*
+!data/ontologies/.gitkeep
+outputs/**/*
+!outputs/.gitkeep
+*.db
+
+# Logs
+*.log
+
+# Secrets
+.env
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
