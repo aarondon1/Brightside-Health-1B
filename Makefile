@@ -1,99 +1,59 @@
-.PHONY: help setup install test format clean run parse extract normalize build pipeline docker-up docker-down
+.PHONY: help setup install setup-data setup-env ui add_paper test fmt lint resetdb docker-up docker-down
 
-# Default target
 help:
-	@echo "Brightside Health AI Studio - Available Commands:"
-	@echo ""
-	@echo "🚀 Getting Started:"
-	@echo "  make setup          - Complete project setup (one command!)"
-	@echo "  make run            - Start Streamlit app"
-	@echo "  make pipeline       - Run full pipeline (parse → extract → normalize → build)"
-	@echo ""
-	@echo "🔧 Development:"
-	@echo "  make install        - Install Python dependencies"
-	@echo "  make test           - Run tests"
-	@echo "  make format         - Format code with black"
-	@echo "  make clean          - Clean temporary files"
-	@echo ""
-	@echo "📊 Pipeline Steps:"
-	@echo "  make parse          - Parse PDFs with Docling"
-	@echo "  make extract        - Extract entities with GPT-4o"
-	@echo "  make normalize      - Normalize to clinical ontologies"
-	@echo "  make build          - Build knowledge graph"
-	@echo ""
-	@echo "🐳 Docker (Optional):"
-	@echo "  make docker-up      - Start with Docker"
-	@echo "  make docker-down    - Stop Docker containers"
+	@echo "Brightside Health KG — Commands"
+	@echo "  make setup        # install deps, create .env, init data dirs"
+	@echo "  make ui           # run Streamlit app"
+	@echo "  make add_paper ARGS=\"--pdf data/raw_papers/file.pdf\""
+	@echo "  make test | fmt | lint | resetdb"
+	@echo "  make docker-up | docker-down   # (optional)"
 
-# 🚀 Main Setup Command
+# --- Setup ---
 setup: install setup-data setup-env
-	@echo "✅ Complete setup finished! Run 'make run' to start the app."
+	@echo "✅ Setup complete. Next: make add_paper ARGS=\"--pdf data/raw_papers/sample.pdf\" && make ui"
 
+# Use uv (fast) or Switch to pip if you prefer.
 install:
-	python3 -m pip install -r requirements.txt
-	python3 -m pip install -e .
+	uv sync --all-extras
 	@echo "✅ Dependencies installed!"
 
 setup-data:
 	@echo "📁 Creating data directories..."
-	mkdir -p data/raw/papers data/processed/{parsed,extracted,normalized} data/ontologies outputs/{graphs,reports,evaluations}
-	@echo "✅ Data directories created!"
+	mkdir -p data/raw_papers data/interim data/processed data/kg_db
+	@echo "✅ Data directories ready."
 
 setup-env:
-	@echo "⚙️ Setting up environment..."
-	cp .env.example .env
-	@echo "✅ Environment file created! Edit .env with your API keys."
+	@echo "⚙️ Preparing .env..."
+	cp -n .env.example .env || true
+	@echo "✅ Edit .env to add keys if needed."
 
-# 🔧 Development Commands
+# --- Dev helpers ---
+ui:
+	@echo "🚀 Streamlit at http://localhost:8501"
+	uv run streamlit run src/app/streamlit_app.py
+
+# Run the end-to-end ingest for a new paper (parse→extract→normalize→upsert)
+add_paper:
+	uv run python scripts/add_paper.py $(ARGS)
+
 test:
-	pytest tests/ -v
-	@echo "✅ Tests completed!"
+	uv run pytest -q
 
-format:
-	black src/ tests/ scripts/ --line-length=88
-	@echo "✅ Code formatted!"
+fmt:
+	uv run ruff check --fix .
+	uv run black .
 
-clean:
-	find . -type f -name "*.pyc" -delete
-	find . -type d -name "__pycache__" -delete
-	rm -rf .pytest_cache/ dist/ build/
-	@echo "✅ Cleaned up!"
+lint:
+	uv run ruff check .
+	uv run black --check .
 
-# 📊 Pipeline Commands
-parse:
-	@echo "📄 Parsing papers..."
-	python scripts/run_pipeline.py --step parse
-	@echo "✅ Parsing complete!"
+resetdb:
+	rm -rf data/kg_db && mkdir -p data/kg_db
+	@echo "🧹 Reset Kùzu DB."
 
-extract:
-	@echo "🧠 Extracting entities..."
-	python scripts/run_pipeline.py --step extract
-	@echo "✅ Extraction complete!"
-
-normalize:
-	@echo "🏥 Normalizing to ontologies..."
-	python scripts/run_pipeline.py --step normalize
-	@echo "✅ Normalization complete!"
-
-build:
-	@echo "📊 Building knowledge graph..."
-	python scripts/run_pipeline.py --step build
-	@echo "✅ Graph built!"
-
-pipeline: parse extract normalize build
-	@echo "🎉 Full pipeline completed successfully!"
-
-# 🚀 Run Application
-run:
-	@echo "🚀 Starting Streamlit app at http://localhost:8501"
-	python3 -m streamlit run src/visualization/streamlit_app.py
-
-# 🐳 Docker Commands (Optional)
+# --- Docker (optional) ---
 docker-up:
-	@echo "🐳 Starting with Docker..."
-	docker-compose up --build
-	@echo "🚀 App running at http://localhost:8501"
+	docker compose up --build
 
 docker-down:
-	docker-compose down
-	@echo "🛑 Docker containers stopped"
+	docker compose down

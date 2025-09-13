@@ -1,18 +1,40 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  brightside-ai:
-    build: .
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile        # use your Dockerfile path
+    image: brightside-kg:latest
     container_name: brightside-health-ai
     ports:
       - "8501:8501"
-    volumes:
-      # Mount data and code for development
-      - ./data:/app/data
-      - ./outputs:/app/outputs
-      - ./.env:/app/.env:ro
-    environment:
-      - STREAMLIT_SERVER_PORT=8501
-      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
     env_file:
       - .env
+    environment:
+      - KG_DB_PATH=/app/data/kg_db
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_PORT=8501
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs:ro
+      # optional: keep if you actually use outputs/
+      - ./outputs:/app/outputs
+    command: >
+      bash -lc "streamlit run src/app/streamlit_app.py
+                --server.address=${STREAMLIT_SERVER_ADDRESS}
+                --server.port=${STREAMLIT_SERVER_PORT}"
+    restart: unless-stopped
+
+  # Optional batch runner for add_paper
+  worker:
+    image: brightside-kg:latest
+    profiles: ["offline"]
+    env_file:
+      - .env
+    environment:
+      - KG_DB_PATH=/app/data/kg_db
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs:ro
+    entrypoint: ["python", "scripts/add_paper.py"]
