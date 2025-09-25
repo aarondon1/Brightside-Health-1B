@@ -1,0 +1,190 @@
+.
+├── .dockerignore
+├── .DS_Store
+├── .env
+├── .env.example
+├── .gitignore
+├── .venv
+│   ├── .gitignore
+│   ├── .lock
+│   ├── bin
+│   │   ├── accelerate
+│   │   ├── accelerate-config
+│   │   ├── accelerate-estimate-memory
+│   │   ├── accelerate-launch
+│   │   ├── accelerate-merge-weights
+│   │   ├── activate
+│   │   ├── activate.csh
+│   │   ├── activate.fish
+│   │   ├── Activate.ps1
+│   │   ├── black
+│   │   ├── blackd
+│   │   ├── distro
+│   │   ├── docling
+│   │   ├── docling-tools
+│   │   ├── docling-view
+│   │   ├── dotenv
+│   │   ├── easyocr
+│   │   ├── f2py
+│   │   ├── faker
+│   │   ├── filetype
+│   │   ├── flake8
+│   │   ├── fonttools
+│   │   ├── get_gprof
+│   │   ├── get_objgraph
+│   │   ├── hf
+│   │   ├── httpx
+│   │   ├── huggingface-cli
+│   │   ├── imageio_download_bin
+│   │   ├── imageio_remove_bin
+│   │   ├── isympy
+│   │   ├── jsonschema
+│   │   ├── l2m
+│   │   ├── latex2mathml
+│   │   ├── latex2text
+│   │   ├── latexencode
+│   │   ├── latexwalker
+│   │   ├── lsm2bin
+│   │   ├── markdown-it
+│   │   ├── marko
+│   │   ├── mpire-dashboard
+│   │   ├── ninja
+│   │   ├── normalizer
+│   │   ├── numpy-config
+│   │   ├── openai
+│   │   ├── pip
+│   │   ├── pip3
+│   │   ├── pip3.9
+│   │   ├── plotly_get_chrome
+│   │   ├── py.test
+│   │   ├── pybidi
+│   │   ├── pycodestyle
+│   │   ├── pyflakes
+│   │   ├── pyftmerge
+│   │   ├── pyftsubset
+│   │   ├── pygmentize
+│   │   ├── pypdfium2
+│   │   ├── pytest
+│   │   ├── python -> python3
+│   │   ├── python3 -> /Library/Developer/CommandLineTools/usr/bin/python3
+│   │   ├── python3.9 -> python3
+│   │   ├── streamlit
+│   │   ├── streamlit.cmd
+│   │   ├── tabulate
+│   │   ├── tiff2fsspec
+│   │   ├── tiffcomment
+│   │   ├── tifffile
+│   │   ├── tiny-agents
+│   │   ├── torchfrtrace
+│   │   ├── torchrun
+│   │   ├── tqdm
+│   │   ├── transformers
+│   │   ├── transformers-cli
+│   │   ├── ttx
+│   │   ├── typer
+│   │   ├── undill
+│   │   └── vba_extract.py
+│   ├── etc
+│   │   └── jupyter
+│   ├── include
+│   ├── lib
+│   │   └── python3.9
+│   ├── pyvenv.cfg
+│   └── share
+│       ├── jupyter
+│       └── man
+├── configs
+│   ├── app.yaml
+│   ├── mappings.yaml
+│   ├── relations.yaml
+│   └── weights.yaml
+├── data
+│   ├── .DS_Store
+│   ├── interim
+│   │   ├── docling
+│   │   ├── sample_parsed.json
+│   │   └── sample.json
+│   ├── kg_db
+│   ├── ontologies
+│   │   ├── rxnorm
+│   │   ├── snomed_ct
+│   │   └── umls
+│   ├── processed
+│   │   ├── extracted
+│   │   ├── normalized
+│   │   └── parsed
+│   ├── raw
+│   │   ├── ResearchPaper1.pdf
+│   │   ├── ResearchPaper2.pdf
+│   │   └── ResearchPaper3.pdf
+│   └── raw_papers
+│       ├── .DS_Store
+│       ├── Depression.pdf
+│       └── sample.pdf
+├── docker
+│   ├── Dockerfile
+│   └── entrypoint.sh
+├── docker-compose.yml
+├── docs
+│   ├── architecture.md
+│   ├── demo_instructions.md
+│   ├── ontology_notes.md
+│   ├── prompts.md
+│   └── setup_guide.md
+├── eval
+│   └── gold_edges_sample.jsonl
+├── Makefile
+├── offline
+│   ├── make_embeddings.py
+│   └── projector_export.py
+├── outputs
+│   ├── evaluations
+│   ├── graphs
+│   └── reports
+├── README.md
+├── requirements.txt
+├── scripts
+│   ├── __init__.py
+│   ├── add_paper.py
+│   ├── bootstrap_db.py
+│   ├── export_nodes_edges.py
+│   ├── parse_doc.py
+│   └── tasks.ps1
+├── src
+│   ├── __init__.py
+│   ├── analytics
+│   │   └── networkx_sidecar.py
+│   ├── app
+│   │   └── streamlit_app.py
+│   ├── brightside_health_ai.egg-info
+│   │   ├── dependency_links.txt
+│   │   ├── entry_points.txt
+│   │   ├── PKG-INFO
+│   │   ├── requires.txt
+│   │   ├── SOURCES.txt
+│   │   └── top_level.txt
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── extract_llm.py
+│   │   ├── graph_store.py
+│   │   ├── ingest_docling.py
+│   │   ├── normalize_ontology.py
+│   │   ├── queries.py
+│   │   ├── rank.py
+│   │   ├── review.py
+│   │   └── validate.py
+│   ├── schemas
+│   │   └── triples.py
+│   └── utils
+│       ├── hashing.py
+│       ├── io.py
+│       ├── logging.py
+│       └── timers.py
+├── tests
+│   ├── __init__.py
+│   ├── test_graph_store.py
+│   ├── test_pipeline_smoke.py
+│   └── test_validate.py
+└── tree.txt
+
+43 directories, 145 files
