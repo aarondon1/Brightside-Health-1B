@@ -11,6 +11,8 @@ dist/
 .env
 .venv
 env/
+.venv/
+venv
 venv/
 
 # IDEs
