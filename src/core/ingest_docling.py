@@ -121,7 +121,7 @@ def _download_if_url(source: str | Path) -> tuple[str, Optional[str]]:
 
 def _clean_html_to_text(local_html_path: str) -> str:
     """
-    Quick HTML→text extraction path using trafilatura (install if missing).
+    Quick HTML→text extraction path using trafilatura.
     For better structure (headings/tables), consider rendering HTML→PDF then run Docling.
     """
     try:
@@ -238,3 +238,12 @@ def parse_document_advanced(source: str | Path) -> Dict[str, Any]:
     """
     # For now, reuse the basic path
     return parse_document(source)
+
+
+
+
+# python scripts/parse_doc.py --source data/raw_papers/sample.pdf --out data/interim/sample_parsed.json
+# # or a PDF URL
+# python scripts/parse_doc.py --source "https://example.com/paper.pdf" --out data/interim/url_parsed.json
+# # or an HTML page
+# python scripts/parse_doc.py --source "https://example.com/article" --out data/interim/html_parsed.json

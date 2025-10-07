@@ -124,7 +124,7 @@ Return valid JSON only."""
 def extract_from_section(
     section: Dict[str, Any], 
     source_id: str,
-    model: str = "gpt-4o-mini",
+    model: str = "gpt-5",
     max_retries: int = 2
 ) -> ExtractionResult:
     """Extract facts from a single document section using LLM."""
@@ -227,7 +227,7 @@ def save_extraction_results(
             "extracted_facts": [t.model_dump() for t in triples],
             "total_facts": len(triples),
             "extraction_timestamp": datetime.now().isoformat(),
-            "extraction_model": "gpt-4o-mini",
+            "extraction_model": "gpt-5",
         }
     else:
         output = [t.model_dump() for t in triples]
@@ -266,7 +266,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract clinical facts from parsed documents")
     parser.add_argument("--input", required=True, help="Path to parsed JSON file")
     parser.add_argument("--output", required=True, help="Path for extracted facts JSON")
-    parser.add_argument("--model", default="gpt-4o-mini", help="OpenAI model to use")
+    parser.add_argument("--model", default="gpt-5", help="OpenAI model to use")
     
     args = parser.parse_args()
     

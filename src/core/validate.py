@@ -1,210 +1,505 @@
+from __future__ import annotations
 import json
-from typing import Dict, List, Any
+import re
+from dataclasses import dataclass
 from pathlib import Path
-from datetime import datetime
+from typing import Any, Dict, List, Optional, Tuple, Set
 from pydantic import BaseModel, Field, ValidationError
 
-# Allowed relationship types - INCLUDING YOUR CUSTOM ONES
-ALLOWED_RELATIONS = {
-    "TREATS",               # Drug -> Condition
-    "IMPROVES",             # Drug -> Condition
-    "ASSOCIATED_WITH_SE",   # Drug -> Side Effect
-    "AUGMENTS",             # Drug -> Condition (positive effect)
-    "CONTRAINDICATED_FOR",  # Drug -> Condition (negative)
-    "SUPERIOR_TO",          # Drug -> Drug (better efficacy)
-    "EQUIVALENT_TO",        # Drug -> Drug
+# Load environment variables if available
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
+# -------------------------------------------------------------------
+# Validation Models - Models used to report problems and summaries:
+# -------------------------------------------------------------------
+class ValidationIssue(BaseModel):
+    """Represents a validation problem with an extracted fact/ a single problem found in a fact, with fields."""
+    fact_index: int
+    issue_type: str
+    severity: str  # "error", "warning", "info"
+    field: str
+    message: str
+    suggestion: Optional[str] = None
+
+class ValidationReport(BaseModel):
+    """Summary of validation results / Aggregate counts plus the list of issues"""
+    total_facts: int
+    valid_facts: int
+    invalid_facts: int
+    warnings: int
+    issues: List[ValidationIssue]
+    
+    def print_summary(self):
+        """Print a human-readable validation summary."""
+        print(f"\n Validation Report:")
+        print(f"   Total facts: {self.total_facts}")
+        print(f"   ✅ Valid: {self.valid_facts}")
+        print(f"   ❌ Invalid: {self.invalid_facts}")
+        print(f"   ⚠️  Warnings: {self.warnings}")
+        
+        if self.issues:
+            print(f"\n🔍 Issues found:")
+            for issue in self.issues[:10]:  # Show first 10 issues
+                icon = "❌" if issue.severity == "error" else "⚠️"
+                print(f"   {icon} Fact #{issue.fact_index}: {issue.message}")
+                if issue.suggestion:
+                    print(f"      💡 Suggestion: {issue.suggestion}")
+
+# -------------------------------------------------------------
+# Validation Rules & Lists / lightweight domain Guardrails
+# -------------------------------------------------------------
+
+# Medical conditions (partial list - would be expanded with ontologies)
+VALID_CONDITIONS = {
+    "depression", "major depressive disorder", "treatment-resistant depression",
+    "anxiety", "generalized anxiety disorder", "panic disorder", "social anxiety",
+    "bipolar disorder", "schizophrenia", "ptsd", "post-traumatic stress disorder",
+    "adhd", "attention deficit hyperactivity disorder", "autism spectrum disorder",
+    "obsessive compulsive disorder", "ocd", "eating disorders", "anorexia", "bulimia"
 }
 
-class ValidatedFact(BaseModel):
-    """Simple validated fact model"""
-    drug: str = Field(..., min_length=1)
-    condition: str = Field(..., min_length=1) 
-    relation: str
-    confidence: float = Field(ge=0.0, le=1.0)
-    source: str
-    section: str
-    evidence: str
+# Words that indicate this is NOT a medical condition
+CONDITION_EXCLUSION_WORDS = {
+    "treatment", "therapy", "medication", "drug", "intervention", "approach",
+    "method", "technique", "procedure", "protocol", "regimen", "strategy",
+    "care", "management", "typical medical treatment", "standard care",
+    "placebo", "control", "baseline", "comparison", "comparator"
+}
 
-class ValidationResult(BaseModel):
-    """Results of the validation process"""
-    valid_facts: List[Dict[str, Any]]
-    total_input: int
-    total_valid: int
-    low_confidence: int
-    invalid_relations: int
-    validation_time: str
+# Valid drug/treatment patterns
+DRUG_NAME_PATTERNS = {
+    # SSRIs
+    "sertraline", "fluoxetine", "paroxetine", "escitalopram", "citalopram", "fluvoxamine",
+    # SNRIs  
+    "venlafaxine", "duloxetine", "desvenlafaxine", "levomilnacipran",
+    # Atypicals
+    "bupropion", "mirtazapine", "trazodone", "nefazodone",
+    # MAOIs
+    "phenelzine", "tranylcypromine", "isocarboxazid", "selegiline",
+    # Tricyclics
+    "amitriptyline", "imipramine", "nortriptyline", "desipramine",
+    # Drug classes
+    "ssri", "ssris", "selective serotonin reuptake inhibitor", "snri", "snris",
+    "tricyclic", "tricyclics", "maoi", "maois", "antidepressant", "antidepressants",
+    # Non-drug treatments
+    "cbt", "cognitive behavioral therapy", "psychotherapy", "ect", "tms", "vns",
+    "mindfulness", "meditation", "exercise"
+}
 
-def load_extraction_data(file_path: str) -> Dict[str, Any]:
-    """Load extracted facts from JSON file sample_extracted.json"""
-    with open(file_path, 'r') as f:
-        return json.load(f)
+# Valid relations
+VALID_RELATIONS = {
+    "TREATS", "IMPROVES", "ASSOCIATED_WITH_SE", "AUGMENTS", 
+    "CONTRAINDICATED_FOR", "SUPERIOR_TO", "EQUIVALENT_TO", "INFERIOR_TO"
+}
 
-def validate_single_fact(fact: Dict[str, Any], min_confidence: float = 0.6) -> Dict[str, Any]:
-    """
-    Validate single extracted fact
-    Returns validated fact if valid, None if invalid or low confidence
-    """
-    try:
-        # Basic checks
-        if not fact.get('drug_name') or not fact.get('condition_name'):
-            print(f"   Missing drug/condition: {fact.get('drug_name')} -> {fact.get('condition_name')}")
-            return None
+# Side effects vocabulary
+COMMON_SIDE_EFFECTS = {
+    "nausea", "headache", "dizziness", "fatigue", "insomnia", "somnolence",
+    "dry mouth", "constipation", "diarrhea", "sexual dysfunction", "weight gain",
+    "weight loss", "tremor", "sweating", "blurred vision", "anxiety", "agitation"
+}
+
+# -----------------------------
+# Validation Functions
+# -----------------------------
+class FactValidator:
+    """Validates extracted clinical facts using rules and heuristics."""
+    
+    def __init__(self):
+        self.issues: List[ValidationIssue] = []
+    
+    def validate_fact(self, fact: Dict[str, Any], index: int) -> bool:
+        """Validate a single fact. Returns True if valid, False if invalid, basically ensures the essential keys exist and are non-empty"""
+        is_valid = True
         
-        # skip if lower than 0.6
-        if fact.get('confidence', 0) < min_confidence:
-            print(f"   Low confidence: {fact.get('drug_name')} ({fact.get('confidence')})")
-            return None
+        # Required field validation
+        if not self._validate_required_fields(fact, index):
+            is_valid = False
             
-        relation = fact.get('relation')
-        if relation not in ALLOWED_RELATIONS:
-            print(f"   Invalid relation: {fact.get('drug_name')} -> {relation}")
-            return None
+        # Content validation
+        if not self._validate_drug_name(fact, index):
+            is_valid = False
+            
+        if not self._validate_condition_name(fact, index):
+            is_valid = False
+            
+        if not self._validate_relation(fact, index):
+            is_valid = False
+            
+        if not self._validate_confidence(fact, index):
+            is_valid = False
+            
+        # Consistency validation
+        self._validate_span_consistency(fact, index)
+        self._validate_side_effects(fact, index)
+        self._validate_effect_size_format(fact, index)
         
-        # Create clean fact
-        clean_fact = {
-            'drug': fact['drug_name'],
-            'condition': fact['condition_name'],
-            'relation': relation,
-            'confidence': fact['confidence'],
-            'source': fact.get('source_id', 'unknown'),
-            'section': fact.get('section', 'unknown'),
-            'evidence': fact.get('span', ''),
-            'outcome': fact.get('outcome'),
-            'side_effects': fact.get('side_effects', []),
-            'effect_size': fact.get('effect_size')
-        }
+        return is_valid
+    
+    def _validate_required_fields(self, fact: Dict[str, Any], index: int) -> bool:
+        """Check that all required fields are present and non-empty."""
+        required_fields = ["drug_name", "condition_name", "relation", "span", "confidence"]
+        is_valid = True
         
-        # Validate with Pydantic
-        ValidatedFact(**clean_fact)
-        return clean_fact
+        for field in required_fields:
+            if field not in fact or not fact[field] or str(fact[field]).strip() == "":
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="missing_required_field",
+                    severity="error",
+                    field=field,
+                    message=f"Required field '{field}' is missing or empty",
+                    suggestion=f"Ensure {field} has a valid value"
+                ))
+                is_valid = False
         
-    except (ValidationError, KeyError, TypeError) as e:
-        print(f"   Validation error for {fact.get('drug_name')}: {e}")
-        return None
+        return is_valid
+    
+    def _validate_drug_name(self, fact: Dict[str, Any], index: int) -> bool:
+        """Validate drug name field."""
+        drug_name = str(fact.get("drug_name", "")).lower().strip()
+        
+        if not drug_name:
+            return False  # Already caught by required fields
+            
+        # Check for overly long drug names (likely extraction errors)
+        if len(drug_name) > 100:
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="drug_name_too_long",
+                severity="warning",
+                field="drug_name",
+                message=f"Drug name unusually long ({len(drug_name)} chars): {drug_name[:50]}...",
+                suggestion="Check if this extracted the full sentence instead of just the drug name"
+            ))
+        
+        # Check if it's a known drug/treatment
+        if not any(pattern in drug_name for pattern in DRUG_NAME_PATTERNS):
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="unknown_drug",
+                severity="info",
+                field="drug_name",
+                message=f"Drug name not in known list: {drug_name}",
+                suggestion="Verify this is a valid medication or treatment"
+            ))
+        
+        return True
+    
+    def _validate_condition_name(self, fact: Dict[str, Any], index: int) -> bool:
+        """Validate condition name - this catches the main error from your example."""
+        condition_name = str(fact.get("condition_name", "")).lower().strip()
+        
+        if not condition_name:
+            return False  # Already caught by required fields
+        
+        # Check for treatment words in condition name (major error pattern)
+        for exclusion_word in CONDITION_EXCLUSION_WORDS:
+            if exclusion_word in condition_name:
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="invalid_condition_name",
+                    severity="error",
+                    field="condition_name",
+                    message=f"Condition name contains treatment word '{exclusion_word}': {condition_name}",
+                    suggestion="This should be a medical condition, not a treatment. Check the extraction logic."
+                ))
+                return False
+        
+        # Check if it's a known condition
+        if condition_name not in VALID_CONDITIONS:
+            # Check for partial matches
+            partial_matches = [cond for cond in VALID_CONDITIONS if cond in condition_name or condition_name in cond]
+            if partial_matches:
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="condition_name_variant",
+                    severity="info",
+                    field="condition_name",
+                    message=f"Condition name variant: {condition_name}",
+                    suggestion=f"Consider normalizing to: {partial_matches[0]}"
+                ))
+            else:
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="unknown_condition",
+                    severity="info",
+                    field="condition_name",
+                    message=f"Condition not in known list: {condition_name}",
+                    suggestion="Verify this is a valid medical condition"
+                ))
+        
+        return True
+    
+    def _validate_relation(self, fact: Dict[str, Any], index: int) -> bool:
+        """Validate relation type."""
+        relation = str(fact.get("relation", "")).upper().strip()
+        
+        if relation not in VALID_RELATIONS:
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="invalid_relation",
+                severity="error",
+                field="relation",
+                message=f"Invalid relation type: {relation}",
+                suggestion=f"Use one of: {', '.join(VALID_RELATIONS)}"
+            ))
+            return False
+        
+        return True
+    
+    def _validate_confidence(self, fact: Dict[str, Any], index: int) -> bool:
+        """Validate confidence score."""
+        confidence = fact.get("confidence")
+        
+        if confidence is None:
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="missing_confidence",
+                severity="error",
+                field="confidence",
+                message="Confidence score is missing",
+                suggestion="Confidence must be a number between 0.0 and 1.0"
+            ))
+            return False
+        
+        try:
+            conf_float = float(confidence)
+            if not (0.0 <= conf_float <= 1.0):
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="invalid_confidence_range",
+                    severity="error",
+                    field="confidence",
+                    message=f"Confidence {conf_float} outside valid range [0.0, 1.0]",
+                    suggestion="Confidence must be between 0.0 and 1.0"
+                ))
+                return False
+        except (ValueError, TypeError):
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="invalid_confidence_type",
+                severity="error",
+                field="confidence",
+                message=f"Confidence must be numeric, got: {type(confidence).__name__}",
+                suggestion="Confidence must be a number between 0.0 and 1.0"
+            ))
+            return False
+        
+        return True
+    
+    def _validate_span_consistency(self, fact: Dict[str, Any], index: int):
+        """Check if the span actually supports the extracted fact."""
+        span = str(fact.get("span", "")).lower()
+        drug_name = str(fact.get("drug_name", "")).lower()
+        condition_name = str(fact.get("condition_name", "")).lower()
+        
+        # Check if drug name appears in span
+        if drug_name and drug_name not in span:
+            # Check for partial matches or abbreviations
+            drug_words = drug_name.split()
+            if not any(word in span for word in drug_words if len(word) > 2):
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="drug_not_in_span",
+                    severity="warning",
+                    field="span",
+                    message=f"Drug name '{drug_name}' not found in supporting text",
+                    suggestion="Check if extraction correctly identified the drug mentioned in the span"
+                ))
+        
+        # Check if condition appears in span (more lenient for conditions)
+        if condition_name and len(condition_name) > 3:
+            condition_words = condition_name.split()
+            if not any(word in span for word in condition_words if len(word) > 3):
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="condition_not_in_span",
+                    severity="info",
+                    field="span",
+                    message=f"Condition '{condition_name}' not clearly mentioned in span",
+                    suggestion="Verify the span supports the extracted condition"
+                ))
+    
+    def _validate_side_effects(self, fact: Dict[str, Any], index: int):
+        """Validate side effects list."""
+        side_effects = fact.get("side_effects", [])
+        
+        if not isinstance(side_effects, list):
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="invalid_side_effects_type",
+                severity="warning",
+                field="side_effects",
+                message="Side effects should be a list",
+                suggestion="Convert to list format: ['nausea', 'headache']"
+            ))
+            return
+        
+        for se in side_effects:
+            se_lower = str(se).lower().strip()
+            if se_lower not in COMMON_SIDE_EFFECTS:
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="unknown_side_effect",
+                    severity="info",
+                    field="side_effects",
+                    message=f"Unknown side effect: {se}",
+                    suggestion="Verify this is a valid medical side effect"
+                ))
+    
+    def _validate_effect_size_format(self, fact: Dict[str, Any], index: int):
+        """Check effect size format."""
+        effect_size = fact.get("effect_size")
+        
+        if effect_size and str(effect_size).strip():
+            effect_str = str(effect_size).lower()
+            
+            # Look for common patterns
+            has_number = bool(re.search(r'\d', effect_str))
+            has_percent = '%' in effect_str
+            has_stats = any(word in effect_str for word in ['cohen', 'nnt', 'odds ratio', 'hazard ratio'])
+            
+            if not (has_number or has_stats):
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="vague_effect_size",
+                    severity="info",
+                    field="effect_size",
+                    message=f"Effect size lacks quantitative data: {effect_size}",
+                    suggestion="Include specific numbers, percentages, or statistical measures when available"
+                ))
 
-def validate_extracted_facts(extraction_data: Dict[str, Any], 
-                           min_confidence: float = 0.6) -> ValidationResult:
+# -----------------------------
+# Main Validation Pipeline
+# -----------------------------
+def validate_extracted_facts(facts_data: Dict[str, Any]) -> Tuple[List[Dict], ValidationReport]:
     """
-    Main validation function to crosscheck extracted facts
+    Validate extracted facts and return clean facts + validation report.
+    
+    Args:
+        facts_data: Dict containing extracted_facts list and metadata
+        
+    Returns:
+        Tuple of (valid_facts_list, validation_report)
     """
-    raw_facts = extraction_data.get('extracted_facts', [])
+    validator = FactValidator()
+    
+    # Extract facts list from the data structure
+    if "extracted_facts" in facts_data:
+        facts = facts_data["extracted_facts"]
+    elif isinstance(facts_data, list):
+        facts = facts_data
+    else:
+        raise ValueError("Input must contain 'extracted_facts' key or be a list of facts")
     
     valid_facts = []
-    low_confidence_count = 0
-    invalid_relation_count = 0
+    invalid_count = 0
+    warning_count = 0
     
-    print(f"    Validating {len(raw_facts)} extracted facts...")
-    print(f"    Allowed relations: {', '.join(sorted(ALLOWED_RELATIONS))}")
-    print()
+    print(f"🔍 Validating {len(facts)} extracted facts...")
     
-    for i, fact in enumerate(raw_facts, 1):
-        # Skip if low confidence
-        if fact.get('confidence', 0) < min_confidence:
-            low_confidence_count += 1
-            continue
-            
-        #skip if invalid relation
-        if fact.get('relation') not in ALLOWED_RELATIONS:
-            invalid_relation_count += 1
-            continue
-            
-        # Validate the fact
-        validated = validate_single_fact(fact, min_confidence)
-        if validated:
-            valid_facts.append(validated)
-            print(f"   Valid: {fact.get('drug_name')} -> {fact.get('relation')} -> {fact.get('condition_name')}")
+    for i, fact in enumerate(facts):
+        is_valid = validator.validate_fact(fact, i)
+        
+        if is_valid:
+            valid_facts.append(fact)
+        else:
+            invalid_count += 1
     
-    # Create result
-    result = ValidationResult(
-        valid_facts=valid_facts,
-        total_input=len(raw_facts),
-        total_valid=len(valid_facts),
-        low_confidence=low_confidence_count,
-        invalid_relations=invalid_relation_count,
-        validation_time=datetime.now().isoformat()
+    # Count warnings
+    warning_count = sum(1 for issue in validator.issues if issue.severity == "warning")
+    
+    report = ValidationReport(
+        total_facts=len(facts),
+        valid_facts=len(valid_facts),
+        invalid_facts=invalid_count,
+        warnings=warning_count,
+        issues=validator.issues
     )
     
-    return result
+    return valid_facts, report
 
-def save_validation_results(results: ValidationResult, output_path: str):
-    """Save validation results to JSON sample_validated.json"""
-    output_dir = Path(output_path).parent
-    output_dir.mkdir(parents=True, exist_ok=True)
+def save_validation_results(
+    valid_facts: List[Dict],
+    report: ValidationReport,
+    output_path: str | Path,
+    issues_path: Optional[str | Path] = None
+):
+    """Save validation results to files."""
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    with open(output_path, 'w') as f:
-        json.dump(results.model_dump(), f, indent=2)
+    # Save clean facts
+    clean_data = {
+        "validated_facts": valid_facts,
+        "total_facts": len(valid_facts),
+        "validation_summary": {
+            "original_count": report.total_facts,
+            "valid_count": report.valid_facts,
+            "invalid_count": report.invalid_facts,
+            "warning_count": report.warnings
+        }
+    }
     
-    print(f"Saved validated data to {output_path}\n")
-
-def print_validation_summary(results: ValidationResult):
-    """Print a clean summary of validation results"""
-    print("\n" + "==================================================")
-    print("VALIDATION SUMMARY")
-    print("==================================================")
-    print(f"Total facts processed: {results.total_input}")
-    print(f"          Valid facts: {results.total_valid}")
-    print(f"       Low confidence: {results.low_confidence}")
-    print(f"    Invalid relations: {results.invalid_relations}")
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(clean_data, f, ensure_ascii=False, indent=2)
     
-    # Show relation breakdown
-    if results.valid_facts:
-        relations = {}
-        for fact in results.valid_facts:
-            rel = fact['relation']
-            relations[rel] = relations.get(rel, 0) + 1
+    print(f"💾 Saved {len(valid_facts)} validated facts to {output_path}")
+    
+    # Save issues report if requested
+    if issues_path:
+        issues_path = Path(issues_path)
+        issues_data = {
+            "validation_report": report.model_dump(),
+            "issues_by_type": {}
+        }
         
-        print("\n Relations found:")
-        for rel, count in sorted(relations.items()):
-            print(f"   {rel}: {count} facts")
+        # Group issues by type for analysis
+        for issue in report.issues:
+            issue_type = issue.issue_type
+            if issue_type not in issues_data["issues_by_type"]:
+                issues_data["issues_by_type"][issue_type] = []
+            issues_data["issues_by_type"][issue_type].append(issue.model_dump())
+        
+        with open(issues_path, 'w', encoding='utf-8') as f:
+            json.dump(issues_data, f, ensure_ascii=False, indent=2)
+        
+        print(f"📋 Saved validation issues to {issues_path}")
 
-def analyze_invalid_relations(extraction_data: Dict[str, Any]):
-    """Show what relations are being filtered out"""
-    raw_facts = extraction_data.get('extracted_facts', [])
-    
-    invalid_relations = {}
-    for fact in raw_facts:
-        relation = fact.get('relation')
-        if relation not in ALLOWED_RELATIONS:
-            invalid_relations[relation] = invalid_relations.get(relation, 0) + 1
-    
-    if invalid_relations:
-        print("\n   Invalid relations found (add to ALLOWED_RELATIONSHIPS if valid):")
-        for rel, count in sorted(invalid_relations.items()):
-            print(f"   '{rel}': {count} facts")
-
+# -----------------------------
+# CLI Interface
+# -----------------------------
 def main():
-    """Main function to run validation pipeline"""
-    # change these path to run locally
-    input_file = "/Users/guanying/Brightside Health 1B/Brightside-Health-1B/data/processed/extracted/sample_extracted.json"
-    output_file = "/Users/guanying/Brightside Health 1B/Brightside-Health-1B/data/processed/validated/sample_validated.json"
+    """Command-line interface for validation."""
+    import argparse
     
-    try:
-        # 1. Load data
-        print("     Loading extracted facts...")
-        extraction_data = load_extraction_data(input_file)
-        
-        # 2. analyze what relations we have
-        analyze_invalid_relations(extraction_data)
-        print()
-        
-        # 3. Validate with lower confidence to see more results
-        results = validate_extracted_facts(extraction_data, min_confidence=0.5)
-        
-        # 4. Save results
-        save_validation_results(results, output_file)
-        
-        # 5. summary
-        print_validation_summary(results)
-                
-    except FileNotFoundError:
-        print(f"Error: Input file not found at {input_file}")
-        print("Make sure to run extraction first!")
-    except Exception as e:
-        print(f"Validation error: {e}")
+    parser = argparse.ArgumentParser(description="Validate extracted clinical facts")
+    parser.add_argument("--input", required=True, help="Path to extracted facts JSON file")
+    parser.add_argument("--output", required=True, help="Path for validated facts output")
+    parser.add_argument("--issues", help="Path to save validation issues report")
+    
+    args = parser.parse_args()
+    
+    # Load extracted facts
+    with open(args.input, 'r', encoding='utf-8') as f:
+        facts_data = json.load(f)
+    
+    # Validate
+    valid_facts, report = validate_extracted_facts(facts_data)
+    
+    # Print report
+    report.print_summary()
+    
+    # Save results
+    save_validation_results(valid_facts, report, args.output, args.issues)
+    
+    print(f"\n✅ Validation complete!")
+    print(f"📊 Results: {report.valid_facts}/{report.total_facts} facts passed validation")
 
 if __name__ == "__main__":
     main()
-
-# TO run script: 
-# Change the above file paths to your local paths
-# Run in terminal: python src/core/validate.py

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Validate extracted clinical facts for quality and consistency.
-Usage: python3 -m scripts.validate --input data/processed/extracted/sample_facts.json --output data/processed/validated/sample_clean.json
+python -m scripts.validate --input data/processed/extracted/sample_extracted.json --output data/processed/validated/sample_extracted_validated.json --issues data/processed/validated/sample_extracted_issues.json --show-details
 """
 
 import argparse
@@ -101,7 +101,7 @@ def main():
             print(f"   📝 Review extraction prompts - quality is {quality_score:.1%}")
             print(f"   🔍 Check issues report: {args.issues if args.issues else 'run with --issues flag'}")
         else:
-            print(f"\n🎯 Next steps:")
+            print(f"\n🎯 Next steps (ignore these for now, will updated when normalization step is complete):")
             print(f"1. Run normalization: python3 -m scripts.normalize --input {args.output}")
             print(f"2. Load into graph: python3 -m scripts.load_graph --input <normalized.json>")
     
