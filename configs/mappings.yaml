@@ -1,0 +1,163 @@
+# Ontology mappings used during normalization.
+#
+# The structure is intentionally lightweight so it can be expanded without
+# changing application code. Each entity type contains a list of concepts with
+# their identifiers, preferred labels, ontology provider, and optional synonyms.
+#
+# Providers document where the identifiers originate from. The `provider` field
+# in each entity entry should reference one of these keys.
+providers:
+  rxnorm:
+    name: RxNorm
+    version: 2024-03-01
+    uri_prefix: "https://www.nlm.nih.gov/research/umls/rxnorm/"
+    description: Normalized names for clinical drugs maintained by the U.S. National Library of Medicine.
+  snomed:
+    name: SNOMED CT
+    version: 2024-09-01
+    uri_prefix: "http://snomed.info/id/"
+    description: Comprehensive clinical terminology covering diseases, findings, procedures, and more.
+  loinc:
+    name: LOINC
+    version: 2024-06-15
+    uri_prefix: "https://loinc.org/"
+    description: Universal codes and names for laboratory and clinical observations.
+  custom:
+    name: Brightside Clinical Graph
+    version: "0.1.0"
+    uri_prefix: "https://graph.brightside.ai/concepts/"
+    description: Project-specific relations not present in public ontologies.
+
+# Concept dictionaries grouped by entity type. The normalizer performs case-
+# insensitive matching over the preferred label and any listed synonyms.
+entities:
+  drugs:
+    - id: RXNORM:3640
+      label: Sertraline
+      provider: rxnorm
+      synonyms:
+        - Zoloft
+        - Sertraline Hydrochloride
+        - SSRI sertraline
+    - id: RXNORM:316137
+      label: Escitalopram
+      provider: rxnorm
+      synonyms:
+        - Lexapro
+        - Cipralex
+        - Escitalopram Oxalate
+    - id: SNOMED:40803007
+      label: Cognitive behavioral therapy
+      provider: snomed
+      synonyms:
+        - CBT
+        - Cognitive behaviour therapy
+        - Cognitive therapy
+
+  conditions:
+    - id: SNOMED:35489007
+      label: Major depressive disorder
+      provider: snomed
+      synonyms:
+        - MDD
+        - Major depression
+        - Depression
+        - Unipolar depression
+    - id: SNOMED:197480006
+      label: Generalized anxiety disorder
+      provider: snomed
+      synonyms:
+        - GAD
+        - Generalised anxiety disorder
+        - General anxiety disorder
+    - id: SNOMED:19160007
+      label: Post-traumatic stress disorder
+      provider: snomed
+      synonyms:
+        - PTSD
+        - Posttraumatic stress disorder
+        - Post traumatic stress disorder
+
+  outcomes:
+    - id: LOINC:81924-6
+      label: Hamilton Depression Rating Scale total score
+      provider: loinc
+      synonyms:
+        - HAM-D score
+        - HAM-D total
+        - Hamilton rating scale for depression
+    - id: LOINC:89247-5
+      label: Montgomery-Asberg Depression Rating Scale total score
+      provider: loinc
+      synonyms:
+        - MADRS score
+        - MADRS total
+    - id: LOINC:LA10066-1
+      label: Response rate
+      provider: loinc
+      synonyms:
+        - Treatment response rate
+        - Clinical response rate
+
+  side_effects:
+    - id: SNOMED:422587007
+      label: Nausea
+      provider: snomed
+      synonyms:
+        - Feeling sick
+        - Queasiness
+    - id: SNOMED:25064002
+      label: Headache
+      provider: snomed
+      synonyms:
+        - Cephalgia
+        - Migraine headache
+    - id: SNOMED:193462001
+      label: Insomnia
+      provider: snomed
+      synonyms:
+        - Sleep initiation insomnia
+        - Difficulty sleeping
+    - id: SNOMED:309538000
+      label: Sexual dysfunction
+      provider: snomed
+      synonyms:
+        - Sexual side effects
+        - Sexual adverse effect
+
+  relations:
+    - id: CUSTOM:0001
+      label: TREATS
+      provider: custom
+      description: Intervention provides therapeutic benefit for the condition.
+      synonyms:
+        - Treats
+        - Treatment for
+    - id: CUSTOM:0002
+      label: IMPROVES
+      provider: custom
+      description: Intervention improves an outcome or symptom.
+      synonyms:
+        - Improves
+        - Improvement for
+    - id: CUSTOM:0003
+      label: ASSOCIATED_WITH_SE
+      provider: custom
+      description: Intervention is associated with a side effect.
+      synonyms:
+        - Associated with side effect
+        - Linked to adverse effect
+    - id: CUSTOM:0004
+      label: AUGMENTS
+      provider: custom
+      description: Intervention enhances the effect of another treatment.
+      synonyms:
+        - Augments
+        - Augmentation of
+    - id: CUSTOM:0005
+      label: CONTRAINDICATED_FOR
+      provider: custom
+      description: Intervention should not be used for the condition.
+      synonyms:
+        - Contraindicated for
+        - Should not be used for
