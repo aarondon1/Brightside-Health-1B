@@ -32,13 +32,18 @@ class Triple(BaseModel):
     condition_name: str = Field(..., description="Medical condition being treated")
     relation: str = Field(..., description="Type of relationship (TREATS, IMPROVES, ASSOCIATED_WITH_SE, etc.)")
     outcome: Optional[str] = Field(None, description="Specific outcome measure if mentioned")
-    side_effects: List[str] = Field(default_factory=list, description="List of side effects mentioned")
+    side_effects: Optional[List[str]] = Field(default_factory=list, description="List of side effects mentioned")
     effect_size: Optional[str] = Field(None, description="Effect size, percentage, or numeric result if mentioned")
     confidence_interval: Optional[str] = Field(None, description="Confidence interval if provided")
     source_id: str = Field(..., description="Document source identifier")
     section: str = Field(..., description="Section where this fact was found")
     span: str = Field(..., description="Exact text span that supports this fact")
     confidence: float = Field(..., ge=0.0, le=1.0, description="Confidence score 0-1")
+    
+    @property
+    def side_effects_list(self) -> List[str]:
+        """Ensure side_effects is always a list, never None."""
+        return self.side_effects if self.side_effects is not None else []
 
 class ExtractionResult(BaseModel):
     """Collection of extracted triples from a document section."""
@@ -124,7 +129,7 @@ Return valid JSON only."""
 def extract_from_section(
     section: Dict[str, Any], 
     source_id: str,
-    model: str = "gpt-5",
+    model: str = "gpt-4o",  # Using GPT-4o for best quality
     max_retries: int = 2
 ) -> ExtractionResult:
     """Extract facts from a single document section using LLM."""
@@ -167,12 +172,29 @@ def extract_from_section(
                     {"role": "user", "content": user_prompt}
                 ],
                 temperature=0.1,  # Low temperature for consistency
-                max_tokens=2000,
+                max_completion_tokens=2000,  # Fixed: use max_completion_tokens instead of max_tokens
                 response_format={"type": "json_object"}  # Ensures JSON response
             )
             
             content = response.choices[0].message.content
             raw_data = json.loads(content)
+            
+            # Clean up and filter triples before validation
+            if "triples" in raw_data:
+                cleaned_triples = []
+                for triple in raw_data["triples"]:
+                    # Fix side_effects None → []
+                    if triple.get("side_effects") is None:
+                        triple["side_effects"] = []
+                    
+                    # Skip facts with missing required fields
+                    if not triple.get("drug_name") or not triple.get("condition_name"):
+                        print(f"   ⚠ Skipping incomplete fact: drug={triple.get('drug_name')}, condition={triple.get('condition_name')}")
+                        continue
+                    
+                    cleaned_triples.append(triple)
+                
+                raw_data["triples"] = cleaned_triples
             
             # Validate with Pydantic
             result = ExtractionResult(**raw_data)
@@ -266,7 +288,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract clinical facts from parsed documents")
     parser.add_argument("--input", required=True, help="Path to parsed JSON file")
     parser.add_argument("--output", required=True, help="Path for extracted facts JSON")
-    parser.add_argument("--model", default="gpt-5", help="OpenAI model to use")
+    parser.add_argument("--model", default="gpt-4o", help="OpenAI model to use")
     
     args = parser.parse_args()
     

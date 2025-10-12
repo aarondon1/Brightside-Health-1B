@@ -19,7 +19,7 @@ def main():
     parser = argparse.ArgumentParser(description="Extract clinical facts from parsed documents")
     parser.add_argument("--input", required=True, help="Path to parsed JSON file from Docling")
     parser.add_argument("--output", help="Path for extracted facts JSON output (auto-generated if not provided)")
-    parser.add_argument("--model", default="gpt-4o-mini", help="OpenAI model to use (default: gpt-4o-mini)")
+    parser.add_argument("--model", default="gpt-4o", help="OpenAI model to use (default: gpt-4o-mini)")
     
     args = parser.parse_args()
     

@@ -1,11 +1,6 @@
 # Ontology mappings used during normalization.
-#
-# The structure is intentionally lightweight so it can be expanded without
-# changing application code. Each entity type contains a list of concepts with
-# their identifiers, preferred labels, ontology provider, and optional synonyms.
-#
-# Providers document where the identifiers originate from. The `provider` field
-# in each entity entry should reference one of these keys.
+# Expanded to cover clinical facts from depression treatment literature
+
 providers:
   rxnorm:
     name: RxNorm
@@ -28,10 +23,9 @@ providers:
     uri_prefix: "https://graph.brightside.ai/concepts/"
     description: Project-specific relations not present in public ontologies.
 
-# Concept dictionaries grouped by entity type. The normalizer performs case-
-# insensitive matching over the preferred label and any listed synonyms.
 entities:
   drugs:
+    # SSRIs (Selective Serotonin Reuptake Inhibitors)
     - id: RXNORM:3640
       label: Sertraline
       provider: rxnorm
@@ -39,6 +33,14 @@ entities:
         - Zoloft
         - Sertraline Hydrochloride
         - SSRI sertraline
+    
+    - id: RXNORM:4493
+      label: Fluoxetine
+      provider: rxnorm
+      synonyms:
+        - Prozac
+        - Fluoxetine Hydrochloride
+    
     - id: RXNORM:316137
       label: Escitalopram
       provider: rxnorm
@@ -46,6 +48,180 @@ entities:
         - Lexapro
         - Cipralex
         - Escitalopram Oxalate
+    
+    - id: RXNORM:32937
+      label: Paroxetine
+      provider: rxnorm
+      synonyms:
+        - Paxil
+        - Seroxat
+        - Paroxetine Hydrochloride
+    
+    - id: RXNORM:2556
+      label: Citalopram
+      provider: rxnorm
+      synonyms:
+        - Celexa
+        - Cipramil
+        - Citalopram Hydrobromide
+    
+    - id: RXNORM:41126
+      label: Fluvoxamine
+      provider: rxnorm
+      synonyms:
+        - Luvox
+        - Fluvoxamine Maleate
+    
+    # SSRI Drug Class
+    - id: RXNORM:372652
+      label: SSRIs
+      provider: rxnorm
+      synonyms:
+        - Selective serotonin reuptake inhibitors
+        - SSRI
+        - Selective serotonin reuptake inhibitor
+        - SSRIs antidepressants
+        - Selective serotonin reuptake inhibitors antidepressants
+    
+    # SNRIs (Serotonin-Norepinephrine Reuptake Inhibitors)
+    - id: RXNORM:39786
+      label: Venlafaxine
+      provider: rxnorm
+      synonyms:
+        - Effexor
+        - Venlafaxine Hydrochloride
+    
+    - id: RXNORM:72625
+      label: Duloxetine
+      provider: rxnorm
+      synonyms:
+        - Cymbalta
+        - Duloxetine Hydrochloride
+    
+    - id: RXNORM:39998
+      label: Desvenlafaxine
+      provider: rxnorm
+      synonyms:
+        - Pristiq
+        - Desvenlafaxine Succinate
+    
+    # SNRI Drug Class
+    - id: RXNORM:387562
+      label: SNRIs
+      provider: rxnorm
+      synonyms:
+        - Serotonin-norepinephrine reuptake inhibitors
+        - SNRI
+        - Norepinephrine reuptake inhibitors
+    
+    # Tricyclic Antidepressants (TCAs)
+    - id: RXNORM:704
+      label: Amitriptyline
+      provider: rxnorm
+      synonyms:
+        - Elavil
+        - Amitriptyline Hydrochloride
+    
+    - id: RXNORM:3247
+      label: Imipramine
+      provider: rxnorm
+      synonyms:
+        - Tofranil
+        - Imipramine Hydrochloride
+    
+    - id: RXNORM:7531
+      label: Nortriptyline
+      provider: rxnorm
+      synonyms:
+        - Pamelor
+        - Nortriptyline Hydrochloride
+    
+    - id: RXNORM:3616
+      label: Desipramine
+      provider: rxnorm
+      synonyms:
+        - Norpramin
+        - Desipramine Hydrochloride
+    
+    - id: RXNORM:8123
+      label: Protriptyline
+      provider: rxnorm
+      synonyms:
+        - Vivactil
+        - Protriptyline Hydrochloride
+    
+    # TCA Drug Class
+    - id: RXNORM:321988
+      label: TCAs
+      provider: rxnorm
+      synonyms:
+        - Tricyclic antidepressants
+        - TCA
+        - Tricyclics
+        - Tricyclic
+    
+    # MAOIs (Monoamine Oxidase Inhibitors)
+    - id: RXNORM:8120
+      label: Phenelzine
+      provider: rxnorm
+      synonyms:
+        - Nardil
+        - Phenelzine Sulfate
+    
+    - id: RXNORM:10737
+      label: Tranylcypromine
+      provider: rxnorm
+      synonyms:
+        - Parnate
+        - Tranylcypromine Sulfate
+    
+    - id: RXNORM:6960
+      label: Selegiline
+      provider: rxnorm
+      synonyms:
+        - Emsam
+        - Selegiline Hydrochloride
+    
+    # MAOI Drug Class
+    - id: RXNORM:35476
+      label: MAOIs
+      provider: rxnorm
+      synonyms:
+        - Monoamine oxidase inhibitors
+        - MAOI
+        - Monoamine oxidase inhibitor
+    
+    # Atypical Antidepressants
+    - id: RXNORM:42347
+      label: Bupropion
+      provider: rxnorm
+      synonyms:
+        - Wellbutrin
+        - Zyban
+        - Bupropion Hydrochloride
+    
+    - id: RXNORM:6750
+      label: Mirtazapine
+      provider: rxnorm
+      synonyms:
+        - Remeron
+    
+    - id: RXNORM:10737
+      label: Trazodone
+      provider: rxnorm
+      synonyms:
+        - Desyrel
+        - Trazodone Hydrochloride
+    
+    # General Antidepressants Class
+    - id: RXNORM:321988
+      label: Antidepressants
+      provider: rxnorm
+      synonyms:
+        - Antidepressant
+        - Antidepressant medications
+    
+    # Psychotherapy/Non-Drug Treatments
     - id: SNOMED:40803007
       label: Cognitive behavioral therapy
       provider: snomed
@@ -53,8 +229,76 @@ entities:
         - CBT
         - Cognitive behaviour therapy
         - Cognitive therapy
+        - Cognitive-behavioral therapy
+    
+    - id: SNOMED:76168009
+      label: Psychotherapy
+      provider: snomed
+      synonyms:
+        - Psycho-education
+        - Supportive therapy
+        - Psychoeducational intervention
+        - Schema therapy
+    
+    - id: SNOMED:228557008
+      label: Electroconvulsive therapy
+      provider: snomed
+      synonyms:
+        - ECT
+        - Electroconvulsive treatment
+    
+    - id: SNOMED:427522004
+      label: Repetitive transcranial magnetic stimulation
+      provider: snomed
+      synonyms:
+        - rTMS
+        - TMS
+        - Transcranial magnetic stimulation
+    
+    - id: SNOMED:710841008
+      label: Vagus nerve stimulation
+      provider: snomed
+      synonyms:
+        - VNS
+        - Vagal nerve stimulation
+    
+    - id: CUSTOM:DBS001
+      label: Deep brain stimulation
+      provider: custom
+      synonyms:
+        - DBS
+        - DBS of the subgenual cingulate white matter
+        - Stimulation of the nucleus accumbens
+    
+    - id: CUSTOM:TMS001
+      label: Transcranial direct current stimulation
+      provider: custom
+      synonyms:
+        - tDCS
+        - Direct current stimulation
+    
+    - id: CUSTOM:MST001
+      label: Magnetic seizure therapy
+      provider: custom
+      synonyms:
+        - MST
+    
+    - id: CUSTOM:LIGHT001
+      label: Light therapy
+      provider: custom
+      synonyms:
+        - Phototherapy
+        - Luxtherapy
+        - Light treatment
+    
+    - id: RXNORM:6754
+      label: Ketamine
+      provider: rxnorm
+      synonyms:
+        - Ketamine Hydrochloride
 
   conditions:
+    # Depression Conditions
     - id: SNOMED:35489007
       label: Major depressive disorder
       provider: snomed
@@ -63,6 +307,34 @@ entities:
         - Major depression
         - Depression
         - Unipolar depression
+        - Depressive disorder
+        - Depressive symptoms
+        - Major depressive episodes
+    
+    - id: SNOMED:36474008
+      label: Treatment-resistant depression
+      provider: snomed
+      synonyms:
+        - Resistant depression
+        - Refractory depression
+        - Treatment resistant depression
+    
+    - id: SNOMED:191616004
+      label: Chronic depression
+      provider: snomed
+      synonyms:
+        - Persistent depressive disorder
+        - Dysthymia
+    
+    - id: SNOMED:370143000
+      label: Severe major depressive disorder
+      provider: snomed
+      synonyms:
+        - Severe depression
+        - Severe MDD
+        - Severe depressive disorder
+    
+    # Anxiety Conditions
     - id: SNOMED:197480006
       label: Generalized anxiety disorder
       provider: snomed
@@ -70,6 +342,23 @@ entities:
         - GAD
         - Generalised anxiety disorder
         - General anxiety disorder
+        - Anxiety
+    
+    - id: SNOMED:371631005
+      label: Panic disorder
+      provider: snomed
+      synonyms:
+        - Panic attacks
+        - Panic anxiety
+    
+    - id: SNOMED:48694002
+      label: Social anxiety disorder
+      provider: snomed
+      synonyms:
+        - Social phobia
+        - Social anxiety
+    
+    # Other Psychiatric Conditions
     - id: SNOMED:19160007
       label: Post-traumatic stress disorder
       provider: snomed
@@ -77,6 +366,19 @@ entities:
         - PTSD
         - Posttraumatic stress disorder
         - Post traumatic stress disorder
+    
+    - id: SNOMED:13746004
+      label: Bipolar disorder
+      provider: snomed
+      synonyms:
+        - Bipolar affective disorder
+        - Manic depression
+    
+    - id: SNOMED:58214004
+      label: Schizophrenia
+      provider: snomed
+      synonyms:
+        - Schizophrenic disorder
 
   outcomes:
     - id: LOINC:81924-6
@@ -86,18 +388,74 @@ entities:
         - HAM-D score
         - HAM-D total
         - Hamilton rating scale for depression
+        - Hamilton Depression Scale
+    
     - id: LOINC:89247-5
       label: Montgomery-Asberg Depression Rating Scale total score
       provider: loinc
       synonyms:
         - MADRS score
         - MADRS total
-    - id: LOINC:LA10066-1
+    
+    - id: CUSTOM:OUTCOME001
+      label: Remission
+      provider: custom
+      synonyms:
+        - Remission rate
+        - Remission state
+        - Clinical remission
+        - Achieving remission
+    
+    - id: CUSTOM:OUTCOME002
       label: Response rate
-      provider: loinc
+      provider: custom
       synonyms:
         - Treatment response rate
         - Clinical response rate
+        - Clinical response
+        - Response
+        - Therapeutic response
+    
+    - id: CUSTOM:OUTCOME003
+      label: Treatment efficacy
+      provider: custom
+      synonyms:
+        - Efficacy
+        - Effectiveness
+        - Treatment effectiveness
+        - Antidepressant efficacy
+    
+    - id: CUSTOM:OUTCOME004
+      label: Symptom improvement
+      provider: custom
+      synonyms:
+        - Improvement
+        - Clinical improvement
+        - Symptom reduction
+        - Depressive symptoms improvement
+    
+    - id: CUSTOM:OUTCOME005
+      label: Tolerability
+      provider: custom
+      synonyms:
+        - Tolerability profile
+        - Well-tolerated profile
+        - Safety profile
+    
+    - id: CUSTOM:OUTCOME006
+      label: Quality of life
+      provider: custom
+      synonyms:
+        - Psychosocial functioning
+        - Functional improvement
+    
+    - id: CUSTOM:OUTCOME007
+      label: Treatment adherence
+      provider: custom
+      synonyms:
+        - Adherence
+        - Compliance
+        - Medication adherence
 
   side_effects:
     - id: SNOMED:422587007
@@ -106,24 +464,134 @@ entities:
       synonyms:
         - Feeling sick
         - Queasiness
+    
     - id: SNOMED:25064002
       label: Headache
       provider: snomed
       synonyms:
         - Cephalgia
         - Migraine headache
+    
     - id: SNOMED:193462001
       label: Insomnia
       provider: snomed
       synonyms:
         - Sleep initiation insomnia
         - Difficulty sleeping
+    
     - id: SNOMED:309538000
       label: Sexual dysfunction
       provider: snomed
       synonyms:
         - Sexual side effects
         - Sexual adverse effect
+    
+    - id: SNOMED:84229001
+      label: Fatigue
+      provider: snomed
+      synonyms:
+        - Tiredness
+        - Exhaustion
+    
+    - id: SNOMED:62315008
+      label: Diarrhea
+      provider: snomed
+      synonyms:
+        - Loose stools
+    
+    - id: SNOMED:87317003
+      label: Constipation
+      provider: snomed
+    
+    - id: SNOMED:248490000
+      label: Dizziness
+      provider: snomed
+      synonyms:
+        - Vertigo
+        - Lightheadedness
+    
+    - id: SNOMED:162076009
+      label: Dry mouth
+      provider: snomed
+      synonyms:
+        - Xerostomia
+    
+    - id: SNOMED:8943002
+      label: Weight gain
+      provider: snomed
+    
+    - id: SNOMED:89362005
+      label: Weight loss
+      provider: snomed
+    
+    - id: SNOMED:26079004
+      label: Tremor
+      provider: snomed
+    
+    - id: SNOMED:415690000
+      label: Sweating
+      provider: snomed
+      synonyms:
+        - Excessive sweating
+        - Hyperhidrosis
+    
+    - id: SNOMED:246636008
+      label: Blurred vision
+      provider: snomed
+      synonyms:
+        - Vision problems
+    
+    - id: SNOMED:197480006
+      label: Anxiety
+      provider: snomed
+      synonyms:
+        - Nervousness
+        - Restlessness
+    
+    - id: SNOMED:24199005
+      label: Agitation
+      provider: snomed
+    
+    - id: SNOMED:271782001
+      label: Somnolence
+      provider: snomed
+      synonyms:
+        - Drowsiness
+        - Sedation
+    
+    - id: CUSTOM:SE001
+      label: Cardiovascular toxicity
+      provider: custom
+      synonyms:
+        - Cardiac effects
+        - Heart problems
+    
+    - id: CUSTOM:SE002
+      label: Anticholinergic side effects
+      provider: custom
+      synonyms:
+        - Anticholinergic effects
+    
+    - id: CUSTOM:SE003
+      label: Neurotoxicity
+      provider: custom
+      synonyms:
+        - Neurotoxic effects
+        - Brain toxicity
+    
+    - id: CUSTOM:SE004
+      label: Drug dependence
+      provider: custom
+      synonyms:
+        - Addiction
+        - Dependency
+    
+    - id: CUSTOM:SE005
+      label: Neurocognitive effects
+      provider: custom
+      synonyms:
+        - Cognitive impairment
+        - Memory problems
 
   relations:
     - id: CUSTOM:0001
@@ -133,6 +601,7 @@ entities:
       synonyms:
         - Treats
         - Treatment for
+    
     - id: CUSTOM:0002
       label: IMPROVES
       provider: custom
@@ -140,6 +609,7 @@ entities:
       synonyms:
         - Improves
         - Improvement for
+    
     - id: CUSTOM:0003
       label: ASSOCIATED_WITH_SE
       provider: custom
@@ -147,6 +617,7 @@ entities:
       synonyms:
         - Associated with side effect
         - Linked to adverse effect
+    
     - id: CUSTOM:0004
       label: AUGMENTS
       provider: custom
@@ -154,6 +625,7 @@ entities:
       synonyms:
         - Augments
         - Augmentation of
+    
     - id: CUSTOM:0005
       label: CONTRAINDICATED_FOR
       provider: custom
@@ -161,3 +633,31 @@ entities:
       synonyms:
         - Contraindicated for
         - Should not be used for
+    
+    - id: CUSTOM:0006
+      label: SUPERIOR_TO
+      provider: custom
+      description: One treatment is more effective than another.
+      synonyms:
+        - Superior to
+        - Better than
+        - More effective than
+    
+    - id: CUSTOM:0007
+      label: INFERIOR_TO
+      provider: custom
+      description: One treatment is less effective than another.
+      synonyms:
+        - Inferior to
+        - Worse than
+        - Less effective than
+    
+    - id: CUSTOM:0008
+      label: EQUIVALENT_TO
+      provider: custom
+      description: Treatments have similar efficacy.
+      synonyms:
+        - Equivalent to
+        - As effective as
+        - Similar to
+        - Comparable to

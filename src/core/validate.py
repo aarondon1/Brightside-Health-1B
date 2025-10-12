@@ -13,11 +13,11 @@ try:
 except ImportError:
     pass
 
-# -------------------------------------------------------------------
-# Validation Models - Models used to report problems and summaries:
-# -------------------------------------------------------------------
+# -----------------------------
+# Validation Models
+# -----------------------------
 class ValidationIssue(BaseModel):
-    """Represents a validation problem with an extracted fact/ a single problem found in a fact, with fields."""
+    """Represents a validation problem with an extracted fact."""
     fact_index: int
     issue_type: str
     severity: str  # "error", "warning", "info"
@@ -26,7 +26,7 @@ class ValidationIssue(BaseModel):
     suggestion: Optional[str] = None
 
 class ValidationReport(BaseModel):
-    """Summary of validation results / Aggregate counts plus the list of issues"""
+    """Summary of validation results."""
     total_facts: int
     valid_facts: int
     invalid_facts: int
@@ -35,7 +35,7 @@ class ValidationReport(BaseModel):
     
     def print_summary(self):
         """Print a human-readable validation summary."""
-        print(f"\n Validation Report:")
+        print(f"\n📊 Validation Report:")
         print(f"   Total facts: {self.total_facts}")
         print(f"   ✅ Valid: {self.valid_facts}")
         print(f"   ❌ Invalid: {self.invalid_facts}")
@@ -49,9 +49,9 @@ class ValidationReport(BaseModel):
                 if issue.suggestion:
                     print(f"      💡 Suggestion: {issue.suggestion}")
 
-# -------------------------------------------------------------
-# Validation Rules & Lists / lightweight domain Guardrails
-# -------------------------------------------------------------
+# -----------------------------
+# Validation Rules & Lists
+# -----------------------------
 
 # Medical conditions (partial list - would be expanded with ontologies)
 VALID_CONDITIONS = {
@@ -113,7 +113,7 @@ class FactValidator:
         self.issues: List[ValidationIssue] = []
     
     def validate_fact(self, fact: Dict[str, Any], index: int) -> bool:
-        """Validate a single fact. Returns True if valid, False if invalid, basically ensures the essential keys exist and are non-empty"""
+        """Validate a single fact. Returns True if valid, False if invalid."""
         is_valid = True
         
         # Required field validation
@@ -373,6 +373,140 @@ class FactValidator:
                     message=f"Effect size lacks quantitative data: {effect_size}",
                     suggestion="Include specific numbers, percentages, or statistical measures when available"
                 ))
+    
+    def _validate_drug_in_span_strict(self, fact: Dict[str, Any], index: int) -> bool:
+        """
+        STRICT check: Drug name MUST appear in span.
+        This catches the common error where span mentions "TCAs" but extraction says "imipramine".
+        """
+        drug_name = str(fact.get('drug_name', '')).lower().strip()
+        span = str(fact.get('span', '')).lower()
+        
+        if not drug_name or not span:
+            return True  # Already caught by required fields
+        
+        # Get significant words from drug name (exclude common filler words)
+        stop_words = {'with', 'and', 'the', 'for', 'of', 'in', 'or', 'a', 'an'}
+        drug_words = [w for w in drug_name.split() if len(w) > 3 and w not in stop_words]
+        
+        # At least ONE significant drug word must appear in span
+        if drug_words and not any(word in span for word in drug_words):
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="drug_not_in_span_strict",
+                severity="error",  # Changed from warning to ERROR
+                field="drug_name",
+                message=f"Drug '{drug_name}' not found in span. Span may mention drug class instead.",
+                suggestion="Only extract specific drugs if explicitly mentioned. If span says 'TCAs', extract 'TCAs' not 'imipramine'."
+            ))
+            return False
+        
+        return True
+    
+    def _validate_comparison_logic(self, fact: Dict[str, Any], index: int) -> bool:
+        """
+        Check if comparative relations (SUPERIOR_TO, INFERIOR_TO) match the span text.
+        This catches errors like "lower than" being extracted as SUPERIOR_TO.
+        """
+        relation = fact.get('relation', '')
+        span = str(fact.get('span', '')).lower()
+        
+        if relation not in ['SUPERIOR_TO', 'INFERIOR_TO', 'EQUIVALENT_TO']:
+            return True  # Not a comparison, skip check
+        
+        # SUPERIOR_TO should have positive language
+        if relation == 'SUPERIOR_TO':
+            negative_indicators = [
+                'worse than', 'lower than', 'less than', 'less effective',
+                'not better', 'inferior', 'poorer', 'not as effective'
+            ]
+            
+            for indicator in negative_indicators:
+                if indicator in span:
+                    self.issues.append(ValidationIssue(
+                        fact_index=index,
+                        issue_type="wrong_comparison_direction",
+                        severity="error",
+                        field="relation",
+                        message=f"Span contains '{indicator}' but relation is SUPERIOR_TO (should be INFERIOR_TO or EQUIVALENT_TO)",
+                        suggestion="Reverse comparison direction: change SUPERIOR_TO to INFERIOR_TO"
+                    ))
+                    return False
+        
+        # INFERIOR_TO should have negative language
+        if relation == 'INFERIOR_TO':
+            positive_indicators = [
+                'better than', 'superior', 'more effective', 'higher than',
+                'greater than', 'outperform', 'surpass'
+            ]
+            
+            for indicator in positive_indicators:
+                if indicator in span:
+                    self.issues.append(ValidationIssue(
+                        fact_index=index,
+                        issue_type="wrong_comparison_direction",
+                        severity="error",
+                        field="relation",
+                        message=f"Span contains '{indicator}' but relation is INFERIOR_TO (should be SUPERIOR_TO)",
+                        suggestion="Reverse comparison direction: change INFERIOR_TO to SUPERIOR_TO"
+                    ))
+                    return False
+        
+        # EQUIVALENT_TO should have equivalence language
+        if relation == 'EQUIVALENT_TO':
+            equivalence_indicators = [
+                'similar', 'equivalent', 'comparable', 'same as', 'as effective',
+                'not better', 'no difference', 'equally'
+            ]
+            
+            # Must have at least one equivalence indicator
+            if not any(indicator in span for indicator in equivalence_indicators):
+                self.issues.append(ValidationIssue(
+                    fact_index=index,
+                    issue_type="missing_equivalence_language",
+                    severity="warning",
+                    field="relation",
+                    message="Span doesn't clearly indicate equivalence for EQUIVALENT_TO relation",
+                    suggestion="Verify span supports equivalence claim"
+                ))
+        
+        return True
+    
+    def _validate_span_completeness(self, fact: Dict[str, Any], index: int) -> bool:
+        """
+        Check if span has pronouns at the start without context.
+        This catches fragments like "It has been shown..." without the referent.
+        """
+        span = str(fact.get('span', '')).strip()
+        
+        if not span:
+            return True
+        
+        # Check for pronouns at the start (likely missing context)
+        pronoun_pattern = r'^(it|this|that|these|they|those|which)\s'
+        if re.match(pronoun_pattern, span, re.IGNORECASE):
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="incomplete_span",
+                severity="error",  # Changed from warning to ERROR
+                field="span",
+                message=f"Span starts with pronoun '{span[:20]}...' without clear referent",
+                suggestion="Include the previous sentence to provide context for the pronoun"
+            ))
+            return False
+        
+        # Check if span is suspiciously short (likely missing context)
+        if len(span) < 25:
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="very_short_span",
+                severity="warning",
+                field="span",
+                message=f"Very short span ({len(span)} chars): '{span}'",
+                suggestion="Consider including more context"
+            ))
+        
+        return True
 
 # -----------------------------
 # Main Validation Pipeline

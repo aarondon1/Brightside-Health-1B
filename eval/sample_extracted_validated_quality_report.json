@@ -1,0 +1,804 @@
+{
+  "total_facts": 30,
+  "average_quality_score": 74.66666666666667,
+  "estimated_precision": 0.7666666666666667,
+  "results": [
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "general use",
+        "relation": "CONTRAINDICATED_FOR",
+        "outcome": "stigma and misconceptions",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "ECT",
+        "span": "the stigma surrounding ECT limits its use",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "duloxetine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "efficacy comparable to SSRIs",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Norepinephrine reuptake inhibitors",
+        "span": "venlafaxine and duloxetine are generally considered effective as SSRIs",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "vagus nerve stimulation (VNS)",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "varying efficiency levels",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "SOMATIC TREATMENTS",
+        "span": "various innovative techniques have been proposed, such as vagus nerve stimulation (VNS), ... with varying efficiency levels",
+        "confidence": 0.8
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "TCAs",
+        "condition_name": "severe major depressive disorder",
+        "relation": "SUPERIOR_TO",
+        "outcome": "treatment efficacy in hospitalized patients",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "TCAs",
+        "span": "some TCAs can be more effective than SSRIs when used to treat hospitalized patients",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "protriptyline",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "treatment efficacy",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "TCAs",
+        "span": "TCAs...are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Drug not found in supporting text"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "tDCS",
+        "condition_name": "antidepressants",
+        "relation": "SUPERIOR_TO",
+        "outcome": "",
+        "side_effects": [],
+        "effect_size": "lower than that of antidepressants",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "tDCS",
+        "span": "its effect remains lower than that of antidepressants",
+        "confidence": 0.9
+      },
+      "quality_score": 50.0,
+      "likely_correct": false,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 50,
+          "likely_correct": false,
+          "issues": [
+            "Drug not found in supporting text",
+            "Span doesn't contain typical SUPERIOR_TO language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "psycho-education",
+        "condition_name": "depression",
+        "relation": "IMPROVES",
+        "outcome": "clinical course, treatment adherence, psychosocial functioning",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Other psycho-interventions",
+        "span": "Many studies have highlighted the role of psycho-education in improving the clinical course, treatment adherence, and psychosocial functioning in patients with depression",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical IMPROVES language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "rTMS",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "well-tolerated profile",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "Luxtherapy (phototherapy)",
+        "span": "rTMS is an interesting technique as well, as it offers a well-tolerated profile",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Cognitive Behavioral Analysis System of Psychotherapy",
+        "condition_name": "chronic depression",
+        "relation": "TREATS",
+        "outcome": "chronic depression management",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "Overview of psychotherapy in depression",
+        "span": "The European Psychiatric Association recommends using the Cognitive Behavioral Analysis System of Psychotherapy (CBASP) for treating chronic depression.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Schema therapy",
+        "condition_name": "depression",
+        "relation": "EQUIVALENT_TO",
+        "outcome": "treatment efficacy",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Structured psychotherapies",
+        "span": "Schema therapy is about as effective as CBT for treating depression.",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical EQUIVALENT_TO language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "repetitive transcranial magnetic stimulation (rTMS)",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "varying efficiency levels",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "SOMATIC TREATMENTS",
+        "span": "various innovative techniques have been proposed, such as repetitive transcranial magnetic stimulation (rTMS), ... with varying efficiency levels",
+        "confidence": 0.8
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "DBS of the subgenual cingulate white matter",
+        "condition_name": "resistant depression",
+        "relation": "TREATS",
+        "outcome": "clinical response",
+        "side_effects": [],
+        "effect_size": "60% response rate after six months",
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "DBS",
+        "span": "DBS of the subgenual cingulate white matter (Brodmann area = BA 25) elicited a clinical response in 60% of resistant depression patients after six months",
+        "confidence": 1.0
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Imipramine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "efficacy in patients with more severe symptoms",
+        "side_effects": [
+          "cardiovascular toxicity",
+          "anticholinergic side effects",
+          "risk of lethal toxicity from overdoses"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Perspectives",
+        "span": "Efficacy in patients with more severe symptoms of MDD",
+        "confidence": 0.9
+      },
+      "quality_score": 60.0,
+      "likely_correct": false,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 60,
+          "likely_correct": false,
+          "issues": [
+            "Drug not found in supporting text",
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Cognitive-behavioral therapy",
+        "condition_name": "major depressive disorder",
+        "relation": "IMPROVES",
+        "outcome": "depressive symptoms",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Structured psychotherapies",
+        "span": "CBT targets depressed patients' irrational beliefs and distorted cognitions that perpetuate depressive symptoms by challenging and reversing them.",
+        "confidence": 0.9
+      },
+      "quality_score": 50.0,
+      "likely_correct": false,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 50,
+          "likely_correct": false,
+          "issues": [
+            "Drug not found in supporting text",
+            "Span doesn't contain typical IMPROVES language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "SSRIs",
+        "condition_name": "depression",
+        "relation": "SUPERIOR_TO",
+        "outcome": "tolerability profile",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "SSRIs",
+        "span": "SSRIs have a good tolerability profile",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical SUPERIOR_TO language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "DBS of the nucleus accumbens",
+        "condition_name": "resistant depression",
+        "relation": "TREATS",
+        "outcome": "behavioral effects on anhedonia",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "DBS",
+        "span": "Behavioral effects indicate the quick and favorable impact of stimulation on anhedonia",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "certain forms of depression",
+        "relation": "TREATS",
+        "outcome": "confirmed indications",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "discussion",
+        "span": "ECT is the only somatic treatment with confirmed indications for certain forms of depression.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "psychoeducational intervention",
+        "condition_name": "severe depression",
+        "relation": "AUGMENTS",
+        "outcome": "pharmacological treatment effectiveness",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "Overview of psychotherapy in depression",
+        "span": "In more cases of severe depression, ST and PEI are used only to augment pharmacological treatments.",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Drug not found in supporting text"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ketamine",
+        "condition_name": "neurotoxicity",
+        "relation": "ASSOCIATED_WITH_SE",
+        "outcome": "neurotoxicity and drug dependence",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Ketamine and related molecules",
+        "span": "prolonged exposure may predispose patients to neurotoxicity and drug dependence",
+        "confidence": 0.9
+      },
+      "quality_score": 50.0,
+      "likely_correct": false,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 50,
+          "likely_correct": false,
+          "issues": [
+            "Drug not found in supporting text",
+            "Span doesn't contain typical ASSOCIATED_WITH_SE language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "selective serotonin reuptake inhibitors antidepressants",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "remission state",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "abstract",
+        "span": "Pharmacotherapy, especially selective serotonin reuptake inhibitors antidepressants, remains the most frequent option for treating depression during the acute phase",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Desipramine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "efficacy in patients with more severe symptoms",
+        "side_effects": [
+          "cardiovascular toxicity",
+          "anticholinergic side effects",
+          "risk of lethal toxicity from overdoses"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Perspectives",
+        "span": "Efficacy in patients with more severe symptoms of MDD",
+        "confidence": 0.9
+      },
+      "quality_score": 60.0,
+      "likely_correct": false,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 60,
+          "likely_correct": false,
+          "issues": [
+            "Drug not found in supporting text",
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "imipramine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "treatment efficacy",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "TCAs",
+        "span": "TCAs...are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Drug not found in supporting text"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "trazodone",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "antidepressant efficacy",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Other antidepressants",
+        "span": "It has been shown to be an effective antidepressant in placebo-controlled research.",
+        "confidence": 0.9
+      },
+      "quality_score": 60.0,
+      "likely_correct": false,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 60,
+          "likely_correct": false,
+          "issues": [
+            "Drug not found in supporting text",
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "CBT",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "effectiveness for treating depression",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Other psycho-interventions",
+        "span": "Brief forms (six to eight sessions) of CBT... have already shown their effectiveness for treating depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "rTMS/quetiapine",
+        "condition_name": "depression",
+        "relation": "AUGMENTS",
+        "outcome": "therapeutic response",
+        "side_effects": [
+          "mild side effects"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "rTMS",
+        "span": "Preliminary research has revealed synergistic (e.g., rTMS/quetiapine) interactions between neuro-modulation and pharmacotherapy",
+        "confidence": 0.8
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Magnetic seizure therapy",
+        "condition_name": "depressive symptoms",
+        "relation": "TREATS",
+        "outcome": "effectiveness on depressive symptoms",
+        "side_effects": [
+          "fewer neurocognitive effects than ECT"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "Magnetic seizure therapy",
+        "span": "Evidence supporting its effectiveness on depressive symptoms continues to grow, and it appears to induce fewer neurocognitive effects than ECT",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Drug not found in supporting text"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "psychotherapy",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "short- and long-term effectiveness",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "discussion",
+        "span": "The three principal methods available to caregivers are antidepressants, specifically structured psychotherapies, and somatic approaches.",
+        "confidence": 0.9
+      },
+      "quality_score": 40.0,
+      "likely_correct": false,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 40,
+          "likely_correct": false,
+          "issues": [
+            "Drug not found in supporting text",
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "TCAs",
+        "condition_name": "major depressive disorder",
+        "relation": "SUPERIOR_TO",
+        "outcome": "treatment efficacy for severe symptoms",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "sample",
+        "section": "TCAs",
+        "span": "the superiority of TCAs over SSRIs for patients with severe major depressive disorder (MDD) symptoms who require hospitalization",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "antidepressants",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "short- and long-term effectiveness",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "discussion",
+        "span": "The three principal methods available to caregivers are antidepressants, specifically structured psychotherapies, and somatic approaches.",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "tDCS",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "encouraging but varying results",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "sample",
+        "section": "Luxtherapy (phototherapy)",
+        "span": "tDCS offers encouraging but varying results that depend on the study's design and the techniques used",
+        "confidence": 0.8
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    }
+  ]
+}
