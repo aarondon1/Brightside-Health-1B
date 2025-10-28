@@ -86,7 +86,7 @@ brightside-kg/
 │  │  ├─ extract_llm.py           # LLM calls → strict JSON (retries, caching)
 │  │  ├─ validate.py              # Pydantic + rule filters
 │  │  ├─ normalize_ontology.py    # RxNorm/SNOMED/UMLS mapping; synonym merge
-│  │  ├─ graph_store.py           # Kùzu schema/upserts/queries (source of truth)
+│  │  ├─ graph_store.py           # Neo4j schema/upserts/queries (source of truth)
 │  │  ├─ queries.py               # neighborhood + provenance helpers
 │  │  ├─ rank.py                  # transparent scoring using configs/weights.yaml
 │  │  └─ review.py                # mark edges reviewed
@@ -277,4 +277,3 @@ Compose mounts `./data` → `/app/data`, so the **Kùzu DB** and PDFs persist on
 - Prefer config over code for weights and relation vocab.
 
 ---
-

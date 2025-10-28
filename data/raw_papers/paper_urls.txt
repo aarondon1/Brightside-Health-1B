@@ -1,0 +1,6 @@
+# Local PDFs
+data\raw_papers\WJCC-9-9350.pdf
+
+# URLs
+https://pubmed.ncbi.nlm.nih.gov/18172020/
+https://pubmed.ncbi.nlm.nih.gov/19185342/

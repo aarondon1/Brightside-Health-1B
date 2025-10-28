@@ -13,7 +13,7 @@ try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
-    # dotenv not installed, that's fine - will use environment variables
+    # if dotenv not installed, that's fine - will use environment variables
     pass
 
 # Set up OpenAI client (reads OPENAI_API_KEY from environment)
@@ -54,7 +54,7 @@ class ExtractionResult(BaseModel):
 # -----------------------------
 # Extraction prompts
 # -----------------------------
-EXTRACTION_SYSTEM_PROMPT = """You are a clinical research extraction AI. Extract structured facts from medical literature.
+EXTRACTION_SYSTEM_PROMPT = """You are an expert clinical research extraction AI. Extract structured facts from medical literature.
 
 ENTITIES TO EXTRACT:
 - Drug: medications, treatments, interventions (e.g., "sertraline", "cognitive behavioral therapy", "escitalopram")
@@ -129,7 +129,7 @@ Return valid JSON only."""
 def extract_from_section(
     section: Dict[str, Any], 
     source_id: str,
-    model: str = "gpt-4o",  # Using GPT-4o for best quality
+    model: str = "gpt-4o",  
     max_retries: int = 2
 ) -> ExtractionResult:
     """Extract facts from a single document section using LLM."""
@@ -249,7 +249,7 @@ def save_extraction_results(
             "extracted_facts": [t.model_dump() for t in triples],
             "total_facts": len(triples),
             "extraction_timestamp": datetime.now().isoformat(),
-            "extraction_model": "gpt-5",
+            "extraction_model": "gpt-4o",
         }
     else:
         output = [t.model_dump() for t in triples]

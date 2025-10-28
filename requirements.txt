@@ -6,6 +6,7 @@ docling>=1.0.0
 PyPDF2>=3.0.1
 pandas>=2.0.0
 numpy>=1.24.0
+trafilatura>=2.0.0
 
 # LLM & ML
 openai>=1.30.0
@@ -13,12 +14,13 @@ pydantic>=2.0.0
 tiktoken>=0.5.0
 
 # Graph Database & Analysis
-kuzu>=0.4.0
+neo4j>=6.0.2
 networkx>=3.1.0
 
 # Medical Ontologies
 biothings-client>=0.3.0
 requests>=2.31.0
+rapidfuzz>=3.14.1
 
 # Visualization & UI
 streamlit>=1.28.0

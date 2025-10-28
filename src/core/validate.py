@@ -14,7 +14,7 @@ except ImportError:
     pass
 
 # -----------------------------
-# Validation Models
+# Pydantic Validation Models
 # -----------------------------
 class ValidationIssue(BaseModel):
     """Represents a validation problem with an extracted fact."""

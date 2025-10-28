@@ -1,26 +1,17 @@
-#!/usr/bin/env python3
 """
 Automated quality assessment for extracted facts using multiple methods.
-Usage: python3 -m scripts.auto_validate_quality --input data/processed/validated/sample_validated.json
-
-# Run this once to baseline quality
-  python3 -m scripts.auto_validate_quality \
-  --input data/processed/validated/sample_extracted_v2_validated.json \
-  --methods heuristic \
-  --sample-size 30
+Usage: python -m scripts.auto_validate_quality --input data/processed/validated/<paper>_validated.json
 """
-
 import argparse
 import json
 import os
-import re
-from pathlib import Path
-from typing import Dict, List, Tuple
 import sys
+from pathlib import Path
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
-sys.path.insert(0, str(project_root))
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
 
 try:
     from dotenv import load_dotenv
@@ -28,7 +19,7 @@ try:
 except ImportError:
     pass
 
-# Optional: Import OpenAI for LLM-based validation
+# Optional OpenAI for LLM-based validation
 try:
     import openai
     OPENAI_AVAILABLE = True
@@ -40,7 +31,7 @@ except ImportError:
 # -----------------------------
 # Method 1: Heuristic-Based Validation
 # -----------------------------
-def heuristic_quality_check(fact: Dict) -> Dict[str, any]:
+def heuristic_quality_check(fact: dict) -> dict[str, any]:
     """
     Use heuristics to estimate if a fact is likely correct.
     Returns quality score and reasoning.
@@ -107,7 +98,7 @@ def heuristic_quality_check(fact: Dict) -> Dict[str, any]:
 # -----------------------------
 # Method 2: NLI (Natural Language Inference)
 # -----------------------------
-def nli_quality_check(fact: Dict) -> Dict[str, any]:
+def nli_quality_check(fact: dict) -> dict[str, any]:
     """
     Use textual entailment: Does the span support the claim?
     Requires sentence-transformers or similar library.
@@ -149,7 +140,7 @@ def nli_quality_check(fact: Dict) -> Dict[str, any]:
 # -----------------------------
 # Method 3: LLM-as-Judge
 # -----------------------------
-def llm_judge_quality_check(fact: Dict, model: str = "gpt-4o-mini") -> Dict[str, any]:
+def llm_judge_quality_check(fact: dict, model: str = "gpt-4o") -> dict[str, any]:
     """
     Use another LLM call to verify the extraction.
     Most accurate but costs API calls.
@@ -216,7 +207,7 @@ Be strict: The fact must be directly supported by the text."""
 # -----------------------------
 # Method 4: Cross-Reference with Knowledge Base
 # -----------------------------
-def knowledge_base_check(fact: Dict) -> Dict[str, any]:
+def knowledge_base_check(fact: dict) -> dict[str, any]:
     """
     Check if the fact is consistent with known medical knowledge.
     Requires medical knowledge base or API (e.g., UMLS, DrugBank).
@@ -253,7 +244,7 @@ def knowledge_base_check(fact: Dict) -> Dict[str, any]:
 # -----------------------------
 # Combined Quality Assessment
 # -----------------------------
-def assess_fact_quality(fact: Dict, methods: List[str] = None) -> Dict:
+def assess_fact_quality(fact: dict, methods: list[str] = None) -> dict:
     """
     Run multiple quality checks and combine results.
     """
@@ -293,10 +284,10 @@ def assess_fact_quality(fact: Dict, methods: List[str] = None) -> Dict:
 # Batch Assessment
 # -----------------------------
 def assess_dataset_quality(
-    facts: List[Dict],
-    methods: List[str] = None,
+    facts: list[dict],
+    methods: list[str] = None,
     sample_size: int = None
-) -> Dict:
+) -> dict:
     """
     Assess quality of entire dataset.
     """
@@ -335,57 +326,40 @@ def assess_dataset_quality(
 # CLI
 # -----------------------------
 def main():
-    parser = argparse.ArgumentParser(
-        description="Automated quality assessment for extracted facts"
-    )
+    parser = argparse.ArgumentParser(description="Automated quality assessment for extracted facts")
     parser.add_argument("--input", required=True, help="Path to validated facts JSON")
-    parser.add_argument("--output", help="Path for quality report output")
-    parser.add_argument("--methods", nargs="+", 
-                       choices=['heuristic', 'nli', 'llm_judge', 'knowledge_base'],
-                       default=['heuristic'],
-                       help="Quality assessment methods to use")
+    parser.add_argument("--output", help="Path for quality report output (default: data/eval/{stem}_quality_report.json)")
+    parser.add_argument("--methods", nargs="+",
+                        choices=['heuristic', 'nli', 'llm_judge', 'knowledge_base'],
+                        default=['heuristic'],
+                        help="Quality assessment methods to use")
     parser.add_argument("--sample-size", type=int, help="Only assess a random sample (faster)")
     parser.add_argument("--use-llm", action="store_true", help="Include LLM-based validation (costs API calls)")
-    
+    parser.add_argument("--min-precision", type=float, default=None, help="Fail (exit 1) if estimated precision is below this (e.g., 0.95)")
     args = parser.parse_args()
-    
-    # Add LLM method if requested
-    if args.use_llm:
-        if 'llm_judge' not in args.methods:
-            args.methods.append('llm_judge')
-    
-    # Auto-generate output path
+
+    if args.use_llm and 'llm_judge' not in args.methods:
+        args.methods.append('llm_judge')
+
     if not args.output:
-        input_path = Path(args.input)
-        output_dir = Path("eval")
-        output_dir.mkdir(parents=True, exist_ok=True)
-        args.output = output_dir / f"{input_path.stem}_quality_report.json"
-    
+        in_path = Path(args.input)
+        out_dir = Path("data/eval")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        args.output = out_dir / f"{in_path.stem}_quality_report.json"
+
     print(f"📂 Loading facts from: {args.input}")
-    
-    # Load facts
-    with open(args.input, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    if "validated_facts" in data:
-        facts = data["validated_facts"]
-    elif isinstance(data, list):
-        facts = data
-    else:
-        print("❌ Invalid input format")
-        return
-    
-    print(f"📊 Total facts: {len(facts)}")
-    
-    # Run assessment
+    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    facts = data["validated_facts"] if isinstance(data, dict) and "validated_facts" in data else (data if isinstance(data, list) else [])
+    if not facts:
+        print("❌ Invalid input format: expected list or {validated_facts: [...]}")
+        sys.exit(1)
+
+    from scripts.auto_validate_quality import assess_dataset_quality  # reuse functions in same file
     report = assess_dataset_quality(facts, args.methods, args.sample_size)
-    
-    # Save report
-    output_path = Path(args.output)
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(report, f, indent=2)
-    
-    # Print summary
+
+    out_path = Path(args.output)
+    out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+
     print("\n" + "="*60)
     print("📊 AUTOMATED QUALITY ASSESSMENT REPORT")
     print("="*60)
@@ -393,31 +367,10 @@ def main():
     print(f"Average quality score: {report['average_quality_score']:.1f}/100")
     print(f"Estimated precision: {report['estimated_precision']:.1%}")
     print("="*60)
-    
-    if report['estimated_precision'] >= 0.85:
-        print("✅ QUALITY CHECK PASSED (≥85% precision)")
-        print("🎯 Safe to proceed to normalization step")
-    elif report['estimated_precision'] >= 0.70:
-        print("⚠️  QUALITY CHECK WARNING (70-85% precision)")
-        print("🔍 Review common error patterns before proceeding")
-    else:
-        print("❌ QUALITY CHECK FAILED (<70% precision)")
-        print("🛠️  Improve extraction prompts and re-run")
-    
-    print(f"\n💾 Full report saved to: {output_path}")
-    
-    # Show sample of low-quality facts
-    low_quality = [r for r in report['results'] if r.get('quality_score', 100) < 70]
-    if low_quality:
-        print(f"\n⚠️  Found {len(low_quality)} low-quality facts. Examples:")
-        for r in low_quality[:3]:
-            fact = r['fact']
-            print(f"\n   {fact.get('drug_name')} {fact.get('relation')} {fact.get('condition_name')}")
-            print(f"   Quality: {r.get('quality_score', 'N/A')}/100")
-            if 'heuristic' in r['method_results']:
-                issues = r['method_results']['heuristic'].get('issues', [])
-                if issues:
-                    print(f"   Issues: {', '.join(issues[:2])}")
+    print(f"💾 Saved: {out_path}")
+    if args.min_precision is not None and report["estimated_precision"] < args.min_precision:
+        print(f"❌ Estimated precision below threshold ({report['estimated_precision']:.1%} < {args.min_precision:.1%})")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

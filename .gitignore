@@ -29,7 +29,7 @@ venv/
 
 # Data & Outputs (keep structure, ignore content)
 data/raw/*.pdf
-data/processed/**/*
+#data/processed/**/*
 !data/processed/.gitkeep
 data/ontologies/**/*
 !data/ontologies/.gitkeep
