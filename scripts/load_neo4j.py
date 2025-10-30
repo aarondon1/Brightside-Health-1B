@@ -24,7 +24,7 @@ RELATION_LABELS = {
 }
 
 # Neo4j connection configuration
-NEO4J_URI = "bolt://localhost:7687"
+NEO4J_URI = "bolt://localhost:7690"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "password"
 
@@ -46,7 +46,9 @@ class Neo4jLoader:
         tx.run("MATCH (n) DETACH DELETE n")
 
 def generate_node_id(prefix, text, concept_id):
-    """Generate unique node ID"""
+    """Generate unique node ID
+    example output: "id: drug_RXNORM_72625" or "id: condition_unmatched_5fa7cc34"
+    """
     if concept_id:
         clean_id = concept_id.replace(':', '_').replace('/', '_').replace(' ', '_')
         return f"{prefix}_{clean_id}"
@@ -212,6 +214,14 @@ if __name__ == "__main__":
     main()
 
 """
-Run with:
+# Step 1: clear DB and load the first paper, (please change the file name accordingly)
 python3 scripts/load_neo4j.py --input data/processed/normalized/sample_normalized_v4.json --clear
+
+# Step 2: load the second paper (append)
+python3 scripts/load_neo4j.py \
+  --input data/processed/normalized/paper2_normalized.json
+
+# Step 3: load the third paper (append)
+python3 scripts/load_neo4j.py \
+  --input data/processed/normalized/paper3_normalized.json
 """

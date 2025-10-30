@@ -2,7 +2,7 @@ import json
 from neo4j import GraphDatabase
 
 # Neo4j connection config
-NEO4J_URI = "bolt://localhost:7687"
+NEO4J_URI = "bolt://localhost:7690"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "password"
 
@@ -97,8 +97,35 @@ def get_schema_with_samples(uri, user, password):
                     print(f"    - {rel['type']} -> {rel['target_labels']} : {rel['target_node']} | Properties: {props_str}\n")
             else:
                 print("  Relationships: None")
-
+       
 if __name__ == "__main__":
     get_schema_with_samples(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)
 
-# run scrip with: python3 scripts/neo4j_schema.py
+
+"""
+This function is to print out the expected schema mapping for reference.
+"""
+def print_schema_mapping():
+    schema_mapping = [
+        ("Drug", "TREATS", "Condition", "Main treatment relationships"),
+        ("Drug", "IMPROVES", "Outcome", "Drug improves an outcome"),
+        ("Drug", "AUGMENTS", "Drug", "Drug augments another drug"),
+        ("Drug", "CONTRAINDICATED_FOR", "Condition", "Drug should not be used for condition"),
+        ("Drug", "SUPERIOR_TO", "Drug", "Drug is better than another drug"),
+        ("Drug", "EQUIVALENT_TO", "Drug", "Drug equivalent to another drug"),
+        ("Condition", "ASSOCIATED_WITH_SE", "Outcome", "Side effects associated with condition"),
+        ("Outcome", "-", "-", "Outcomes are generally terminal nodes")
+    ]
+
+    print("\n=== NODE → RELATIONSHIP → NODE SCHEMA ===\n")
+    print(f"{'Source Node':<12} {'Relationship Type':<22} {'Target Node':<12} {'Notes'}")
+    print("-" * 80)
+    for src, rel, tgt, note in schema_mapping:
+        print(f"{src:<12} {rel:<22} {tgt:<12} {note}")
+
+if __name__ == "__main__":
+    print_schema_mapping()
+
+
+# run scrip with: 
+#   python3 scripts/neo4j_schema.py
