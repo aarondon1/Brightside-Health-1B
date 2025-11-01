@@ -14,7 +14,7 @@ except ImportError:
     pass
 
 # -----------------------------
-# Pydantic Validation Models
+# Validation Models
 # -----------------------------
 class ValidationIssue(BaseModel):
     """Represents a validation problem with an extracted fact."""
@@ -53,13 +53,72 @@ class ValidationReport(BaseModel):
 # Validation Rules & Lists
 # -----------------------------
 
-# Medical conditions (partial list - would be expanded with ontologies)
+# ----------------------------- 
+# Validation Rules & Lists
+# -----------------------------
+
+def normalize_condition_for_validation(condition: str) -> str:
+    """Normalize condition names to canonical forms for validation."""
+    if not condition:
+        return condition
+    
+    condition_lower = condition.lower().strip()
+    
+    normalization_map = {
+        "anxious depression": "depression",
+        "major depression": "major depressive disorder",
+        "treatment resistant depression": "treatment-resistant depression",
+        "treatment-resistant depression": "treatment-resistant depression",
+        "trd": "treatment-resistant depression",
+        "mdd": "major depressive disorder",
+        "gad": "generalized anxiety disorder",
+        "social anxiety disorder": "social anxiety",
+        "ptsd": "post-traumatic stress disorder",
+        "ocd": "obsessive compulsive disorder",
+        "bipolar i disorder": "bipolar disorder",
+        "bipolar ii disorder": "bipolar disorder",
+    }
+    
+    return normalization_map.get(condition_lower, condition)
+
+# Medical conditions - expanded list
 VALID_CONDITIONS = {
-    "depression", "major depressive disorder", "treatment-resistant depression",
-    "anxiety", "generalized anxiety disorder", "panic disorder", "social anxiety",
-    "bipolar disorder", "schizophrenia", "ptsd", "post-traumatic stress disorder",
-    "adhd", "attention deficit hyperactivity disorder", "autism spectrum disorder",
-    "obsessive compulsive disorder", "ocd", "eating disorders", "anorexia", "bulimia"
+    # Depression
+    "depression", "major depressive disorder", "major depression", "treatment-resistant depression",
+    "persistent depressive disorder", "dysthymia", "depressive disorder",
+    
+    # Anxiety
+    "anxiety", "generalized anxiety disorder", "gad", "panic disorder", "social anxiety",
+    "social anxiety disorder", "phobia", "anxiety disorder", "separation anxiety",
+    
+    # Trauma
+    "ptsd", "post-traumatic stress disorder", "trauma", "acute stress disorder",
+    
+    # Psychotic
+    "bipolar disorder", "bipolar i", "bipolar ii", "bipolar disorder i", "bipolar disorder ii",
+    "schizophrenia", "schizoaffective disorder", "psychosis", "brief psychotic disorder",
+    
+    # Neurodevelopmental
+    "adhd", "attention deficit hyperactivity disorder", "autism spectrum disorder", "asd",
+    "autism", "add", "attention deficit disorder",
+    
+    # Obsessive
+    "obsessive compulsive disorder", "ocd", "body dysmorphic disorder", "bdd",
+    
+    # Eating
+    "eating disorders", "anorexia", "anorexia nervosa", "bulimia", "bulimia nervosa",
+    "binge eating disorder", "bing eating",
+    
+    # Substance
+    "substance use disorder", "alcohol use disorder", "opioid use disorder", "drug abuse",
+    "substance abuse", "addiction",
+    
+    # Sleep
+    "insomnia", "sleep disorder", "narcolepsy", "sleep apnea",
+    
+    # Other
+    "adjustment disorder", "oppositional defiant disorder", "odd", "conduct disorder",
+    "personality disorder", "borderline personality disorder", "bpd", "antisocial personality disorder",
 }
 
 # Words that indicate this is NOT a medical condition
@@ -82,6 +141,12 @@ DRUG_NAME_PATTERNS = {
     "phenelzine", "tranylcypromine", "isocarboxazid", "selegiline",
     # Tricyclics
     "amitriptyline", "imipramine", "nortriptyline", "desipramine",
+    # Anxiolytics
+    "buspirone", "hydroxyzine", "propranolol",
+    # Mood Stabilizers
+    "lamottal", "lamotrigine", "valproate", "lithium", "divalproex",
+    # Antipsychotics
+    "clozapine", "risperidone", "olanzapine", "quetiapine", "aripiprazole", "haloperidol",
     # Drug classes
     "ssri", "ssris", "selective serotonin reuptake inhibitor", "snri", "snris",
     "tricyclic", "tricyclics", "maoi", "maois", "antidepressant", "antidepressants",
@@ -96,11 +161,26 @@ VALID_RELATIONS = {
     "CONTRAINDICATED_FOR", "SUPERIOR_TO", "EQUIVALENT_TO", "INFERIOR_TO"
 }
 
-# Side effects vocabulary
+# Side effects vocabulary - ONLY specific medical side effects
 COMMON_SIDE_EFFECTS = {
     "nausea", "headache", "dizziness", "fatigue", "insomnia", "somnolence",
     "dry mouth", "constipation", "diarrhea", "sexual dysfunction", "weight gain",
-    "weight loss", "tremor", "sweating", "blurred vision", "anxiety", "agitation"
+    "weight loss", "tremor", "sweating", "blurred vision", "anxiety", "agitation",
+    "akathisia", "restlessness", "sedation", "drowsiness", "tachycardia", "palpitations",
+    "hypertension", "hypotension", "nausea and vomiting", "loss of appetite", "increased appetite",
+    "insomnia and anxiety", "sleep disturbance", "vivid dreams", "nightmares",
+    "sexual dysfunction and decreased libido", "erectile dysfunction", "decreased libido",
+    "discontinuation syndrome", "withdrawal symptoms", "serotonin syndrome",
+    "hyponatremia", "liver enzyme elevation", "qc prolongation", "torsades de pointes"
+}
+
+# Invalid side effects - metadata/outcomes not actual side effects
+INVALID_SIDE_EFFECTS = {
+    "side effect frequency", "adverse event", "adverse events",
+    "side effects", "adverse effect", "adverse effects",
+    "effect", "outcome", "symptom", "symptoms",
+    "placebo", "response", "remission", "improvement",
+    "efficacy", "benefit", "harm", "adverse"
 }
 
 # -----------------------------
@@ -160,11 +240,41 @@ class FactValidator:
         return is_valid
     
     def _validate_drug_name(self, fact: Dict[str, Any], index: int) -> bool:
-        """Validate drug name field."""
+        """Validate drug name field with stricter rules."""
         drug_name = str(fact.get("drug_name", "")).lower().strip()
         
         if not drug_name:
             return False  # Already caught by required fields
+        
+        # Reject placeholder/missing drug names (NEW - STRICT)
+        placeholder_values = ["n/a", "na", "none", "unknown", "not specified", "not available"]
+        if drug_name in placeholder_values:
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="placeholder_drug_name",
+                severity="error",
+                field="drug_name",
+                message=f"Drug name is placeholder: {drug_name}",
+                suggestion="Facts must have specific drug/treatment names. Skip facts without identifiable treatments."
+            ))
+            return False
+        
+        # Reject generic/vague treatment terms (NEW - STRICT)
+        generic_terms = [
+            "switching options", "augmentation options", "treatment options",
+            "medication", "medications", "therapy", "therapies", "intervention",
+            "treatment", "treatments", "drug", "drugs", "antidepressant options"
+        ]
+        if drug_name in generic_terms:
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="generic_drug_name",
+                severity="error",
+                field="drug_name",
+                message=f"Drug name too generic: {drug_name}",
+                suggestion="Use specific drug/treatment names (e.g., 'sertraline' not 'medication')"
+            ))
+            return False
             
         # Check for overly long drug names (likely extraction errors)
         if len(drug_name) > 100:
@@ -197,6 +307,40 @@ class FactValidator:
         if not condition_name:
             return False  # Already caught by required fields
         
+        # Reject outcome-type "conditions" (NEW - STRICT)
+        outcome_indicators = [
+            "remission", "response", "improvement", "outcome", "result", 
+            "change", "reduction", "recovery", "symptom remission"
+        ]
+        if any(indicator in condition_name for indicator in outcome_indicators):
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="outcome_as_condition",
+                severity="error",
+                field="condition_name",
+                message=f"Condition is actually an outcome: {condition_name}",
+                suggestion="Use the underlying medical condition (e.g., 'major depressive disorder'), not treatment outcome"
+            ))
+            return False
+        
+        # Reject isolated symptoms as "conditions" (NEW - STRICT)
+        isolated_symptoms = [
+            "insomnia", "nervousness", "agitation", "physical symptoms",
+            "insomnia and nervousness", "insomnia and agitation",
+            "fatigue", "headache", "nausea", "dizziness", "pain",
+            "anxiety symptoms", "depressive symptoms"
+        ]
+        if condition_name in isolated_symptoms:
+            self.issues.append(ValidationIssue(
+                fact_index=index,
+                issue_type="symptom_as_condition",
+                severity="error",
+                field="condition_name",
+                message=f"Condition is just a symptom: {condition_name}",
+                suggestion="Use the underlying disorder (e.g., 'major depressive disorder', 'generalized anxiety disorder')"
+            ))
+            return False
+        
         # Check for treatment words in condition name (major error pattern)
         for exclusion_word in CONDITION_EXCLUSION_WORDS:
             if exclusion_word in condition_name:
@@ -210,7 +354,7 @@ class FactValidator:
                 ))
                 return False
         
-        # Check if it's a known condition
+        # Check if it's a known condition (now just a warning, not an error)
         if condition_name not in VALID_CONDITIONS:
             # Check for partial matches
             partial_matches = [cond for cond in VALID_CONDITIONS if cond in condition_name or condition_name in cond]
@@ -224,13 +368,14 @@ class FactValidator:
                     suggestion=f"Consider normalizing to: {partial_matches[0]}"
                 ))
             else:
+                # Changed from error to info - allow unknown conditions
                 self.issues.append(ValidationIssue(
                     fact_index=index,
                     issue_type="unknown_condition",
-                    severity="info",
+                    severity="info",  # Changed from error to info
                     field="condition_name",
-                    message=f"Condition not in known list: {condition_name}",
-                    suggestion="Verify this is a valid medical condition"
+                    message=f"Condition '{condition_name}' not in known list (but may be valid)",
+                    suggestion="Verify this is a real medical condition"
                 ))
         
         return True
@@ -293,12 +438,12 @@ class FactValidator:
         return True
     
     def _validate_span_consistency(self, fact: Dict[str, Any], index: int):
-        """Check if the span actually supports the extracted fact."""
+        """Check if the span actually supports the extracted fact (lenient warnings only)."""
         span = str(fact.get("span", "")).lower()
         drug_name = str(fact.get("drug_name", "")).lower()
         condition_name = str(fact.get("condition_name", "")).lower()
         
-        # Check if drug name appears in span
+        # Check if drug name appears in span (stricter check)
         if drug_name and drug_name not in span:
             # Check for partial matches or abbreviations
             drug_words = drug_name.split()
@@ -306,23 +451,24 @@ class FactValidator:
                 self.issues.append(ValidationIssue(
                     fact_index=index,
                     issue_type="drug_not_in_span",
-                    severity="warning",
+                    severity="warning",  # Kept as warning (informational)
                     field="span",
                     message=f"Drug name '{drug_name}' not found in supporting text",
                     suggestion="Check if extraction correctly identified the drug mentioned in the span"
                 ))
         
-        # Check if condition appears in span (more lenient for conditions)
+        # Check if condition appears in span (lenient - just info level)
         if condition_name and len(condition_name) > 3:
             condition_words = condition_name.split()
+            # More lenient: just check if any significant word is present
             if not any(word in span for word in condition_words if len(word) > 3):
                 self.issues.append(ValidationIssue(
                     fact_index=index,
                     issue_type="condition_not_in_span",
-                    severity="info",
+                    severity="info",  # Info level - not blocking
                     field="span",
-                    message=f"Condition '{condition_name}' not clearly mentioned in span",
-                    suggestion="Verify the span supports the extracted condition"
+                    message=f"Condition '{condition_name}' not clearly mentioned in span (may be contextual)",
+                    suggestion="Verify the span context supports the extracted condition"
                 ))
     
     def _validate_side_effects(self, fact: Dict[str, Any], index: int):

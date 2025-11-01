@@ -1,0 +1,128 @@
+{
+  "validated_facts": [
+    {
+      "drug_name": "sertraline",
+      "condition_name": "major depressive disorder",
+      "relation": "TREATS",
+      "outcome": "efficacy and acceptability",
+      "side_effects": [],
+      "effect_size": "",
+      "confidence_interval": "",
+      "source_id": "Lancet",
+      "section": "Summary",
+      "span": "Sertraline might be the best choice when starting treatment for moderate to severe major depression in adults because it has the most favourable balance between benefits, acceptability, and acquisition cost.",
+      "confidence": 0.9
+    },
+    {
+      "drug_name": "Fluvoxamine",
+      "condition_name": "major depressive disorder",
+      "relation": "EQUIVALENT_TO",
+      "outcome": "response rate",
+      "side_effects": [],
+      "effect_size": "31/109 vs 33/108",
+      "confidence_interval": "OR 0.90 (0.50-1.62)",
+      "source_id": "Lancet",
+      "section": "results",
+      "span": "Fluvoxamine vs Citalopram: response rate 31/109 vs 33/108, OR 0.90 (0.50-1.62)",
+      "confidence": 0.9
+    },
+    {
+      "drug_name": "Fluvoxamine",
+      "condition_name": "major depressive disorder",
+      "relation": "ASSOCIATED_WITH_SE",
+      "outcome": "dropout rate",
+      "side_effects": [],
+      "effect_size": "29/109 vs 22/108",
+      "confidence_interval": "OR 1.42 (0.75-2.66)",
+      "source_id": "Lancet",
+      "section": "results",
+      "span": "Fluvoxamine vs Citalopram: dropout rate 29/109 vs 22/108, OR 1.42 (0.75-2.66)",
+      "confidence": 0.9
+    },
+    {
+      "drug_name": "Fluoxetine",
+      "condition_name": "major depressive disorder",
+      "relation": "EQUIVALENT_TO",
+      "outcome": "response rate",
+      "side_effects": [],
+      "effect_size": "83/141 vs 83/143",
+      "confidence_interval": "OR 1.03 (0.64-1.66)",
+      "source_id": "Lancet",
+      "section": "results",
+      "span": "Fluoxetine vs Fluvoxamine: response rate 83/141 vs 83/143, OR 1.03 (0.64-1.66)",
+      "confidence": 0.9
+    },
+    {
+      "drug_name": "Milnacipran",
+      "condition_name": "major depressive disorder",
+      "relation": "SUPERIOR_TO",
+      "outcome": "response rate",
+      "side_effects": [],
+      "effect_size": "32/56 vs 40/57",
+      "confidence_interval": "OR 0.57 (0.26-1.23)",
+      "source_id": "Lancet",
+      "section": "results",
+      "span": "Milnacipran vs Fluvoxamine: response rate 32/56 vs 40/57, OR 0.57 (0.26-1.23)",
+      "confidence": 0.9
+    },
+    {
+      "drug_name": "Venlafaxine",
+      "condition_name": "major depressive disorder",
+      "relation": "SUPERIOR_TO",
+      "outcome": "response rate",
+      "side_effects": [],
+      "effect_size": "14/34 vs 48/77",
+      "confidence_interval": "OR 0.42 (0.19-0.96)",
+      "source_id": "Lancet",
+      "section": "results",
+      "span": "Venlafaxine vs Fluvoxamine: response rate 14/34 vs 48/77, OR 0.42 (0.19-0.96)",
+      "confidence": 0.9
+    },
+    {
+      "drug_name": "escitalopram",
+      "condition_name": "major depressive disorder",
+      "relation": "TREATS",
+      "outcome": "",
+      "side_effects": [],
+      "effect_size": "",
+      "confidence_interval": "",
+      "source_id": "Lancet",
+      "section": "discussion",
+      "span": "escitalopram and sertraline might be the best choice when starting a treatment for moderate to severe major depression because they have the best possible balance between efficacy and acceptability",
+      "confidence": 0.9
+    },
+    {
+      "drug_name": "sertraline",
+      "condition_name": "major depressive disorder",
+      "relation": "TREATS",
+      "outcome": "",
+      "side_effects": [],
+      "effect_size": "",
+      "confidence_interval": "",
+      "source_id": "Lancet",
+      "section": "discussion",
+      "span": "escitalopram and sertraline might be the best choice when starting a treatment for moderate to severe major depression because they have the best possible balance between efficacy and acceptability",
+      "confidence": 0.9
+    },
+    {
+      "drug_name": "reboxetine",
+      "condition_name": "major depressive disorder",
+      "relation": "CONTRAINDICATED_FOR",
+      "outcome": "",
+      "side_effects": [],
+      "effect_size": "",
+      "confidence_interval": "",
+      "source_id": "Lancet",
+      "section": "discussion",
+      "span": "reboxetine should not be used as a routine first-line acute treatment for major depression",
+      "confidence": 0.9
+    }
+  ],
+  "total_facts": 9,
+  "validation_summary": {
+    "original_count": 9,
+    "valid_count": 9,
+    "invalid_count": 0,
+    "warning_count": 0
+  }
+}

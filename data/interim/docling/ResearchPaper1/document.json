@@ -1,0 +1,123 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.7.0",
+  "name": "ResearchPaper1",
+  "origin": {
+    "mimetype": "application/pdf",
+    "binary_hash": 9344427473695753124,
+    "filename": "ResearchPaper1.pdf"
+  },
+  "furniture": {
+    "self_ref": "#/furniture",
+    "children": [],
+    "content_layer": "furniture",
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "body": {
+    "self_ref": "#/body",
+    "children": [],
+    "content_layer": "body",
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "groups": [],
+  "texts": [],
+  "pictures": [],
+  "tables": [],
+  "key_value_items": [],
+  "form_items": [],
+  "pages": {
+    "1": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 1
+    },
+    "2": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 2
+    },
+    "3": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 3
+    },
+    "4": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 4
+    },
+    "5": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 5
+    },
+    "6": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 6
+    },
+    "7": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 7
+    },
+    "8": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 8
+    },
+    "9": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 9
+    },
+    "10": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 10
+    },
+    "11": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 11
+    },
+    "12": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 12
+    },
+    "13": {
+      "size": {
+        "width": 595.2760009765625,
+        "height": 799.3699951171875
+      },
+      "page_no": 13
+    }
+  }
+}

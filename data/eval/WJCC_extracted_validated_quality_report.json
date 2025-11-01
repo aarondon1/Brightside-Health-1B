@@ -1,0 +1,1548 @@
+{
+  "total_facts": 59,
+  "average_quality_score": 91.52542372881356,
+  "estimated_precision": 1.0,
+  "results": [
+    {
+      "fact": {
+        "drug_name": "selective serotonin reuptake inhibitors",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "abstract",
+        "span": "Pharmacotherapy, especially selective serotonin reuptake inhibitors antidepressants, remains the most frequent option for treating depression during the acute phase",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "depression-focused psychotherapy",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "abstract",
+        "span": "Depression-focused psychotherapy is the second most common option for helping patients overcome the acute phase, maintain remission, and prevent relapses",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "electroconvulsive therapy",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "abstract",
+        "span": "Electroconvulsive therapy is the most effective somatic therapy for depression in some specific situations",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "MAOIs",
+        "condition_name": "depression with atypical features",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Monoamine oxidase inhibitors",
+        "span": "MAOIs have demonstrated specific efficacy in treating depression with atypical features, such as reactive moods, reverse neuro-vegetative symptoms, and sensitivity to rejection",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "MAOIs",
+        "condition_name": "depression",
+        "relation": "EQUIVALENT_TO",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Monoamine oxidase inhibitors",
+        "span": "Trials have demonstrated that MAOIs' efficacy is comparable to that of tricyclic antidepressants (TCAs)",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "MAOIs",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Monoamine oxidase inhibitors",
+        "span": "The use of MAOIs is generally restricted to patients who do not respond to other treatments",
+        "confidence": 0.8
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "amitriptyline",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "nortriptyline",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "protriptyline",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "imipramine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "desipramine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "doxepin",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "trimipramine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "TCAs",
+        "condition_name": "severe major depressive disorder",
+        "relation": "SUPERIOR_TO",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "This efficacy can be explained by the superiority of TCAs over SSRIs for patients with severe major depressive disorder (MDD) symptoms who require hospitalization",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "TCAs",
+        "condition_name": "major depressive disorder",
+        "relation": "CONTRAINDICATED_FOR",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "TCAs",
+        "span": "In most cases, TCAs should generally be reserved for situations when first-line drug treatments have failed",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "fluoxetine",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "SSRIs",
+        "span": "fluoxetine was as effective as TCAs for treating depression while causing fewer adverse effects",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "SSRIs",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [
+          "sexual dysfunction",
+          "nausea",
+          "loss of appetite",
+          "irritability",
+          "anxiety",
+          "insomnia",
+          "headaches"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "SSRIs",
+        "span": "SSRIs have demonstrated comparable efficacy to TCAs and there is no significant evidence indicating the superiority of any other class or agent over SSRIs",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "SSRIs",
+        "condition_name": "major depressive disorder",
+        "relation": "EQUIVALENT_TO",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "SSRIs",
+        "span": "SSRIs have demonstrated comparable efficacy to TCAs",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "SSRIs",
+        "condition_name": "major depressive disorder",
+        "relation": "EQUIVALENT_TO",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "SSRIs",
+        "span": "studies show no differences in efficacy among individual SSRIs",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "venlafaxine",
+        "condition_name": "depression",
+        "relation": "EQUIVALENT_TO",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Norepinephrine reuptake inhibitors",
+        "span": "venlafaxine's efficacy is comparable to that of TCAs",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "trazodone",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "effective antidepressant",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "Other antidepressants",
+        "span": "Trazodone has been shown to be an effective antidepressant in placebo-controlled research.",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "nefazodone",
+        "condition_name": "depression",
+        "relation": "EQUIVALENT_TO",
+        "outcome": "efficacy and overall tolerability comparable to SSRIs",
+        "side_effects": [
+          "hepatotoxicity"
+        ],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "Other antidepressants",
+        "span": "Nefazodone's efficacy and overall tolerability are comparable to those of SSRIs, as indicated by comparative trials. However, its use is associated with rare (but fatal) cases of clinical idiosyncratic hepatotoxicity.",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "bupropion",
+        "condition_name": "major depressive disorder",
+        "relation": "EQUIVALENT_TO",
+        "outcome": "efficacy comparable to SSRIs in patients with low to moderate levels of anxiety",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "Other antidepressants",
+        "span": "For individuals with low to moderate levels of anxiety, the efficacy of bupropion in treating MDD is comparable to that of SSRIs.",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "bupropion",
+        "condition_name": "fatigue and sleepiness",
+        "relation": "IMPROVES",
+        "outcome": "improvement in symptoms",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "Other antidepressants",
+        "span": "Bupropion is more likely than some SSRIs to improve symptoms of fatigue and sleepiness.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "vortioxetine",
+        "condition_name": "depression-related cognitive impairment",
+        "relation": "IMPROVES",
+        "outcome": "particular benefits",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "Other antidepressants",
+        "span": "Vortioxetine have particular benefits in depression-related cognitive impairment.",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical IMPROVES language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "trazodone",
+        "condition_name": "depression",
+        "relation": "ASSOCIATED_WITH_SE",
+        "outcome": "",
+        "side_effects": [
+          "sedation",
+          "priapism",
+          "cardiotoxicity"
+        ],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "Other antidepressants",
+        "span": "Trazodone had the highest dropout rates because of their more frequent and severe side effects. Nausea and vomiting were the most common reasons for treatment discontinuation; sexual dysfunction, sedation, priapism, and cardiotoxicity were also reported.",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ketamine",
+        "condition_name": "depression",
+        "relation": "ASSOCIATED_WITH_SE",
+        "outcome": "",
+        "side_effects": [
+          "dizziness",
+          "neurotoxicity",
+          "cognitive dysfunction",
+          "blurred vision",
+          "psychosis",
+          "dissociation",
+          "urological dysfunction",
+          "restlessness",
+          "headache",
+          "nausea",
+          "vomiting",
+          "cardiovascular symptoms"
+        ],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "Ketamine and related molecules",
+        "span": "Common adverse effects of ketamine include dizziness, neurotoxicity, cognitive dysfunction, blurred vision, psychosis, dissociation, urological dysfunction, restlessness, headache, nausea, vomiting, and cardiovascular symptoms.",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Iproniazid",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "Confirmed the role of monoaminergic transmission in depression",
+        "side_effects": [
+          "drug interactions",
+          "dietary restrictions",
+          "hepatotoxicity",
+          "hypertensive crises"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Perspectives",
+        "span": "Iproniazid confirmed the role of monoaminergic transmission in depression",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Imipramine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "Efficacy in patients with more severe symptoms of MDD",
+        "side_effects": [
+          "cardiovascular toxicity",
+          "anticholinergic side effects",
+          "risk of lethal toxicity from overdoses"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Perspectives",
+        "span": "Imipramine efficacy in patients with more severe symptoms of MDD",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Desipramine",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "Efficacy in patients with more severe symptoms of MDD",
+        "side_effects": [
+          "cardiovascular toxicity",
+          "anticholinergic side effects",
+          "risk of lethal toxicity from overdoses"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Perspectives",
+        "span": "Desipramine efficacy in patients with more severe symptoms of MDD",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Nortriptyline",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "Efficacy in patients with more severe symptoms of MDD",
+        "side_effects": [
+          "cardiovascular toxicity",
+          "anticholinergic side effects",
+          "risk of lethal toxicity from overdoses"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Perspectives",
+        "span": "Nortriptyline efficacy in patients with more severe symptoms of MDD",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Amitriptyline",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "Efficacy in patients with more severe symptoms of MDD",
+        "side_effects": [
+          "cardiovascular toxicity",
+          "anticholinergic side effects",
+          "risk of lethal toxicity from overdoses"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Perspectives",
+        "span": "Amitriptyline efficacy in patients with more severe symptoms of MDD",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "psychotherapy",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "improve functioning",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "PSYCHOTHERAPY",
+        "span": "Psychotherapy for patients with depression strengthens the therapeutic alliance and enables the patient to monitor their mood, improve their functioning, understand their symptoms better, and master the practical tools they need to cope with stressful events.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Cognitive-behavioral therapy (CBT)",
+        "condition_name": "mild to moderate major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Overview of psychotherapy in depression",
+        "span": "Cognitive-behavioral therapy (CBT) is recommended for mild to moderate MDD.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "interpersonal therapy (IPT)",
+        "condition_name": "mild to moderate major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Overview of psychotherapy in depression",
+        "span": "Interpersonal therapy (IPT) is recommended for mild to moderate MDD.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Cognitive Behavioral Analysis System of Psychotherapy (CBASP)",
+        "condition_name": "chronic depression",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Overview of psychotherapy in depression",
+        "span": "The European Psychiatric Association recommends using the Cognitive Behavioral Analysis System of Psychotherapy (CBASP) for treating chronic depression.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Schema therapy",
+        "condition_name": "depression",
+        "relation": "EQUIVALENT_TO",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Structured psychotherapies",
+        "span": "Schema therapy is about as effective as CBT for treating depression.",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical EQUIVALENT_TO language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Psycho-education",
+        "condition_name": "depression",
+        "relation": "IMPROVES",
+        "outcome": "clinical course, treatment adherence, and psychosocial functioning",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Other psycho-interventions",
+        "span": "Many studies have highlighted the role of psycho-education in improving the clinical course, treatment adherence, and psychosocial functioning in patients with depression",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical IMPROVES language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "CBT and PST",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "effectiveness",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Other psycho-interventions",
+        "span": "Brief forms (six to eight sessions) of CBT and PST have already shown their effectiveness for treating depression",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "resistant depression",
+        "relation": "TREATS",
+        "outcome": "effectiveness and safety",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "SOMATIC TREATMENTS",
+        "span": "ECT is the most well-known treatment for resistant depression, and solid evidence supports its effectiveness and safety.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "repetitive transcranial magnetic stimulation (rTMS)",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "varying efficiency levels",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "SOMATIC TREATMENTS",
+        "span": "repetitive transcranial magnetic stimulation (rTMS), transcranial direct current stimulation (tDCS), vagus nerve stimulation (VNS), deep brain stimulation (DBS), and magnetic seizure therapy, with varying efficiency levels.",
+        "confidence": 0.8
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "transcranial direct current stimulation (tDCS)",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "varying efficiency levels",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "SOMATIC TREATMENTS",
+        "span": "repetitive transcranial magnetic stimulation (rTMS), transcranial direct current stimulation (tDCS), vagus nerve stimulation (VNS), deep brain stimulation (DBS), and magnetic seizure therapy, with varying efficiency levels.",
+        "confidence": 0.8
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "vagus nerve stimulation (VNS)",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "varying efficiency levels",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "SOMATIC TREATMENTS",
+        "span": "repetitive transcranial magnetic stimulation (rTMS), transcranial direct current stimulation (tDCS), vagus nerve stimulation (VNS), deep brain stimulation (DBS), and magnetic seizure therapy, with varying efficiency levels.",
+        "confidence": 0.8
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "deep brain stimulation (DBS)",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "varying efficiency levels",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "SOMATIC TREATMENTS",
+        "span": "repetitive transcranial magnetic stimulation (rTMS), transcranial direct current stimulation (tDCS), vagus nerve stimulation (VNS), deep brain stimulation (DBS), and magnetic seizure therapy, with varying efficiency levels.",
+        "confidence": 0.8
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "magnetic seizure therapy",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "varying efficiency levels",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "SOMATIC TREATMENTS",
+        "span": "repetitive transcranial magnetic stimulation (rTMS), transcranial direct current stimulation (tDCS), vagus nerve stimulation (VNS), deep brain stimulation (DBS), and magnetic seizure therapy, with varying efficiency levels.",
+        "confidence": 0.8
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "major unipolar depression",
+        "relation": "SUPERIOR_TO",
+        "outcome": "superiority over pharmacotherapy",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "ECT",
+        "span": "ECT is arguably the most effective treatment modality in psychiatry, and its superiority over pharmacotherapy for major unipolar depression is widely supported.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "severe and psychotic depression",
+        "relation": "TREATS",
+        "outcome": "",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "ECT",
+        "span": "ECT is typically recommended for patients with severe and psychotic depression, a high risk of suicide, or Parkinson's disease, as well as pregnant patients.",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "high risk of suicide",
+        "relation": "TREATS",
+        "outcome": "",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "ECT",
+        "span": "ECT is typically recommended for patients with severe and psychotic depression, a high risk of suicide, or Parkinson's disease, as well as pregnant patients.",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "Parkinson's disease",
+        "relation": "TREATS",
+        "outcome": "",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "ECT",
+        "span": "ECT is typically recommended for patients with severe and psychotic depression, a high risk of suicide, or Parkinson's disease, as well as pregnant patients.",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "pregnancy",
+        "relation": "TREATS",
+        "outcome": "",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "ECT",
+        "span": "ECT is typically recommended for patients with severe and psychotic depression, a high risk of suicide, or Parkinson's disease, as well as pregnant patients.",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "rTMS",
+        "condition_name": "depression",
+        "relation": "IMPROVES",
+        "outcome": "depressive symptoms",
+        "side_effects": [],
+        "effect_size": "significant difference vs fictitious stimulation",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "rTMS",
+        "span": "Recent literature shows a significant difference between rTMS and fictitious stimulation regarding its improvements in depressive symptoms",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "rTMS",
+        "condition_name": "depression",
+        "relation": "AUGMENTS",
+        "outcome": "",
+        "side_effects": [],
+        "effect_size": "synergistic with quetiapine",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "rTMS",
+        "span": "Preliminary research has revealed synergistic (e.g., rTMS/quetiapine) interactions between neuro-modulation and pharmacotherapy",
+        "confidence": 0.8
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "rTMS",
+        "condition_name": "depression",
+        "relation": "SUPERIOR_TO",
+        "outcome": "",
+        "side_effects": [
+          "mild side effects"
+        ],
+        "effect_size": "significantly more effective than placebo",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "rTMS",
+        "span": "Treatments combining rTMS and antidepressants are significantly more effective than placebo conditions, with mild side effects and good acceptability",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "tDCS",
+        "condition_name": "depressive symptoms in unipolar or bipolar depression",
+        "relation": "TREATS",
+        "outcome": "rate of response and remission",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "tDCS",
+        "span": "tDCS can be used as a complementary intervention or as monotherapy to reduce depressive symptoms in unipolar or bipolar depression patients",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "VNS",
+        "condition_name": "resistant depression",
+        "relation": "TREATS",
+        "outcome": "improvements in depressive symptoms",
+        "side_effects": [],
+        "effect_size": "significant positive outcomes observed after six to 12 mo",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "VNS",
+        "span": "VNS has demonstrated progressively increasing improvements in depressive symptoms, with significant positive outcomes observed after six to 12 mo; these benefits can last for up to two years",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "VNS",
+        "condition_name": "resistant depression",
+        "relation": "SUPERIOR_TO",
+        "outcome": "",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "WJCC",
+        "section": "VNS",
+        "span": "the results of this study did not indicate that the combination of VNS with typical medical treatments was better than the typical medical treatment on its own",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "DBS of the subgenual cingulate white matter (Brodmann area = BA 25)",
+        "condition_name": "resistant depression",
+        "relation": "TREATS",
+        "outcome": "clinical response",
+        "side_effects": [],
+        "effect_size": "60% after six months",
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "DBS",
+        "span": "DBS of the subgenual cingulate white matter (Brodmann area = BA 25) elicited a clinical response in 60% of resistant depression patients after six months",
+        "confidence": 1.0
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "DBS of the subgenual cingulate white matter (Brodmann area = BA 25)",
+        "condition_name": "resistant depression",
+        "relation": "TREATS",
+        "outcome": "clinical remission",
+        "side_effects": [],
+        "effect_size": "35% after six months",
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "DBS",
+        "span": "DBS of the subgenual cingulate white matter (Brodmann area = BA 25) elicited clinical remission in 35% of patients",
+        "confidence": 1.0
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "certain forms of depression",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "discussion",
+        "span": "ECT is the only somatic treatment with confirmed indications for certain forms of depression.",
+        "confidence": 0.9
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    }
+  ]
+}

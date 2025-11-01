@@ -30,6 +30,25 @@ providers:
 
 entities:
   drugs:
+
+    # Buspirone - Anti-anxiety medication used for augmentation
+    - id: RXNORM:1827
+      label: Buspirone
+      provider: rxnorm
+      synonyms: [BuSpar, Buspirone Hydrochloride]
+
+    # Reboxetine - Norepinephrine reuptake inhibitor
+    - id: RXNORM:72594
+      label: Reboxetine
+      provider: rxnorm
+      synonyms: [Edronax, Reboxetine Mesylate]
+    
+    # Milnacipran - SNRI
+    - id: RXNORM:30121
+      label: Milnacipran
+      provider: rxnorm
+      synonyms: [Savella, Ixel, Milnacipran Hydrochloride]
+
     # SSRIs
     - id: RXNORM:3640
       label: Sertraline
@@ -107,6 +126,11 @@ entities:
       label: Desipramine
       provider: rxnorm
       synonyms: [Norpramin, Desipramine Hydrochloride]
+    
+    - id: RXNORM:3104
+      label: Doxepin
+      provider: rxnorm
+      synonyms: [Sinequan, Doxepin Hydrochloride]  # ✅ ADDED - Unmatched drug
     
     - id: RXNORM:8123
       label: Protriptyline
@@ -295,6 +319,13 @@ entities:
       synonyms: [Combining medications, psychotherapy, and somatic therapies, Combinations of medications, psychotherapy, and somatic therapies, Combination therapy]
 
   conditions:
+
+     # Anxious depression - Depression with prominent anxiety features
+    - id: SNOMED:192080009
+      label: Anxiety with depression
+      provider: snomed
+      synonyms: [Anxious depression, Depression with anxiety, Mixed anxiety and depressive disorder, Anxious depressive disorder]
+
     # Depression - Standard SNOMED
     - id: SNOMED:35489007
       label: Major depressive disorder
@@ -426,6 +457,19 @@ entities:
       synonyms: [Depression-related cognitive impairment, Cognitive dysfunction in depression, Depression cognitive symptoms]
 
   outcomes:
+
+  # Treatment acceptability - Important patient-centered outcome
+    - id: LOINC:89254-1
+      label: Treatment acceptability
+      provider: loinc
+      synonyms: [Acceptability, Patient acceptability, Tolerability and acceptability, Efficacy and acceptability, Balance between efficacy and acceptability]
+    
+    # Dropout rate - Proxy for acceptability/tolerability
+    - id: CUSTOM:OUT023
+      label: Treatment dropout rate
+      provider: custom
+      synonyms: [Dropout rate, Discontinuation rate, Early termination rate, Patient dropout]
+
     # Standard clinical measures
     - id: LOINC:81924-6
       label: Hamilton Depression Rating Scale total score
@@ -518,6 +562,33 @@ entities:
       label: Particular benefits
       provider: custom
       synonyms: [Specific advantages, Unique benefits]
+    
+    # ✅ ADDED - Unmatched outcomes
+    - id: CUSTOM:OUT023
+      label: Monoaminergic transmission role
+      provider: custom
+      synonyms: 
+        - Confirmed the role of monoaminergic transmission in depression
+        - Role of monoaminergic transmission
+        - Monoaminergic mechanism
+    
+    - id: SNOMED:89362005
+      label: Functional improvement
+      provider: snomed
+      synonyms:
+        - Improve functioning
+        - Improved functioning
+        - Enhanced functioning
+        - Better functioning
+    
+    - id: CUSTOM:OUT024
+      label: Superiority over pharmacotherapy
+      provider: custom
+      synonyms:
+        - Superiority over pharmacotherapy
+        - Superior to pharmacotherapy
+        - Better than pharmacotherapy
+        - More effective than pharmacotherapy
 
 
           # Depression symptom outcomes
@@ -563,6 +634,7 @@ entities:
         - Clinical course, treatment adherence, and psychosocial functioning
         - Clinical course and psychosocial functioning
         - Treatment adherence and psychosocial functioning
+        - Symptom remission  # ✅ ADDED - Unmatched outcome #1
 
   side_effects:
     # All from SNOMED where possible
@@ -579,7 +651,7 @@ entities:
     - id: SNOMED:193462001
       label: Insomnia
       provider: snomed
-      synonyms: [Sleep initiation insomnia, Difficulty sleeping]
+      synonyms: [Sleep initiation insomnia, Difficulty sleeping, Worsening insomnia]  # ✅ ADDED - Unmatched side effect #1
     
     - id: SNOMED:56627002
       label: Sexual dysfunction
@@ -608,7 +680,7 @@ entities:
     - id: SNOMED:87715008
       label: Xerostomia
       provider: snomed
-      synonyms: [Dry mouth]
+      synonyms: [Dry mouth, Dryness of mouth]  # ✅ ADDED - Unmatched side effect #2
     
     - id: SNOMED:8943002
       label: Weight gain
@@ -710,6 +782,53 @@ entities:
       label: Mild adverse effects
       provider: custom
       synonyms: [Mild side effects, Minor adverse effects]
+    
+    # ✅ ADDED - Unmatched side effects
+    - id: SNOMED:25048002
+      label: Cognitive dysfunction
+      provider: snomed
+      synonyms:
+        - Cognitive dysfunction
+        - Cognitive impairment
+        - Memory problems
+        - Concentration problems
+        - Cognitive effects
+    
+    - id: SNOMED:441833000
+      label: Psychosis
+      provider: snomed
+      synonyms:
+        - Psychosis
+        - Psychotic symptoms
+        - Psychotic episode
+    
+    - id: SNOMED:27449001
+      label: Dissociation
+      provider: snomed
+      synonyms:
+        - Dissociation
+        - Dissociative symptoms
+        - Derealization
+        - Depersonalization
+    
+    - id: SNOMED:119589001
+      label: Urological dysfunction
+      provider: snomed
+      synonyms:
+        - Urological dysfunction
+        - Urinary dysfunction
+        - Urinary retention
+        - Urinary problems
+    
+    - id: SNOMED:290044000
+      label: Cardiovascular symptoms
+      provider: snomed
+      synonyms:
+        - Cardiovascular symptoms
+        - Cardiovascular effects
+        - Cardiac symptoms
+        - Heart symptoms
+        - Arrhythmia
 
   relations:
     - id: CUSTOM:0001

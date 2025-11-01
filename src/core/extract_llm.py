@@ -23,6 +23,83 @@ if not api_key:
 
 client = openai.OpenAI(api_key=api_key)
 
+# ----------------------------- 
+# Normalization & Validation Helpers
+# -----------------------------
+def normalize_condition(condition: str) -> str:
+    """Normalize condition names to canonical forms."""
+    if not condition:
+        return condition
+    
+    condition_lower = condition.lower().strip()
+    
+    normalization_map = {
+        "anxious depression": "depression",
+        "major depression": "major depressive disorder",
+        "treatment resistant depression": "treatment-resistant depression",
+        "treatment-resistant depression": "treatment-resistant depression",
+        "trd": "treatment-resistant depression",
+        "mdd": "major depressive disorder",
+        "gad": "generalized anxiety disorder",
+        "social anxiety disorder": "social anxiety",
+        "ptsd": "post-traumatic stress disorder",
+        "ocd": "obsessive compulsive disorder",
+        "bipolar i disorder": "bipolar disorder",
+        "bipolar ii disorder": "bipolar disorder",
+    }
+    
+    normalized = normalization_map.get(condition_lower, condition)
+    return normalized
+
+INVALID_SIDE_EFFECTS = {
+    "side effect frequency", "adverse event", "adverse events",
+    "side effects", "adverse effect", "adverse effects",
+    "effect", "outcome", "symptom", "symptoms",
+    "placebo", "response", "remission", "improvement"
+}
+
+def is_valid_side_effect(side_effect: str) -> bool:
+    """Check if a side effect is actually a specific medical side effect."""
+    if not side_effect:
+        return False
+    
+    se_lower = side_effect.lower().strip()
+    
+    # Reject generic/metadata terms
+    if se_lower in INVALID_SIDE_EFFECTS:
+        return False
+    
+    # Reject if too long (likely extraction error)
+    if len(se_lower) > 100:
+        return False
+    
+    return True
+
+def clean_side_effects(side_effects: List[str]) -> List[str]:
+    """Filter out invalid side effects."""
+    if not side_effects:
+        return []
+    
+    return [se for se in side_effects if is_valid_side_effect(se)]
+
+def span_contains_value(span: str, value: str, strict: bool = True) -> bool:
+    """Check if a value appears in the span text."""
+    if not span or not value:
+        return False
+    
+    span_lower = span.lower()
+    value_lower = value.lower()
+    
+    if strict:
+        # Exact substring match
+        return value_lower in span_lower
+    else:
+        # Allow for slight variations (word boundaries)
+        import re
+        pattern = r'\b' + re.escape(value_lower) + r'\b'
+        return bool(re.search(pattern, span_lower))
+
+
 # -----------------------------
 # Pydantic models for validation
 # -----------------------------
@@ -71,19 +148,23 @@ RELATIONS TO EXTRACT:
 - SUPERIOR_TO: one treatment is better than another
 - EQUIVALENT_TO: treatments have similar efficacy
 
-EXTRACTION RULES:
-1. Only extract facts explicitly stated in the text
-2. Include the exact text span that supports each fact
-3. Assign confidence scores:
-   - 1.0: Direct quantitative statements with statistics
-   - 0.9: Clear direct statements 
-   - 0.8: Strong implications with clinical context
-   - 0.7: Moderate implications
-   - 0.6: Weak or uncertain statements
-4. Extract numeric outcomes when available (effect sizes, percentages, p-values, confidence intervals)
-5. List side effects separately for each drug mentioned
-6. Focus on Results and Discussion sections for strongest evidence
-7. Include study design context when relevant (RCT, meta-analysis, etc.)
+CRITICAL EXTRACTION RULES:
+1. **Extract facts that are clearly supported by the text** - Don't infer beyond what the text suggests
+2. **Drug name SHOULD appear in span** - The drug/treatment should be mentioned in the supporting text
+3. **Condition can be explicit or contextually clear** - From context, it should be clear what condition is being discussed
+4. **Span should include key supporting evidence** - Don't use fragments with dangling pronouns (e.g., "It showed...")
+5. **Use appropriate condition names** - Use the condition name as written or a clear synonym
+6. **For side effects**: Extract specific medical side effects, NOT generic terms like "adverse events" or "side effect frequency"
+7. **Confidence scores should reflect certainty**:
+   - 1.0: Explicit statement with quantitative results
+   - 0.9: Clear direct statement of relationship
+   - 0.8: Strong evidence from context
+   - 0.7: Reasonable inference from text
+   - <0.7: Avoid - only if extremely clear
+8. **Extract numeric outcomes when available** (effect sizes, percentages, p-values)
+9. **List side effects separately** for each drug
+10. **Focus on Results and Discussion sections** - These have strongest evidence
+11. **Include study context when relevant** (RCT, meta-analysis, observational)
 
 Return valid JSON only. Do not include any text outside the JSON structure."""
 
@@ -183,15 +264,74 @@ def extract_from_section(
             if "triples" in raw_data:
                 cleaned_triples = []
                 for triple in raw_data["triples"]:
-                    # Fix side_effects None → []
+                    # ===== POST-EXTRACTION VALIDATION & CLEANING =====
+                    
+                    # Fix None values
                     if triple.get("side_effects") is None:
                         triple["side_effects"] = []
                     
-                    # Skip facts with missing required fields
-                    if not triple.get("drug_name") or not triple.get("condition_name"):
-                        print(f"   ⚠ Skipping incomplete fact: drug={triple.get('drug_name')}, condition={triple.get('condition_name')}")
+                    # Extract fields
+                    drug_name = str(triple.get("drug_name", "")).strip()
+                    condition_name = str(triple.get("condition_name", "")).strip()
+                    span = str(triple.get("span", "")).strip()
+                    
+                    # Validate required fields
+                    if not drug_name or not condition_name or not span:
+                        print(f"   ⚠️  Skipping incomplete fact: drug='{drug_name}', condition='{condition_name}'")
                         continue
                     
+                    # NEW: Verify drug appears in span (STRICT - drugs should always be mentioned)
+                    if not span_contains_value(span, drug_name, strict=True):
+                        print(f"   ⚠️  Drug '{drug_name}' not found in span, skipping")
+                        continue
+                    
+                    # NEW: Check condition appears in span OR reasonable clinical context exists
+                    # (More lenient than drug - conditions are often discussed contextually)
+                    condition_in_span = span_contains_value(span, condition_name, strict=True)
+                    
+                    if not condition_in_span:
+                        span_lower = span.lower()
+                        # Look for clinical relationship indicators that suggest condition is implied
+                        clinical_context_keywords = [
+                            "treat", "therapy", "improvement", "remission", "response",
+                            "efficacy", "symptom", "disorder", "disease", "syndrome",
+                            "adverse", "side effect", "tolerated", "managed", "controlled"
+                        ]
+                        has_clinical_context = any(keyword in span_lower for keyword in clinical_context_keywords)
+                        
+                        # Also check if this is a side effect extraction (relation is ASSOCIATED_WITH_SE)
+                        relation = str(triple.get("relation", "")).upper()
+                        is_side_effect_fact = relation == "ASSOCIATED_WITH_SE"
+                        
+                        if not has_clinical_context and not is_side_effect_fact:
+                            print(f"   ⚠️  Condition '{condition_name}' not in span and weak clinical context, skipping")
+                            continue
+                    
+                    # NEW: Normalize condition name
+                    triple["condition_name"] = normalize_condition(condition_name)
+                    
+                    # NEW: Clean side effects (remove metadata and invalid entries)
+                    if triple.get("side_effects"):
+                        old_count = len(triple.get("side_effects", []))
+                        valid_ses = clean_side_effects(triple["side_effects"])
+                        triple["side_effects"] = valid_ses
+                        
+                        if len(valid_ses) < old_count:
+                            removed_count = old_count - len(valid_ses)
+                            print(f"   ℹ️  Removed {removed_count} invalid side effects from fact")
+                    
+                    # NEW: Check for span completeness (no dangling pronouns)
+                    # But allow common medical phrases and be more lenient
+                    import re
+                    span_first_words = span[:50].lower()
+                    
+                    # Only skip if starts with bare pronouns (not part of common medical phrases)
+                    bad_pronoun_pattern = r'^(it|this|that|these|they|those|which)\s+(showed|demonstrated|resulted|found)'
+                    if re.match(bad_pronoun_pattern, span_first_words):
+                        print(f"   ⚠️  Span starts with unclear pronoun reference, skipping: '{span[:50]}...'")
+                        continue
+                    
+                    # All validations passed
                     cleaned_triples.append(triple)
                 
                 raw_data["triples"] = cleaned_triples
@@ -199,15 +339,15 @@ def extract_from_section(
             # Validate with Pydantic
             result = ExtractionResult(**raw_data)
             
-            print(f"✓ Extracted {len(result.triples)} facts from {section_name}")
+            print(f"✓ Extracted {len(result.triples)} valid facts from {section_name}")
             return result
             
         except (json.JSONDecodeError, ValidationError) as e:
-            print(f"⚠ Validation error on attempt {attempt + 1} for {section_name}: {e}")
+            print(f"⚠️  Validation error on attempt {attempt + 1} for {section_name}: {e}")
             if attempt == max_retries:
                 print(f"✗ Failed to extract from {section_name} after {max_retries + 1} attempts")
         except Exception as e:
-            print(f"⚠ Unexpected error on attempt {attempt + 1} for {section_name}: {e}")
+            print(f"⚠️  Unexpected error on attempt {attempt + 1} for {section_name}: {e}")
             if attempt == max_retries:
                 print(f"✗ Failed to extract from {section_name} after {max_retries + 1} attempts")
     

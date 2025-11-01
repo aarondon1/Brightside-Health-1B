@@ -1,0 +1,143 @@
+{
+  "total_facts": 5,
+  "average_quality_score": 82.0,
+  "estimated_precision": 1.0,
+  "results": [
+    {
+      "fact": {
+        "drug_name": "citalopram",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "remission rate",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "Psychiatry",
+        "section": "Difference in Treatment Outcome in Outpatients With Anxious Versus Nonanxious Depression: A STAR*D Report",
+        "span": "A total of 2,876 adult outpatients with major depressive disorder, enrolled from 18 primary and 23 psychiatric care sites, received citalopram in Level 1 of STAR*D.",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "citalopram",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "symptom remission",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Psychiatry",
+        "section": "Intervention",
+        "span": "The aim of citalopram treatment in Level 1 was to achieve symptom remission, which was defined as QIDS-C score \u2264 5.",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "citalopram",
+        "condition_name": "depression",
+        "relation": "IMPROVES",
+        "outcome": "HAM-D score",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Psychiatry",
+        "section": "Main Outcome Measures",
+        "span": "The primary outcome measure was the HAM-D score, obtained by research outcome assessors using telephone-based structured interviews at entry and exit from citalopram treatment.",
+        "confidence": 0.9
+      },
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical IMPROVES language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "citalopram",
+        "condition_name": "depression",
+        "relation": "IMPROVES",
+        "outcome": "remission rate",
+        "side_effects": [],
+        "effect_size": "lower remission rates compared to nonanxious depression",
+        "confidence_interval": null,
+        "source_id": "Psychiatry",
+        "section": "discussion",
+        "span": "patients with anxious depression were less likely to respond or to remit with citalopram treatment than those with nonanxious depression",
+        "confidence": 0.9
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical IMPROVES language"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "citalopram",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "remission",
+        "side_effects": [
+          "worsening insomnia",
+          "nervousness",
+          "dryness of mouth",
+          "constipation"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Psychiatry",
+        "section": "Patient Perspective",
+        "span": "Ms. D was started on a course of antidepressant therapy with citalopram... After 6 weeks of combined treatment with citalopram and a benzodiazepine, Ms. D reported a significant improvement in all her symptoms, and remission was achieved at the end of the 10th week of treatment.",
+        "confidence": 0.9
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    }
+  ]
+}
