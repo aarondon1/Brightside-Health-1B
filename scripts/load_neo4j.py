@@ -7,11 +7,13 @@ import hashlib
 
 # Define all valid relationship types
 VALID_RELATIONS = {
-    "TREATS", "IMPROVES", "ASSOCIATED_WITH_SE", "AUGMENTS", 
-    "CONTRAINDICATED_FOR", "SUPERIOR_TO", "EQUIVALENT_TO", "INFERIOR_TO"
+    "TREATS", "IMPROVES", "ASSOCIATED_WITH_SE", "AUGMENTS",
+    "CONTRAINDICATED_FOR", "SUPERIOR_TO", "EQUIVALENT_TO", "INFERIOR_TO",
+    # NEW
+    "PREVENTS_RELAPSE_IN", "FIRST_LINE_FOR", "MAINTENANCE_FOR",
+    "WELL_TOLERATED_IN", "EFFECTIVE_IN_SUBGROUP",
 }
 
-# Mapping for human-readable relationship labels
 RELATION_LABELS = {
     "TREATS": "treats",
     "IMPROVES": "improves",
@@ -20,7 +22,13 @@ RELATION_LABELS = {
     "CONTRAINDICATED_FOR": "contraindicated_for",
     "SUPERIOR_TO": "superior_to",
     "EQUIVALENT_TO": "equivalent_to",
-    "INFERIOR_TO": "inferior_to"
+    "INFERIOR_TO": "inferior_to",
+    # NEW
+    "PREVENTS_RELAPSE_IN": "prevents_relapse_in",
+    "FIRST_LINE_FOR": "first_line_for",
+    "MAINTENANCE_FOR": "maintenance_for",
+    "WELL_TOLERATED_IN": "well_tolerated_in",
+    "EFFECTIVE_IN_SUBGROUP": "effective_in_subgroup",
 }
 
 # Neo4j connection configuration
@@ -153,7 +161,18 @@ def _process_fact_complete(tx, fact, raw_fact, existing_nodes, rel_counts):
             "confidence": float(raw_fact.get('confidence', 0.0)),
             "source_text": raw_fact.get('span', ''),
             "source_id": raw_fact.get('source_id', ''),
-            "section": raw_fact.get('section', '')
+            "section": raw_fact.get('section', ''),
+            # NEW: carry optional clinical context when present
+            "treatment_line": raw_fact.get('treatment_line'),
+            "patient_subgroup": raw_fact.get('patient_subgroup'),
+            "study_design": raw_fact.get('study_design'),
+            "sample_size": int(raw_fact.get('sample_size')) if str(raw_fact.get('sample_size') or '').isdigit() else None,
+            "duration": raw_fact.get('duration'),
+            "dose": raw_fact.get('dose'),
+            "p_value": float(raw_fact.get('p_value')) if raw_fact.get('p_value') is not None else None,
+            "effect_size": raw_fact.get('effect_size'),
+            "confidence_interval": raw_fact.get('confidence_interval'),
+            "outcome": raw_fact.get('outcome'),
         }
 
         tx.run(f"""

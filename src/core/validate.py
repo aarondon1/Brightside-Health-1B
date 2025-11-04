@@ -156,9 +156,30 @@ DRUG_NAME_PATTERNS = {
 }
 
 # Valid relations
-VALID_RELATIONS = {
-    "TREATS", "IMPROVES", "ASSOCIATED_WITH_SE", "AUGMENTS", 
-    "CONTRAINDICATED_FOR", "SUPERIOR_TO", "EQUIVALENT_TO", "INFERIOR_TO"
+VALID_RELATIONS: Set[str] = {
+    # Core treatment
+    "TREATS", "IMPROVES", 
+    
+    # NEW: Treatment context
+    "FIRST_LINE_FOR", "MAINTENANCE_FOR",
+    
+    # NEW: Efficacy
+    "PREVENTS_RELAPSE_IN",
+    
+    # Safety
+    "ASSOCIATED_WITH_SE", "CONTRAINDICATED_FOR",
+    
+    # NEW: Tolerability
+    "WELL_TOLERATED_IN",
+    
+    # Combination
+    "AUGMENTS",
+    
+    # Comparative
+    "SUPERIOR_TO", "EQUIVALENT_TO", "INFERIOR_TO",
+    
+    # NEW: Subgroup
+    "EFFECTIVE_IN_SUBGROUP",
 }
 
 # Side effects vocabulary - ONLY specific medical side effects

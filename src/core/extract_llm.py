@@ -116,12 +116,20 @@ class Triple(BaseModel):
     section: str = Field(..., description="Section where this fact was found")
     span: str = Field(..., description="Exact text span that supports this fact")
     confidence: float = Field(..., ge=0.0, le=1.0, description="Confidence score 0-1")
-    
+
+    # NEW optional clinical context (safe for pipeline)
+    treatment_line: Optional[str] = Field(None, description="first | second | maintenance | acute")
+    patient_subgroup: Optional[str] = Field(None, description="e.g., elderly, adolescents, treatment-resistant")
+    study_design: Optional[str] = Field(None, description="e.g., RCT, meta-analysis, observational")
+    sample_size: Optional[int] = Field(None, description="Study sample size if present")
+    duration: Optional[str] = Field(None, description="e.g., 8 weeks, 6 months")
+    dose: Optional[str] = Field(None, description="e.g., 50-200mg/day")
+    p_value: Optional[float] = Field(None, ge=0.0, le=1.0, description="p-value if provided")
+
     @property
     def side_effects_list(self) -> List[str]:
         """Ensure side_effects is always a list, never None."""
         return self.side_effects if self.side_effects is not None else []
-
 class ExtractionResult(BaseModel):
     """Collection of extracted triples from a document section."""
     triples: List[Triple] = Field(default_factory=list)
@@ -131,78 +139,108 @@ class ExtractionResult(BaseModel):
 # -----------------------------
 # Extraction prompts
 # -----------------------------
-EXTRACTION_SYSTEM_PROMPT = """You are an expert clinical research extraction AI. Extract structured facts from medical literature.
+EXTRACTION_SYSTEM_PROMPT = """You are a clinical research expert extracting structured, evidence-bearing facts from peer‑reviewed literature to power a clinician-facing knowledge graph for depression and anxiety.
 
-ENTITIES TO EXTRACT:
-- Drug: medications, treatments, interventions (e.g., "sertraline", "cognitive behavioral therapy", "escitalopram")
-- Condition: diseases, disorders, symptoms (e.g., "major depressive disorder", "anxiety", "PTSD")
-- Outcome: measures, scales, endpoints (e.g., "HAM-D score", "remission rate", "response rate")
-- SideEffect: adverse events, side effects (e.g., "nausea", "headache", "sexual dysfunction")
+Entities to extract
+- Drug/Intervention: medications, classes, psychotherapies, neuromodulation
+- Condition: disorders and subtypes (e.g., major depressive disorder, generalized anxiety disorder)
+- Outcome: validated scales and endpoints (HAM-D, MADRS, PHQ-9, response, remission)
+- SideEffect: specific adverse events (e.g., nausea, sexual dysfunction)
 
-RELATIONS TO EXTRACT:
-- TREATS: drug/intervention treats condition
-- IMPROVES: drug/intervention improves outcome/symptom  
-- ASSOCIATED_WITH_SE: drug associated with side effect
-- AUGMENTS: drug enhances effect of another treatment
-- CONTRAINDICATED_FOR: drug should not be used for condition
-- SUPERIOR_TO: one treatment is better than another
-- EQUIVALENT_TO: treatments have similar efficacy
+Relationships to extract (non-overlapping additions)
+- PREVENTS_RELAPSE_IN: prevents recurrence/relapse in a condition
+- FIRST_LINE_FOR: recommended as first-line treatment for a condition
+- MAINTENANCE_FOR: used for maintenance/continuation in a condition
+- WELL_TOLERATED_IN: acceptable tolerability in a specified population/condition
+- EFFECTIVE_IN_SUBGROUP: demonstrated efficacy in a specific subgroup
 
-CRITICAL EXTRACTION RULES:
-1. **Extract facts that are clearly supported by the text** - Don't infer beyond what the text suggests
-2. **Drug name SHOULD appear in span** - The drug/treatment should be mentioned in the supporting text
-3. **Condition can be explicit or contextually clear** - From context, it should be clear what condition is being discussed
-4. **Span should include key supporting evidence** - Don't use fragments with dangling pronouns (e.g., "It showed...")
-5. **Use appropriate condition names** - Use the condition name as written or a clear synonym
-6. **For side effects**: Extract specific medical side effects, NOT generic terms like "adverse events" or "side effect frequency"
-7. **Confidence scores should reflect certainty**:
-   - 1.0: Explicit statement with quantitative results
-   - 0.9: Clear direct statement of relationship
-   - 0.8: Strong evidence from context
-   - 0.7: Reasonable inference from text
-   - <0.7: Avoid - only if extremely clear
-8. **Extract numeric outcomes when available** (effect sizes, percentages, p-values)
-9. **List side effects separately** for each drug
-10. **Focus on Results and Discussion sections** - These have strongest evidence
-11. **Include study context when relevant** (RCT, meta-analysis, observational)
+You also support existing relations: TREATS, IMPROVES, ASSOCIATED_WITH_SE, AUGMENTS, CONTRAINDICATED_FOR, SUPERIOR_TO, EQUIVALENT_TO.
 
-Return valid JSON only. Do not include any text outside the JSON structure."""
+Evidence and span rules
+- The span must include the drug/intervention and sufficient context (15 to 200 words); avoid dangling pronouns (e.g., “It showed”).
+- Prefer Results/Discussion/Abstract; include quantitative details when present (effect sizes, response/remission %, NNT/NNH, p-values, CIs, n).
+- If condition isn't verbatim in span but obviously the section continues the same condition context, include the condition; otherwise skip.
 
-EXTRACTION_USER_PROMPT = """Extract clinical facts from this section of a medical research paper:
+Output fields (per fact)
+- Required: drug_name, condition_name, relation, span, confidence, source_id, section
+- Optional (include when present): outcome, side_effects, effect_size, confidence_interval, study_design, sample_size, duration, dose, treatment_line, patient_subgroup, p_value
+
+Confidence guidance
+- 1.0: RCT/meta-analysis with stats (p < 0.05 or CI) and sample size
+- 0.9: Clear RCT/controlled statement with directionality
+- 0.8: Strong evidence (observational/systematic) with coherent span
+- 0.7: Explicit but weaker evidence; avoid < 0.7 unless unequivocal.
+
+Extract multiple facts per sentence when warranted (e.g., efficacy + tolerability).
+Return JSON only."""
+
+EXTRACTION_USER_PROMPT = """Extract clinical facts from this section for a depression/anxiety knowledge graph.
 
 DOCUMENT: {source_id}
 SECTION: {section_name}
-TEXT: {section_text}
+TOTAL_SENTENCES: {total_sentences}
 
-Return a JSON object with this exact structure:
+TEXT:
+{section_text}
+
+Return a JSON object with this structure exactly:
 {{
   "triples": [
     {{
-      "drug_name": "sertraline",
-      "condition_name": "major depressive disorder", 
-      "relation": "TREATS",
-      "outcome": "HAM-D score reduction",
-      "side_effects": ["nausea", "headache"],
-      "effect_size": "50% improvement vs placebo",
-      "confidence_interval": "95% CI: 1.2-2.8",
+      "drug_name": "escitalopram",
+      "condition_name": "major depressive disorder",
+      "relation": "FIRST_LINE_FOR",
+      "outcome": "remission rate",
+      "side_effects": ["nausea", "sexual dysfunction"],
+      "effect_size": "42% remission vs 28% placebo, NNT=7",
+      "confidence_interval": "95% CI 1.2–2.4",
+      "study_design": "RCT",
+      "sample_size": 485,
+      "duration": "8 weeks",
+      "dose": "10–20 mg/day",
+      "treatment_line": "first",
+      "patient_subgroup": null,
+      "p_value": 0.001,
       "source_id": "{source_id}",
       "section": "{section_name}",
-      "span": "Sertraline showed significant improvement in HAM-D scores with 50% of patients achieving remission",
+      "span": "In an 8‑week randomized trial (n=485) in adults with major depressive disorder, escitalopram 10–20 mg/day achieved higher remission (42% vs 28% placebo; NNT=7; 95% CI 1.2–2.4; p<0.01). Nausea and sexual dysfunction were the most frequent adverse events.",
+      "confidence": 1.0
+    }},
+    {{
+      "drug_name": "sertraline",
+      "condition_name": "major depressive disorder",
+      "relation": "PREVENTS_RELAPSE_IN",
+      "study_design": "RCT",
+      "sample_size": 312,
+      "duration": "6 months",
+      "source_id": "{source_id}",
+      "section": "{section_name}",
+      "span": "Continuation treatment with sertraline over 6 months reduced relapse rates compared with placebo in patients with major depressive disorder, according to a randomized withdrawal design.",
       "confidence": 0.9
+    }},
+    {{
+      "drug_name": "cognitive behavioral therapy",
+      "condition_name": "major depressive disorder",
+      "relation": "WELL_TOLERATED_IN",
+      "patient_subgroup": "adolescents",
+      "study_design": "observational",
+      "source_id": "{source_id}",
+      "section": "{section_name}",
+      "span": "In adolescents with major depressive disorder treated in outpatient settings, cognitive behavioral therapy was generally well tolerated with low discontinuation for adverse events.",
+      "confidence": 0.8
     }}
   ],
   "section_name": "{section_name}",
   "total_sentences": {total_sentences}
 }}
 
-Extract ALL relevant clinical facts from this section. Focus on:
-- Treatment efficacy claims
-- Side effect associations  
-- Outcome measurements
-- Comparative effectiveness
-- Contraindications or warnings
+Focus on:
+- Efficacy with quantitative signals (response/remission %, effect sizes, p-values, CIs, n)
+- Treatment context (first-line, maintenance) and continuation/relapse prevention
+- Specific side effects
+- Subgroup-specific effects (e.g., elderly, adolescents, treatment-resistant)
 
-Return valid JSON only."""
+Return only the JSON object."""
 
 # -----------------------------
 # Core extraction functions
@@ -265,7 +303,23 @@ def extract_from_section(
                 cleaned_triples = []
                 for triple in raw_data["triples"]:
                     # ===== POST-EXTRACTION VALIDATION & CLEANING =====
-                    
+                    # NEW: Coerce sample_size to int if present
+                    if "sample_size" in triple and triple["sample_size"] is not None:
+                        try:
+                            triple["sample_size"] = int(triple["sample_size"])
+                            if triple["sample_size"] < 1 or triple["sample_size"] > 100000:
+                                triple["sample_size"] = None
+                        except Exception:
+                            triple["sample_size"] = None
+
+                    # NEW: Normalize treatment_line if present
+                    if "treatment_line" in triple and isinstance(triple["treatment_line"], str):
+                        tl = triple["treatment_line"].strip().lower()
+                        if tl in {"first", "second", "maintenance", "acute"}:
+                            triple["treatment_line"] = tl
+                        else:
+                            triple["treatment_line"] = None
+                            
                     # Fix None values
                     if triple.get("side_effects") is None:
                         triple["side_effects"] = []
