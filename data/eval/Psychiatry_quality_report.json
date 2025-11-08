@@ -1,7 +1,10 @@
 {
-  "normalized_facts": [
+  "total_facts": 16,
+  "average_quality_score": 89.375,
+  "estimated_precision": 1.0,
+  "results": [
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "citalopram",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
@@ -21,37 +24,18 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "citalopram",
-        "concept_id": "RXNORM:2556",
-        "label": "Citalopram",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "bupropion",
         "condition_name": "major depressive disorder",
         "relation": "AUGMENTS",
@@ -71,37 +55,20 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "bupropion",
-        "concept_id": "RXNORM:42347",
-        "label": "Bupropion",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "AUGMENTS",
-        "concept_id": "CUSTOM:0004",
-        "label": "AUGMENTS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "buspirone",
         "condition_name": "major depressive disorder",
         "relation": "AUGMENTS",
@@ -121,37 +88,20 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "buspirone",
-        "concept_id": "RXNORM:1827",
-        "label": "Buspirone",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "AUGMENTS",
-        "concept_id": "CUSTOM:0004",
-        "label": "AUGMENTS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "sertraline",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
@@ -171,37 +121,20 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "sertraline",
-        "concept_id": "RXNORM:3640",
-        "label": "Sertraline",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "venlafaxine",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
@@ -221,37 +154,20 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "venlafaxine",
-        "concept_id": "RXNORM:39786",
-        "label": "Venlafaxine",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "citalopram",
         "condition_name": "depression",
         "relation": "IMPROVES",
@@ -271,44 +187,21 @@
         "dose": "20-60 mg/day",
         "p_value": null
       },
-      "drug": {
-        "text": "citalopram",
-        "concept_id": "RXNORM:2556",
-        "label": "Citalopram",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "depression",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "IMPROVES",
-        "concept_id": "CUSTOM:0002",
-        "label": "IMPROVES",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": {
-        "text": "remission",
-        "concept_id": "SNOMED:277022003",
-        "label": "Remission phase",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 70.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 70,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span",
+            "Span doesn't contain typical IMPROVES language"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "citalopram",
         "condition_name": "depression",
         "relation": "ASSOCIATED_WITH_SE",
@@ -331,54 +224,18 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "citalopram",
-        "concept_id": "RXNORM:2556",
-        "label": "Citalopram",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "depression",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "ASSOCIATED_WITH_SE",
-        "concept_id": "CUSTOM:0003",
-        "label": "ASSOCIATED_WITH_SE",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [
-        {
-          "text": "greater frequency, intensity, and burden of side effects",
-          "concept_id": null,
-          "label": null,
-          "provider": null,
-          "match_type": "unmatched",
-          "score": 0.0
-        },
-        {
-          "text": "more serious adverse events",
-          "concept_id": null,
-          "label": null,
-          "provider": null,
-          "match_type": "unmatched",
-          "score": 0.0
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
         }
-      ],
-      "effect_size": null,
-      "confidence_interval": null
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "citalopram",
         "condition_name": "nonanxious depression",
         "relation": "ASSOCIATED_WITH_SE",
@@ -400,46 +257,18 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "citalopram",
-        "concept_id": "RXNORM:2556",
-        "label": "Citalopram",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "nonanxious depression",
-        "concept_id": "SNOMED:192080009",
-        "label": "Anxiety with depression",
-        "provider": "snomed",
-        "match_type": "fuzzy",
-        "score": 0.9230769230769231
-      },
-      "relation": {
-        "text": "ASSOCIATED_WITH_SE",
-        "concept_id": "CUSTOM:0003",
-        "label": "ASSOCIATED_WITH_SE",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [
-        {
-          "text": "fewer serious adverse events",
-          "concept_id": null,
-          "label": null,
-          "provider": null,
-          "match_type": "unmatched",
-          "score": 0.0
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
         }
-      ],
-      "effect_size": null,
-      "confidence_interval": null
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "sustained-release bupropion",
         "condition_name": "major depressive disorder",
         "relation": "AUGMENTS",
@@ -459,37 +288,18 @@
         "dose": "up to 400 mg per day",
         "p_value": null
       },
-      "drug": {
-        "text": "sustained-release bupropion",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "AUGMENTS",
-        "concept_id": "CUSTOM:0004",
-        "label": "AUGMENTS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "buspirone",
         "condition_name": "major depressive disorder",
         "relation": "AUGMENTS",
@@ -509,37 +319,18 @@
         "dose": "up to 60 mg per day",
         "p_value": null
       },
-      "drug": {
-        "text": "buspirone",
-        "concept_id": "RXNORM:1827",
-        "label": "Buspirone",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "AUGMENTS",
-        "concept_id": "CUSTOM:0004",
-        "label": "AUGMENTS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "sustained-release bupropion",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
@@ -559,37 +350,20 @@
         "dose": "maximal daily dose of 400 mg",
         "p_value": null
       },
-      "drug": {
-        "text": "sustained-release bupropion",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "sertraline",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
@@ -609,37 +383,20 @@
         "dose": "maximal daily dose of 200 mg",
         "p_value": null
       },
-      "drug": {
-        "text": "sertraline",
-        "concept_id": "RXNORM:3640",
-        "label": "Sertraline",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "extended-release venlafaxine",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
@@ -659,37 +416,20 @@
         "dose": "maximal daily dose of 375 mg",
         "p_value": null
       },
-      "drug": {
-        "text": "extended-release venlafaxine",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical TREATS language"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "citalopram",
         "condition_name": "depression",
         "relation": "IMPROVES",
@@ -709,44 +449,20 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "citalopram",
-        "concept_id": "RXNORM:2556",
-        "label": "Citalopram",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "depression",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "IMPROVES",
-        "concept_id": "CUSTOM:0002",
-        "label": "IMPROVES",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": {
-        "text": "remission",
-        "concept_id": "SNOMED:277022003",
-        "label": "Remission phase",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical IMPROVES language"
+          ]
+        }
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "citalopram",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
@@ -771,77 +487,20 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "citalopram",
-        "concept_id": "RXNORM:2556",
-        "label": "Citalopram",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": {
-        "text": "remission",
-        "concept_id": "SNOMED:277022003",
-        "label": "Remission phase",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "side_effects": [
-        {
-          "text": "worsening insomnia",
-          "concept_id": "SNOMED:193462001",
-          "label": "Insomnia",
-          "provider": "snomed",
-          "match_type": "synonym",
-          "score": 1.0
-        },
-        {
-          "text": "nervousness",
-          "concept_id": "SNOMED:48694002",
-          "label": "Anxiety",
-          "provider": "snomed",
-          "match_type": "synonym",
-          "score": 1.0
-        },
-        {
-          "text": "dryness of mouth",
-          "concept_id": "SNOMED:87715008",
-          "label": "Xerostomia",
-          "provider": "snomed",
-          "match_type": "synonym",
-          "score": 1.0
-        },
-        {
-          "text": "constipation",
-          "concept_id": "SNOMED:14760008",
-          "label": "Constipation",
-          "provider": "snomed",
-          "match_type": "exact",
-          "score": 1.0
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
-      ],
-      "effect_size": null,
-      "confidence_interval": null
+      }
     },
     {
-      "raw_fact": {
+      "fact": {
         "drug_name": "benzodiazepine",
         "condition_name": "major depressive disorder",
         "relation": "AUGMENTS",
@@ -861,41 +520,17 @@
         "dose": null,
         "p_value": null
       },
-      "drug": {
-        "text": "benzodiazepine",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "AUGMENTS",
-        "concept_id": "CUSTOM:0004",
-        "label": "AUGMENTS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": {
-        "text": "improvement in insomnia and agitation",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
     }
   ]
 }

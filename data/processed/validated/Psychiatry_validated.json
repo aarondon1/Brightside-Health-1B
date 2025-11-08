@@ -1,5 +1,5 @@
 {
-  "extracted_facts": [
+  "validated_facts": [
     {
       "drug_name": "citalopram",
       "condition_name": "major depressive disorder",
@@ -332,6 +332,10 @@
     }
   ],
   "total_facts": 16,
-  "extraction_timestamp": "2025-11-07T20:29:00.221967",
-  "extraction_model": "gpt-4o"
+  "validation_summary": {
+    "original_count": 16,
+    "valid_count": 16,
+    "invalid_count": 0,
+    "warning_count": 0
+  }
 }

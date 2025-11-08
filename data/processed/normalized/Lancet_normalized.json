@@ -4,15 +4,22 @@
       "raw_fact": {
         "drug_name": "sertraline",
         "condition_name": "major depressive disorder",
-        "relation": "TREATS",
-        "outcome": "efficacy and acceptability",
+        "relation": "FIRST_LINE_FOR",
+        "outcome": null,
         "side_effects": [],
-        "effect_size": "",
-        "confidence_interval": "",
+        "effect_size": null,
+        "confidence_interval": null,
         "source_id": "Lancet",
         "section": "Summary",
         "span": "Sertraline might be the best choice when starting treatment for moderate to severe major depression in adults because it has the most favourable balance between benefits, acceptability, and acquisition cost.",
-        "confidence": 0.9
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "multiple-treatments meta-analysis",
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
       },
       "drug": {
         "text": "sertraline",
@@ -31,43 +38,93 @@
         "score": 1.0
       },
       "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
+        "text": "FIRST_LINE_FOR",
+        "concept_id": null,
+        "label": null,
+        "provider": null,
+        "match_type": "unmatched",
+        "score": 0.0
       },
-      "outcome": {
-        "text": "efficacy and acceptability",
-        "concept_id": "LOINC:89254-1",
-        "label": "Treatment acceptability",
-        "provider": "loinc",
-        "match_type": "synonym",
-        "score": 1.0
-      },
+      "outcome": null,
       "side_effects": [],
-      "effect_size": "",
-      "confidence_interval": ""
+      "effect_size": null,
+      "confidence_interval": null
     },
     {
       "raw_fact": {
-        "drug_name": "Fluvoxamine",
+        "drug_name": "escitalopram",
+        "condition_name": "major depressive disorder",
+        "relation": "FIRST_LINE_FOR",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Lancet",
+        "section": "Summary",
+        "span": "Interpretation Clinically important differences exist between commonly prescribed antidepressants for both efficacy and acceptability in favour of escitalopram and sertraline.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "multiple-treatments meta-analysis",
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "escitalopram",
+        "concept_id": "RXNORM:316137",
+        "label": "Escitalopram",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "FIRST_LINE_FOR",
+        "concept_id": null,
+        "label": null,
+        "provider": null,
+        "match_type": "unmatched",
+        "score": 0.0
+      },
+      "outcome": null,
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "paroxetine",
         "condition_name": "major depressive disorder",
         "relation": "EQUIVALENT_TO",
         "outcome": "response rate",
         "side_effects": [],
-        "effect_size": "31/109 vs 33/108",
-        "confidence_interval": "OR 0.90 (0.50-1.62)",
+        "effect_size": "77/199 vs 102/207",
+        "confidence_interval": "95% CI 1.04-2.28",
         "source_id": "Lancet",
-        "section": "results",
-        "span": "Fluvoxamine vs Citalopram: response rate 31/109 vs 33/108, OR 0.90 (0.50-1.62)",
-        "confidence": 0.9
+        "section": "Role of the funding source",
+        "span": "Paroxetine showed a response rate of 77/199 compared to 102/207 with an OR of 1.54 (95% CI 1.04-2.28) in patients with major depressive disorder.",
+        "confidence": 1.0,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "RCT",
+        "sample_size": 406,
+        "duration": null,
+        "dose": null,
+        "p_value": null
       },
       "drug": {
-        "text": "Fluvoxamine",
-        "concept_id": "RXNORM:41126",
-        "label": "Fluvoxamine",
+        "text": "paroxetine",
+        "concept_id": "RXNORM:32937",
+        "label": "Paroxetine",
         "provider": "rxnorm",
         "match_type": "exact",
         "score": 1.0
@@ -97,127 +154,34 @@
         "score": 1.0
       },
       "side_effects": [],
-      "effect_size": "31/109 vs 33/108",
-      "confidence_interval": "OR 0.90 (0.50-1.62)"
+      "effect_size": "77/199 vs 102/207",
+      "confidence_interval": "95% CI 1.04-2.28"
     },
     {
       "raw_fact": {
-        "drug_name": "Fluvoxamine",
-        "condition_name": "major depressive disorder",
-        "relation": "ASSOCIATED_WITH_SE",
-        "outcome": "dropout rate",
-        "side_effects": [],
-        "effect_size": "29/109 vs 22/108",
-        "confidence_interval": "OR 1.42 (0.75-2.66)",
-        "source_id": "Lancet",
-        "section": "results",
-        "span": "Fluvoxamine vs Citalopram: dropout rate 29/109 vs 22/108, OR 1.42 (0.75-2.66)",
-        "confidence": 0.9
-      },
-      "drug": {
-        "text": "Fluvoxamine",
-        "concept_id": "RXNORM:41126",
-        "label": "Fluvoxamine",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "ASSOCIATED_WITH_SE",
-        "concept_id": "CUSTOM:0003",
-        "label": "ASSOCIATED_WITH_SE",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": {
-        "text": "dropout rate",
-        "concept_id": "CUSTOM:OUT023",
-        "label": "Treatment dropout rate",
-        "provider": "custom",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "side_effects": [],
-      "effect_size": "29/109 vs 22/108",
-      "confidence_interval": "OR 1.42 (0.75-2.66)"
-    },
-    {
-      "raw_fact": {
-        "drug_name": "Fluoxetine",
-        "condition_name": "major depressive disorder",
-        "relation": "EQUIVALENT_TO",
-        "outcome": "response rate",
-        "side_effects": [],
-        "effect_size": "83/141 vs 83/143",
-        "confidence_interval": "OR 1.03 (0.64-1.66)",
-        "source_id": "Lancet",
-        "section": "results",
-        "span": "Fluoxetine vs Fluvoxamine: response rate 83/141 vs 83/143, OR 1.03 (0.64-1.66)",
-        "confidence": 0.9
-      },
-      "drug": {
-        "text": "Fluoxetine",
-        "concept_id": "RXNORM:4493",
-        "label": "Fluoxetine",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "EQUIVALENT_TO",
-        "concept_id": "CUSTOM:0008",
-        "label": "EQUIVALENT_TO",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": {
-        "text": "response rate",
-        "concept_id": "SNOMED:405053002",
-        "label": "Clinical response",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "side_effects": [],
-      "effect_size": "83/141 vs 83/143",
-      "confidence_interval": "OR 1.03 (0.64-1.66)"
-    },
-    {
-      "raw_fact": {
-        "drug_name": "Milnacipran",
+        "drug_name": "reboxetine",
         "condition_name": "major depressive disorder",
         "relation": "SUPERIOR_TO",
         "outcome": "response rate",
         "side_effects": [],
-        "effect_size": "32/56 vs 40/57",
-        "confidence_interval": "OR 0.57 (0.26-1.23)",
+        "effect_size": "145/227 vs 110/224",
+        "confidence_interval": "95% CI 1.01-2.93",
         "source_id": "Lancet",
-        "section": "results",
-        "span": "Milnacipran vs Fluvoxamine: response rate 32/56 vs 40/57, OR 0.57 (0.26-1.23)",
-        "confidence": 0.9
+        "section": "Role of the funding source",
+        "span": "Reboxetine demonstrated a superior response rate of 145/227 compared to 110/224 with an OR of 1.72 (95% CI 1.01-2.93) in major depressive disorder.",
+        "confidence": 1.0,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "RCT",
+        "sample_size": 451,
+        "duration": null,
+        "dose": null,
+        "p_value": null
       },
       "drug": {
-        "text": "Milnacipran",
-        "concept_id": "RXNORM:30121",
-        "label": "Milnacipran",
+        "text": "reboxetine",
+        "concept_id": "RXNORM:72594",
+        "label": "Reboxetine",
         "provider": "rxnorm",
         "match_type": "exact",
         "score": 1.0
@@ -247,25 +211,89 @@
         "score": 1.0
       },
       "side_effects": [],
-      "effect_size": "32/56 vs 40/57",
-      "confidence_interval": "OR 0.57 (0.26-1.23)"
+      "effect_size": "145/227 vs 110/224",
+      "confidence_interval": "95% CI 1.01-2.93"
     },
     {
       "raw_fact": {
-        "drug_name": "Venlafaxine",
+        "drug_name": "sertraline",
+        "condition_name": "major depressive disorder",
+        "relation": "EQUIVALENT_TO",
+        "outcome": "response rate",
+        "side_effects": [],
+        "effect_size": "139/200 vs 136/200",
+        "confidence_interval": "95% CI 0.61-1.42",
+        "source_id": "Lancet",
+        "section": "Role of the funding source",
+        "span": "Sertraline showed a response rate of 139/200 compared to 136/200 with an OR of 0.93 (95% CI 0.61-1.42) in patients with major depressive disorder.",
+        "confidence": 1.0,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "RCT",
+        "sample_size": 615,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "sertraline",
+        "concept_id": "RXNORM:3640",
+        "label": "Sertraline",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "EQUIVALENT_TO",
+        "concept_id": "CUSTOM:0008",
+        "label": "EQUIVALENT_TO",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "response rate",
+        "concept_id": "SNOMED:405053002",
+        "label": "Clinical response",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": "139/200 vs 136/200",
+      "confidence_interval": "95% CI 0.61-1.42"
+    },
+    {
+      "raw_fact": {
+        "drug_name": "venlafaxine",
         "condition_name": "major depressive disorder",
         "relation": "SUPERIOR_TO",
         "outcome": "response rate",
         "side_effects": [],
         "effect_size": "14/34 vs 48/77",
-        "confidence_interval": "OR 0.42 (0.19-0.96)",
+        "confidence_interval": "95% CI 0.19-0.96",
         "source_id": "Lancet",
         "section": "results",
-        "span": "Venlafaxine vs Fluvoxamine: response rate 14/34 vs 48/77, OR 0.42 (0.19-0.96)",
-        "confidence": 0.9
+        "span": "Venlafaxine showed a superior response rate compared to its comparator with a response rate of 14/34 vs 48/77 and an odds ratio of 0.42 (95% CI 0.19-0.96).",
+        "confidence": 1.0,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "meta-analysis",
+        "sample_size": 111,
+        "duration": null,
+        "dose": null,
+        "p_value": null
       },
       "drug": {
-        "text": "Venlafaxine",
+        "text": "venlafaxine",
         "concept_id": "RXNORM:39786",
         "label": "Venlafaxine",
         "provider": "rxnorm",
@@ -298,21 +326,142 @@
       },
       "side_effects": [],
       "effect_size": "14/34 vs 48/77",
-      "confidence_interval": "OR 0.42 (0.19-0.96)"
+      "confidence_interval": "95% CI 0.19-0.96"
+    },
+    {
+      "raw_fact": {
+        "drug_name": "fluvoxamine",
+        "condition_name": "major depressive disorder",
+        "relation": "EQUIVALENT_TO",
+        "outcome": "response rate",
+        "side_effects": [],
+        "effect_size": "31/109 vs 33/108",
+        "confidence_interval": "95% CI 0.50-1.62",
+        "source_id": "Lancet",
+        "section": "results",
+        "span": "Fluvoxamine was found to be equivalent to citalopram in terms of response rate with 31/109 vs 33/108 and an odds ratio of 0.90 (95% CI 0.50-1.62).",
+        "confidence": 1.0,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "meta-analysis",
+        "sample_size": 217,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "fluvoxamine",
+        "concept_id": "RXNORM:41126",
+        "label": "Fluvoxamine",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "EQUIVALENT_TO",
+        "concept_id": "CUSTOM:0008",
+        "label": "EQUIVALENT_TO",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "response rate",
+        "concept_id": "SNOMED:405053002",
+        "label": "Clinical response",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": "31/109 vs 33/108",
+      "confidence_interval": "95% CI 0.50-1.62"
+    },
+    {
+      "raw_fact": {
+        "drug_name": "fluoxetine",
+        "condition_name": "major depressive disorder",
+        "relation": "EQUIVALENT_TO",
+        "outcome": "response rate",
+        "side_effects": [],
+        "effect_size": "83/141 vs 83/143",
+        "confidence_interval": "95% CI 0.64-1.66",
+        "source_id": "Lancet",
+        "section": "results",
+        "span": "Fluoxetine was found to be equivalent to its comparator in terms of response rate with 83/141 vs 83/143 and an odds ratio of 1.03 (95% CI 0.64-1.66).",
+        "confidence": 1.0,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "meta-analysis",
+        "sample_size": 284,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "fluoxetine",
+        "concept_id": "RXNORM:4493",
+        "label": "Fluoxetine",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "EQUIVALENT_TO",
+        "concept_id": "CUSTOM:0008",
+        "label": "EQUIVALENT_TO",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "response rate",
+        "concept_id": "SNOMED:405053002",
+        "label": "Clinical response",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": "83/141 vs 83/143",
+      "confidence_interval": "95% CI 0.64-1.66"
     },
     {
       "raw_fact": {
         "drug_name": "escitalopram",
         "condition_name": "major depressive disorder",
-        "relation": "TREATS",
-        "outcome": "",
+        "relation": "FIRST_LINE_FOR",
+        "outcome": null,
         "side_effects": [],
-        "effect_size": "",
-        "confidence_interval": "",
+        "effect_size": null,
+        "confidence_interval": null,
         "source_id": "Lancet",
         "section": "discussion",
-        "span": "escitalopram and sertraline might be the best choice when starting a treatment for moderate to severe major depression because they have the best possible balance between efficacy and acceptability",
-        "confidence": 0.9
+        "span": "the most important clinical implication of the results is that escitalopram and sertraline might be the best choice when starting a treatment for moderate to severe major depression because they have the best possible balance between efficacy and acceptability.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
       },
       "drug": {
         "text": "escitalopram",
@@ -331,31 +480,38 @@
         "score": 1.0
       },
       "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
+        "text": "FIRST_LINE_FOR",
+        "concept_id": null,
+        "label": null,
+        "provider": null,
+        "match_type": "unmatched",
+        "score": 0.0
       },
       "outcome": null,
       "side_effects": [],
-      "effect_size": "",
-      "confidence_interval": ""
+      "effect_size": null,
+      "confidence_interval": null
     },
     {
       "raw_fact": {
         "drug_name": "sertraline",
         "condition_name": "major depressive disorder",
-        "relation": "TREATS",
-        "outcome": "",
+        "relation": "FIRST_LINE_FOR",
+        "outcome": null,
         "side_effects": [],
-        "effect_size": "",
-        "confidence_interval": "",
+        "effect_size": null,
+        "confidence_interval": null,
         "source_id": "Lancet",
         "section": "discussion",
-        "span": "escitalopram and sertraline might be the best choice when starting a treatment for moderate to severe major depression because they have the best possible balance between efficacy and acceptability",
-        "confidence": 0.9
+        "span": "the most important clinical implication of the results is that escitalopram and sertraline might be the best choice when starting a treatment for moderate to severe major depression because they have the best possible balance between efficacy and acceptability.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
       },
       "drug": {
         "text": "sertraline",
@@ -374,31 +530,266 @@
         "score": 1.0
       },
       "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
+        "text": "FIRST_LINE_FOR",
+        "concept_id": null,
+        "label": null,
+        "provider": null,
+        "match_type": "unmatched",
+        "score": 0.0
+      },
+      "outcome": null,
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "mirtazapine",
+        "condition_name": "major depressive disorder",
+        "relation": "SUPERIOR_TO",
+        "outcome": "response",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Lancet",
+        "section": "discussion",
+        "span": "In terms of response, mirtazapine, escitalopram, venlafaxine, and sertraline were more efficacious than duloxetine, fluoxetine, fluvoxamine, paroxetine, and reboxetine.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "mirtazapine",
+        "concept_id": "RXNORM:6750",
+        "label": "Mirtazapine",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "SUPERIOR_TO",
+        "concept_id": "CUSTOM:0006",
+        "label": "SUPERIOR_TO",
         "provider": "custom",
         "match_type": "exact",
         "score": 1.0
       },
-      "outcome": null,
+      "outcome": {
+        "text": "response",
+        "concept_id": "SNOMED:405053002",
+        "label": "Clinical response",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
       "side_effects": [],
-      "effect_size": "",
-      "confidence_interval": ""
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "venlafaxine",
+        "condition_name": "major depressive disorder",
+        "relation": "SUPERIOR_TO",
+        "outcome": "response",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Lancet",
+        "section": "discussion",
+        "span": "In terms of response, mirtazapine, escitalopram, venlafaxine, and sertraline were more efficacious than duloxetine, fluoxetine, fluvoxamine, paroxetine, and reboxetine.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "venlafaxine",
+        "concept_id": "RXNORM:39786",
+        "label": "Venlafaxine",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "SUPERIOR_TO",
+        "concept_id": "CUSTOM:0006",
+        "label": "SUPERIOR_TO",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "response",
+        "concept_id": "SNOMED:405053002",
+        "label": "Clinical response",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "sertraline",
+        "condition_name": "major depressive disorder",
+        "relation": "SUPERIOR_TO",
+        "outcome": "response",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Lancet",
+        "section": "discussion",
+        "span": "In terms of response, mirtazapine, escitalopram, venlafaxine, and sertraline were more efficacious than duloxetine, fluoxetine, fluvoxamine, paroxetine, and reboxetine.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "sertraline",
+        "concept_id": "RXNORM:3640",
+        "label": "Sertraline",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "SUPERIOR_TO",
+        "concept_id": "CUSTOM:0006",
+        "label": "SUPERIOR_TO",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "response",
+        "concept_id": "SNOMED:405053002",
+        "label": "Clinical response",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "escitalopram",
+        "condition_name": "major depressive disorder",
+        "relation": "SUPERIOR_TO",
+        "outcome": "response",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Lancet",
+        "section": "discussion",
+        "span": "In terms of response, mirtazapine, escitalopram, venlafaxine, and sertraline were more efficacious than duloxetine, fluoxetine, fluvoxamine, paroxetine, and reboxetine.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "escitalopram",
+        "concept_id": "RXNORM:316137",
+        "label": "Escitalopram",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "SUPERIOR_TO",
+        "concept_id": "CUSTOM:0006",
+        "label": "SUPERIOR_TO",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "response",
+        "concept_id": "SNOMED:405053002",
+        "label": "Clinical response",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
     },
     {
       "raw_fact": {
         "drug_name": "reboxetine",
         "condition_name": "major depressive disorder",
         "relation": "CONTRAINDICATED_FOR",
-        "outcome": "",
+        "outcome": null,
         "side_effects": [],
-        "effect_size": "",
-        "confidence_interval": "",
+        "effect_size": null,
+        "confidence_interval": null,
         "source_id": "Lancet",
         "section": "discussion",
-        "span": "reboxetine should not be used as a routine first-line acute treatment for major depression",
-        "confidence": 0.9
+        "span": "Reboxetine should not be used as a routine first-line acute treatment for major depression.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
       },
       "drug": {
         "text": "reboxetine",
@@ -426,8 +817,69 @@
       },
       "outcome": null,
       "side_effects": [],
-      "effect_size": "",
-      "confidence_interval": ""
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "reboxetine",
+        "condition_name": "major depressive disorder",
+        "relation": "ASSOCIATED_WITH_SE",
+        "outcome": null,
+        "side_effects": [
+          "poor acceptability"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Lancet",
+        "section": "discussion",
+        "span": "In terms of acceptability, reboxetine was the least tolerated agent among the 12 antidepressants and was significantly less effective than all the other 11 drugs.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "reboxetine",
+        "concept_id": "RXNORM:72594",
+        "label": "Reboxetine",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "ASSOCIATED_WITH_SE",
+        "concept_id": "CUSTOM:0003",
+        "label": "ASSOCIATED_WITH_SE",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": null,
+      "side_effects": [
+        {
+          "text": "poor acceptability",
+          "concept_id": null,
+          "label": null,
+          "provider": null,
+          "match_type": "unmatched",
+          "score": 0.0
+        }
+      ],
+      "effect_size": null,
+      "confidence_interval": null
     }
   ]
 }

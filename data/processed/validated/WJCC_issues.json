@@ -1,0 +1,1158 @@
+{
+  "validation_report": {
+    "total_facts": 49,
+    "valid_facts": 47,
+    "invalid_facts": 2,
+    "warnings": 0,
+    "issues": [
+      {
+        "fact_index": 4,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 5,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tcas",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 6,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tcas",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 7,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tcas",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 7,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 9,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 10,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 11,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: reboxetine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 11,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 11,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: poor tolerance",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 12,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 13,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 14,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: ketamine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "invalid_condition_name",
+        "severity": "error",
+        "field": "condition_name",
+        "message": "Condition name contains treatment word 'treatment': treatment-resistant depression",
+        "suggestion": "This should be a medical condition, not a treatment. Check the extraction logic."
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: neurotoxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cognitive dysfunction",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: psychosis",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: dissociation",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: urological dysfunction",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: vomiting",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular symptoms",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 16,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: esketamine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 16,
+        "issue_type": "invalid_condition_name",
+        "severity": "error",
+        "field": "condition_name",
+        "message": "Condition name contains treatment word 'treatment': treatment-resistant depression",
+        "suggestion": "This should be a medical condition, not a treatment. Check the extraction logic."
+      },
+      {
+        "fact_index": 17,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular toxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 17,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: anticholinergic side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 17,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: risk of lethal toxicity from overdoses",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 18,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular toxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 18,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: anticholinergic side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 18,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: risk of lethal toxicity from overdoses",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 19,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular toxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 19,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: anticholinergic side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 19,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: risk of lethal toxicity from overdoses",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 20,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular toxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 20,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: anticholinergic side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 20,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: risk of lethal toxicity from overdoses",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 22,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: cognitive-behavioral therapy",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 22,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 23,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: interpersonal therapy",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 23,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 24,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 25,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: chronic depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 26,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: acceptance and commitment therapy",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 27,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: psycho-education",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 28,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 29,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 30,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 31,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 32,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: deep brain stimulation (dbs)",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 32,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 33,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: magnetic seizure therapy",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 33,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 34,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: major unipolar depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 35,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: severe and psychotic depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 36,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 37,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 38,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 39,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 39,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: mild side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 40,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tdcs",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 40,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: unipolar depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 41,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tdcs",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 41,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: bipolar depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 42,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 43,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 44,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 44,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'resistant depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 45,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: dbs of the subgenual cingulate white matter (brodmann area = ba 25)",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 45,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 46,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 48,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant forms of depression",
+        "suggestion": "Consider normalizing to: depression"
+      }
+    ]
+  },
+  "issues_by_type": {
+    "condition_not_in_span": [
+      {
+        "fact_index": 4,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 7,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 9,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 10,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 11,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 12,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 13,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 14,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 22,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 23,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 24,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 29,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 30,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 31,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 32,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 33,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 36,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 37,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 38,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 39,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 44,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'resistant depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 46,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'depression' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      }
+    ],
+    "unknown_drug": [
+      {
+        "fact_index": 5,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tcas",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 6,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tcas",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 7,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tcas",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 11,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: reboxetine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: ketamine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 16,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: esketamine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 22,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: cognitive-behavioral therapy",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 23,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: interpersonal therapy",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 26,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: acceptance and commitment therapy",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 27,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: psycho-education",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 32,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: deep brain stimulation (dbs)",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 33,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: magnetic seizure therapy",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 40,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tdcs",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 41,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: tdcs",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 45,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: dbs of the subgenual cingulate white matter (brodmann area = ba 25)",
+        "suggestion": "Verify this is a valid medication or treatment"
+      }
+    ],
+    "unknown_side_effect": [
+      {
+        "fact_index": 11,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: poor tolerance",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: neurotoxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cognitive dysfunction",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: psychosis",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: dissociation",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: urological dysfunction",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: vomiting",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular symptoms",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 17,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular toxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 17,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: anticholinergic side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 17,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: risk of lethal toxicity from overdoses",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 18,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular toxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 18,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: anticholinergic side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 18,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: risk of lethal toxicity from overdoses",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 19,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular toxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 19,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: anticholinergic side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 19,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: risk of lethal toxicity from overdoses",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 20,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: cardiovascular toxicity",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 20,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: anticholinergic side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 20,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: risk of lethal toxicity from overdoses",
+        "suggestion": "Verify this is a valid medical side effect"
+      },
+      {
+        "fact_index": 39,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: mild side effects",
+        "suggestion": "Verify this is a valid medical side effect"
+      }
+    ],
+    "invalid_condition_name": [
+      {
+        "fact_index": 15,
+        "issue_type": "invalid_condition_name",
+        "severity": "error",
+        "field": "condition_name",
+        "message": "Condition name contains treatment word 'treatment': treatment-resistant depression",
+        "suggestion": "This should be a medical condition, not a treatment. Check the extraction logic."
+      },
+      {
+        "fact_index": 16,
+        "issue_type": "invalid_condition_name",
+        "severity": "error",
+        "field": "condition_name",
+        "message": "Condition name contains treatment word 'treatment': treatment-resistant depression",
+        "suggestion": "This should be a medical condition, not a treatment. Check the extraction logic."
+      }
+    ],
+    "condition_name_variant": [
+      {
+        "fact_index": 25,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: chronic depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 28,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 34,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: major unipolar depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 35,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: severe and psychotic depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 40,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: unipolar depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 41,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: bipolar depression",
+        "suggestion": "Consider normalizing to: depression"
+      },
+      {
+        "fact_index": 42,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 43,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 44,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 45,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant depression",
+        "suggestion": "Consider normalizing to: treatment-resistant depression"
+      },
+      {
+        "fact_index": 48,
+        "issue_type": "condition_name_variant",
+        "severity": "info",
+        "field": "condition_name",
+        "message": "Condition name variant: resistant forms of depression",
+        "suggestion": "Consider normalizing to: depression"
+      }
+    ]
+  }
+}

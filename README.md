@@ -20,7 +20,7 @@ flowchart TD
   B --> C["LLM Extract (gpt-4o-mini) -> strict JSON"]
   C --> D["Pydantic Validate + Rule Filters"]
   D --> E["Ontology Map (RxNorm / SNOMED / UMLS)"]
-  E --> F["Kùzu Upsert (nodes+edges with provenance)"]
+  E --> F["Neo4j Upsert (nodes+edges with provenance)"]
   F --> G{Query Neighborhood}
   G --> H["Rank (efficacy/AE/acceptability/contra)"]
   H --> I["Streamlit UI: Top-N + citations + mini-graph"]

@@ -1,0 +1,292 @@
+{
+  "normalized_facts": [
+    {
+      "raw_fact": {
+        "drug_name": "citalopram",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "remission rate",
+        "side_effects": [],
+        "effect_size": "",
+        "confidence_interval": "",
+        "source_id": "Psychiatry",
+        "section": "Difference in Treatment Outcome in Outpatients With Anxious Versus Nonanxious Depression: A STAR*D Report",
+        "span": "A total of 2,876 adult outpatients with major depressive disorder, enrolled from 18 primary and 23 psychiatric care sites, received citalopram in Level 1 of STAR*D.",
+        "confidence": 0.9
+      },
+      "drug": {
+        "text": "citalopram",
+        "concept_id": "RXNORM:2556",
+        "label": "Citalopram",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "TREATS",
+        "concept_id": "CUSTOM:0001",
+        "label": "TREATS",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "remission rate",
+        "concept_id": "SNOMED:277022003",
+        "label": "Remission phase",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": "",
+      "confidence_interval": ""
+    },
+    {
+      "raw_fact": {
+        "drug_name": "citalopram",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": "symptom remission",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Psychiatry",
+        "section": "Intervention",
+        "span": "The aim of citalopram treatment in Level 1 was to achieve symptom remission, which was defined as QIDS-C score ≤ 5.",
+        "confidence": 0.9
+      },
+      "drug": {
+        "text": "citalopram",
+        "concept_id": "RXNORM:2556",
+        "label": "Citalopram",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "depression",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "TREATS",
+        "concept_id": "CUSTOM:0001",
+        "label": "TREATS",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "symptom remission",
+        "concept_id": "SNOMED:271623007",
+        "label": "Quality of life",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "citalopram",
+        "condition_name": "depression",
+        "relation": "IMPROVES",
+        "outcome": "HAM-D score",
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Psychiatry",
+        "section": "Main Outcome Measures",
+        "span": "The primary outcome measure was the HAM-D score, obtained by research outcome assessors using telephone-based structured interviews at entry and exit from citalopram treatment.",
+        "confidence": 0.9
+      },
+      "drug": {
+        "text": "citalopram",
+        "concept_id": "RXNORM:2556",
+        "label": "Citalopram",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "depression",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "IMPROVES",
+        "concept_id": "CUSTOM:0002",
+        "label": "IMPROVES",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "HAM-D score",
+        "concept_id": "LOINC:81924-6",
+        "label": "Hamilton Depression Rating Scale total score",
+        "provider": "loinc",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "citalopram",
+        "condition_name": "depression",
+        "relation": "IMPROVES",
+        "outcome": "remission rate",
+        "side_effects": [],
+        "effect_size": "lower remission rates compared to nonanxious depression",
+        "confidence_interval": null,
+        "source_id": "Psychiatry",
+        "section": "discussion",
+        "span": "patients with anxious depression were less likely to respond or to remit with citalopram treatment than those with nonanxious depression",
+        "confidence": 0.9
+      },
+      "drug": {
+        "text": "citalopram",
+        "concept_id": "RXNORM:2556",
+        "label": "Citalopram",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "depression",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "IMPROVES",
+        "concept_id": "CUSTOM:0002",
+        "label": "IMPROVES",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "remission rate",
+        "concept_id": "SNOMED:277022003",
+        "label": "Remission phase",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [],
+      "effect_size": "lower remission rates compared to nonanxious depression",
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "citalopram",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": "remission",
+        "side_effects": [
+          "worsening insomnia",
+          "nervousness",
+          "dryness of mouth",
+          "constipation"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "Psychiatry",
+        "section": "Patient Perspective",
+        "span": "Ms. D was started on a course of antidepressant therapy with citalopram... After 6 weeks of combined treatment with citalopram and a benzodiazepine, Ms. D reported a significant improvement in all her symptoms, and remission was achieved at the end of the 10th week of treatment.",
+        "confidence": 0.9
+      },
+      "drug": {
+        "text": "citalopram",
+        "concept_id": "RXNORM:2556",
+        "label": "Citalopram",
+        "provider": "rxnorm",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "TREATS",
+        "concept_id": "CUSTOM:0001",
+        "label": "TREATS",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": {
+        "text": "remission",
+        "concept_id": "SNOMED:277022003",
+        "label": "Remission phase",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "side_effects": [
+        {
+          "text": "worsening insomnia",
+          "concept_id": "SNOMED:193462001",
+          "label": "Insomnia",
+          "provider": "snomed",
+          "match_type": "synonym",
+          "score": 1.0
+        },
+        {
+          "text": "nervousness",
+          "concept_id": "SNOMED:48694002",
+          "label": "Anxiety",
+          "provider": "snomed",
+          "match_type": "synonym",
+          "score": 1.0
+        },
+        {
+          "text": "dryness of mouth",
+          "concept_id": "SNOMED:87715008",
+          "label": "Xerostomia",
+          "provider": "snomed",
+          "match_type": "synonym",
+          "score": 1.0
+        },
+        {
+          "text": "constipation",
+          "concept_id": "SNOMED:14760008",
+          "label": "Constipation",
+          "provider": "snomed",
+          "match_type": "exact",
+          "score": 1.0
+        }
+      ],
+      "effect_size": null,
+      "confidence_interval": null
+    }
+  ]
+}

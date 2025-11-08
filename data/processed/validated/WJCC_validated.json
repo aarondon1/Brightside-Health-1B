@@ -1,5 +1,5 @@
 {
-  "extracted_facts": [
+  "validated_facts": [
     {
       "drug_name": "selective serotonin reuptake inhibitors",
       "condition_name": "depression",
@@ -341,59 +341,6 @@
       "source_id": "WJCC",
       "section": "Other antidepressants",
       "span": "whereas amitriptyline, clomipramine, duloxetine, fluvoxamine, trazodone, and venlafaxine had the highest dropout rates because of their more frequent and severe side effects. Nausea and vomiting were the most common reasons for treatment discontinuation; sexual dysfunction, sedation, priapism, and cardiotoxicity were also reported.",
-      "confidence": 0.9,
-      "treatment_line": null,
-      "patient_subgroup": null,
-      "study_design": null,
-      "sample_size": null,
-      "duration": null,
-      "dose": null,
-      "p_value": null
-    },
-    {
-      "drug_name": "ketamine",
-      "condition_name": "treatment-resistant depression",
-      "relation": "TREATS",
-      "outcome": null,
-      "side_effects": [
-        "dizziness",
-        "neurotoxicity",
-        "cognitive dysfunction",
-        "blurred vision",
-        "psychosis",
-        "dissociation",
-        "urological dysfunction",
-        "restlessness",
-        "headache",
-        "nausea",
-        "vomiting",
-        "cardiovascular symptoms"
-      ],
-      "effect_size": null,
-      "confidence_interval": null,
-      "source_id": "WJCC",
-      "section": "Ketamine and related molecules",
-      "span": "In intravenous sub-anesthetic doses, ketamine has very quick effects on resistant unipolar (and, possibly, bipolar) depression and acute suicidal ideation. Common adverse effects of ketamine include dizziness, neurotoxicity, cognitive dysfunction, blurred vision, psychosis, dissociation, urological dysfunction, restlessness, headache, nausea, vomiting, and cardiovascular symptoms.",
-      "confidence": 0.9,
-      "treatment_line": null,
-      "patient_subgroup": null,
-      "study_design": null,
-      "sample_size": null,
-      "duration": null,
-      "dose": null,
-      "p_value": null
-    },
-    {
-      "drug_name": "esketamine",
-      "condition_name": "treatment-resistant depression",
-      "relation": "TREATS",
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null,
-      "source_id": "WJCC",
-      "section": "Ketamine and related molecules",
-      "span": "Research on the S-enantiomer of ketamine (S-ketamine, or esketamine, especially intranasal) could also be valuable, as it has a 3 to 4 times greater affinity than ketamine for the N-methyl-D-aspartate (NMDA) receptor. It was approved by the United States Food and Drug Administration in March 2019 for treatment-resistant depression.",
       "confidence": 0.9,
       "treatment_line": null,
       "patient_subgroup": null,
@@ -1063,7 +1010,11 @@
       "p_value": null
     }
   ],
-  "total_facts": 51,
-  "extraction_timestamp": "2025-11-07T20:03:42.822468",
-  "extraction_model": "gpt-4o"
+  "total_facts": 49,
+  "validation_summary": {
+    "original_count": 51,
+    "valid_count": 49,
+    "invalid_count": 2,
+    "warning_count": 0
+  }
 }

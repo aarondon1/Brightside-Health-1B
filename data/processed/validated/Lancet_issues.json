@@ -1,0 +1,226 @@
+{
+  "validation_report": {
+    "total_facts": 16,
+    "valid_facts": 16,
+    "invalid_facts": 0,
+    "warnings": 0,
+    "issues": [
+      {
+        "fact_index": 1,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 3,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: reboxetine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 5,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 6,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 7,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 10,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 11,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 12,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 13,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 14,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: reboxetine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: reboxetine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: poor acceptability",
+        "suggestion": "Verify this is a valid medical side effect"
+      }
+    ]
+  },
+  "issues_by_type": {
+    "condition_not_in_span": [
+      {
+        "fact_index": 1,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 5,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 6,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 7,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 10,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 11,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 12,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 13,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "condition_not_in_span",
+        "severity": "info",
+        "field": "span",
+        "message": "Condition 'major depressive disorder' not clearly mentioned in span (may be contextual)",
+        "suggestion": "Verify the span context supports the extracted condition"
+      }
+    ],
+    "unknown_drug": [
+      {
+        "fact_index": 3,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: reboxetine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 14,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: reboxetine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      },
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_drug",
+        "severity": "info",
+        "field": "drug_name",
+        "message": "Drug name not in known list: reboxetine",
+        "suggestion": "Verify this is a valid medication or treatment"
+      }
+    ],
+    "unknown_side_effect": [
+      {
+        "fact_index": 15,
+        "issue_type": "unknown_side_effect",
+        "severity": "info",
+        "field": "side_effects",
+        "message": "Unknown side effect: poor acceptability",
+        "suggestion": "Verify this is a valid medical side effect"
+      }
+    ]
+  }
+}
