@@ -1,8 +1,200 @@
 {
-  "total_facts": 49,
-  "average_quality_score": 72.06122448979592,
-  "estimated_precision": 0.9183673469387755,
+  "total_facts": 57,
+  "average_quality_score": 94.21052631578948,
+  "estimated_precision": 1.0,
   "results": [
+    {
+      "fact": {
+        "drug_name": "escitalopram",
+        "condition_name": "major depressive disorder",
+        "relation": "FIRST_LINE_FOR",
+        "outcome": "remission rate",
+        "side_effects": [
+          "nausea",
+          "sexual dysfunction"
+        ],
+        "effect_size": "42% remission vs 28% placebo, NNT=7",
+        "confidence_interval": "95% CI 1.2\u20132.4",
+        "source_id": "WJCC",
+        "section": "World Journal of Clinical Cases",
+        "span": "In an 8\u2011week randomized trial (n=485) in adults with major depressive disorder, escitalopram 10\u201320 mg/day achieved higher remission (42% vs 28% placebo; NNT=7; 95% CI 1.2\u20132.4; p<0.01). Nausea and sexual dysfunction were the most frequent adverse events.",
+        "confidence": 1.0,
+        "treatment_line": "first",
+        "patient_subgroup": null,
+        "study_design": "RCT",
+        "sample_size": 485,
+        "duration": "8 weeks",
+        "dose": "10\u201320 mg/day",
+        "p_value": 0.001
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "sertraline",
+        "condition_name": "major depressive disorder",
+        "relation": "PREVENTS_RELAPSE_IN",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "World Journal of Clinical Cases",
+        "span": "Continuation treatment with sertraline over 6 months reduced relapse rates compared with placebo in patients with major depressive disorder, according to a randomized withdrawal design.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "RCT",
+        "sample_size": 312,
+        "duration": "6 months",
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "cognitive behavioral therapy",
+        "condition_name": "major depressive disorder",
+        "relation": "WELL_TOLERATED_IN",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "World Journal of Clinical Cases",
+        "span": "In adolescents with major depressive disorder treated in outpatient settings, cognitive behavioral therapy was generally well tolerated with low discontinuation for adverse events.",
+        "confidence": 0.8,
+        "treatment_line": null,
+        "patient_subgroup": "adolescents",
+        "study_design": "observational",
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "escitalopram",
+        "condition_name": "major depressive disorder",
+        "relation": "FIRST_LINE_FOR",
+        "outcome": "remission rate",
+        "side_effects": [
+          "nausea",
+          "sexual dysfunction"
+        ],
+        "effect_size": "42% remission vs 28% placebo, NNT=7",
+        "confidence_interval": "95% CI 1.2\u20132.4",
+        "source_id": "WJCC",
+        "section": "Major depressive disorder: Validated treatments and future challenges",
+        "span": "In an 8\u2011week randomized trial (n=485) in adults with major depressive disorder, escitalopram 10\u201320 mg/day achieved higher remission (42% vs 28% placebo; NNT=7; 95% CI 1.2\u20132.4; p<0.01). Nausea and sexual dysfunction were the most frequent adverse events.",
+        "confidence": 1.0,
+        "treatment_line": "first",
+        "patient_subgroup": null,
+        "study_design": "RCT",
+        "sample_size": 485,
+        "duration": "8 weeks",
+        "dose": "10\u201320 mg/day",
+        "p_value": 0.001
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "sertraline",
+        "condition_name": "major depressive disorder",
+        "relation": "PREVENTS_RELAPSE_IN",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Major depressive disorder: Validated treatments and future challenges",
+        "span": "Continuation treatment with sertraline over 6 months reduced relapse rates compared with placebo in patients with major depressive disorder, according to a randomized withdrawal design.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "RCT",
+        "sample_size": 312,
+        "duration": "6 months",
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "cognitive behavioral therapy",
+        "condition_name": "major depressive disorder",
+        "relation": "WELL_TOLERATED_IN",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Major depressive disorder: Validated treatments and future challenges",
+        "span": "In adolescents with major depressive disorder treated in outpatient settings, cognitive behavioral therapy was generally well tolerated with low discontinuation for adverse events.",
+        "confidence": 0.8,
+        "treatment_line": null,
+        "patient_subgroup": "adolescents",
+        "study_design": "observational",
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
     {
       "fact": {
         "drug_name": "selective serotonin reuptake inhibitors",
@@ -24,14 +216,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 79.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 79,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.7961516380310059,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -56,14 +247,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 78.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 78,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.7876299619674683,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -88,14 +278,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 82.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 82,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8202784061431885,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -113,6 +302,37 @@
         "span": "Electroconvulsive therapy is the most effective somatic therapy for depression in some specific situations.",
         "confidence": 0.8,
         "treatment_line": null,
+        "patient_subgroup": "specific situations",
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "pharmacotherapy",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "introduction",
+        "span": "Acute-phase treatment options include pharmacotherapy, depression-focused psychotherapy, combinations of medications and psychotherapy, and somatic therapies such as electroconvulsive therapy (ECT).",
+        "confidence": 0.8,
+        "treatment_line": null,
         "patient_subgroup": null,
         "study_design": null,
         "sample_size": null,
@@ -120,14 +340,48 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 81.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 81,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.8132449984550476,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "depression-focused psychotherapy",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "introduction",
+        "span": "Acute-phase treatment options include pharmacotherapy, depression-focused psychotherapy, combinations of medications and psychotherapy, and somatic therapies such as electroconvulsive therapy (ECT).",
+        "confidence": 0.8,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -152,14 +406,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 65.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 65,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6527856588363647,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -175,23 +430,24 @@
         "source_id": "WJCC",
         "section": "TCAs",
         "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression.",
-        "confidence": 0.9,
+        "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
-        "study_design": null,
+        "study_design": "comparative",
         "sample_size": null,
         "duration": null,
         "dose": null,
         "p_value": null
       },
-      "quality_score": 65.0,
+      "quality_score": 80.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 65,
+        "heuristic": {
+          "quality_score": 80,
           "likely_correct": true,
-          "similarity": 0.6594173908233643,
-          "method": "sentence_similarity"
+          "issues": [
+            "Span doesn't contain typical EQUIVALENT_TO language"
+          ]
         }
       }
     },
@@ -206,8 +462,8 @@
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "TCAs",
-        "span": "This efficacy can be explained by the superiority of TCAs over SSRIs for patients with severe major depressive disorder (MDD) symptoms who require hospitalization.",
-        "confidence": 0.9,
+        "span": "However, some TCAs can be more effective than SSRIs when used to treat hospitalized patients. This efficacy can be explained by the superiority of TCAs over SSRIs for patients with severe major depressive disorder (MDD) symptoms who require hospitalization.",
+        "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": "hospitalized patients with severe symptoms",
         "study_design": null,
@@ -216,14 +472,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 81.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 81,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8159447908401489,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -248,14 +503,48 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 54.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 54,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.5416276454925537,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "fluoxetine",
+        "condition_name": "depression",
+        "relation": "EQUIVALENT_TO",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "SSRIs",
+        "span": "In December 1987, a series of clinical studies confirmed that an SSRI called fluoxetine was as effective as TCAs for treating depression while causing fewer adverse effects.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": "clinical studies",
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 80.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 80,
+          "likely_correct": true,
+          "issues": [
+            "Span doesn't contain typical EQUIVALENT_TO language"
+          ]
         }
       }
     },
@@ -270,7 +559,7 @@
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "SSRIs",
-        "span": "Therefore, most guidelines currently recommend SSRIs as the first-line treatment for patients with major depression[25].",
+        "span": "Therefore, most guidelines currently recommend SSRIs as the first-line treatment for patients with major depression.",
         "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -280,14 +569,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 82.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 82,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8283566832542419,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -302,8 +590,8 @@
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "SSRIs",
-        "span": "In most systematic reviews and meta-analyses, SSRIs have demonstrated comparable efficacy to TCAs[18,19,29], and there is no significant evidence indicating the superiority of any other class or agent over SSRIs[29-31].",
-        "confidence": 1.0,
+        "span": "In most systematic reviews and meta-analyses, SSRIs have demonstrated comparable efficacy to TCAs.",
+        "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
         "study_design": null,
@@ -312,14 +600,56 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 57.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 57,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.573422908782959,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "SSRIs",
+        "condition_name": "depression",
+        "relation": "WELL_TOLERATED_IN",
+        "outcome": null,
+        "side_effects": [
+          "sexual dysfunction",
+          "nausea",
+          "loss of appetite",
+          "irritability",
+          "anxiety",
+          "insomnia",
+          "headaches"
+        ],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "SSRIs",
+        "span": "Currently available SSRIs include fluoxetine, sertraline, paroxetine, fluvoxamine, citalopram, and escitalopram. They have elicited different tolerance rates and side effects-mostly sexual and digestive (nausea and loss of appetite), as well as irritability, anxiety, insomnia, and headaches. Nevertheless, SSRIs have a good tolerability profile.",
+        "confidence": 0.8,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -335,23 +665,24 @@
         "source_id": "WJCC",
         "section": "Norepinephrine reuptake inhibitors",
         "span": "Also, venlafaxine's efficacy is comparable to that of TCAs.",
-        "confidence": 0.9,
+        "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
-        "study_design": null,
+        "study_design": "individual studies",
         "sample_size": null,
         "duration": null,
         "dose": null,
         "p_value": null
       },
-      "quality_score": 64.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 64,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.643531322479248,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -378,21 +709,22 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 62.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 62,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6221120357513428,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
     {
       "fact": {
         "drug_name": "trazodone",
-        "condition_name": "depression",
+        "condition_name": "major depressive disorder",
         "relation": "TREATS",
         "outcome": null,
         "side_effects": [],
@@ -410,30 +742,33 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 80.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 80,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.8048454523086548,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
     {
       "fact": {
         "drug_name": "nefazodone",
-        "condition_name": "depression",
+        "condition_name": "major depressive disorder",
         "relation": "EQUIVALENT_TO",
         "outcome": null,
-        "side_effects": [],
+        "side_effects": [
+          "hepatotoxicity"
+        ],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Other antidepressants",
-        "span": "Nefazodone's structure is analogous to that of trazodone, though it has different pharmacological properties. Its efficacy and overall tolerability are comparable to those of SSRIs, as indicated by comparative trials.",
-        "confidence": 0.9,
+        "span": "Nefazodone's structure is analogous to that of trazodone, though it has different pharmacological properties. Its efficacy and overall tolerability are comparable to those of SSRIs, as indicated by comparative trials. However, its use is associated with rare (but fatal) cases of clinical idiosyncratic hepatotoxicity.",
+        "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
         "study_design": null,
@@ -442,14 +777,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 65.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 65,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6597522497177124,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -458,14 +794,14 @@
         "drug_name": "bupropion",
         "condition_name": "major depressive disorder",
         "relation": "EQUIVALENT_TO",
-        "outcome": null,
+        "outcome": "efficacy",
         "side_effects": [],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Other antidepressants",
         "span": "However, for individuals with low to moderate levels of anxiety, the efficacy of bupropion in treating MDD is comparable to that of SSRIs.",
-        "confidence": 0.9,
+        "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": "low to moderate levels of anxiety",
         "study_design": null,
@@ -474,121 +810,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 66.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 66,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6698319911956787,
-          "method": "sentence_similarity"
-        }
-      }
-    },
-    {
-      "fact": {
-        "drug_name": "vortioxetine",
-        "condition_name": "depression",
-        "relation": "IMPROVES",
-        "outcome": "cognitive impairment",
-        "side_effects": [],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "Other antidepressants",
-        "span": "However, they appear to produce less sexual dysfunction and, in the specific case of vortioxetine, have particular benefits in depression-related cognitive impairment.",
-        "confidence": 0.9,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "quality_score": 74.0,
-      "likely_correct": true,
-      "method_results": {
-        "nli": {
-          "quality_score": 74,
-          "likely_correct": true,
-          "similarity": 0.7410002946853638,
-          "method": "sentence_similarity"
-        }
-      }
-    },
-    {
-      "fact": {
-        "drug_name": "trazodone",
-        "condition_name": "depression",
-        "relation": "ASSOCIATED_WITH_SE",
-        "outcome": null,
-        "side_effects": [
-          "high dropout rates",
-          "nausea",
-          "vomiting",
-          "sexual dysfunction",
-          "sedation",
-          "priapism",
-          "cardiotoxicity"
-        ],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "Other antidepressants",
-        "span": "whereas amitriptyline, clomipramine, duloxetine, fluvoxamine, trazodone, and venlafaxine had the highest dropout rates because of their more frequent and severe side effects. Nausea and vomiting were the most common reasons for treatment discontinuation; sexual dysfunction, sedation, priapism, and cardiotoxicity were also reported.",
-        "confidence": 0.9,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "quality_score": 51.0,
-      "likely_correct": true,
-      "method_results": {
-        "nli": {
-          "quality_score": 51,
-          "likely_correct": true,
-          "similarity": 0.5166177153587341,
-          "method": "sentence_similarity"
-        }
-      }
-    },
-    {
-      "fact": {
-        "drug_name": "ketamine",
-        "condition_name": "depression",
-        "relation": "ASSOCIATED_WITH_SE",
-        "outcome": null,
-        "side_effects": [
-          "drug abuse",
-          "addiction"
-        ],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "Ketamine and related molecules",
-        "span": "Lastly, since ketamine is associated with a higher risk of drug abuse and addiction, it cannot be recommended in daily clinical practice.",
-        "confidence": 0.8,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "quality_score": 52.0,
-      "likely_correct": true,
-      "method_results": {
-        "nli": {
-          "quality_score": 52,
-          "likely_correct": true,
-          "similarity": 0.5201727151870728,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -596,18 +826,17 @@
       "fact": {
         "drug_name": "imipramine",
         "condition_name": "major depressive disorder",
-        "relation": "TREATS",
+        "relation": "EFFECTIVE_IN_SUBGROUP",
         "outcome": null,
         "side_effects": [
           "cardiovascular toxicity",
-          "anticholinergic side effects",
-          "risk of lethal toxicity from overdoses"
+          "anticholinergic side effects"
         ],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Perspectives",
-        "span": "Imipramine, approved in 1959, demonstrated efficacy in patients with more severe symptoms of major depressive disorder but is associated with cardiovascular toxicity and anticholinergic side effects. There is also a risk of lethal toxicity from overdoses.",
+        "span": "Imipramine, a tricyclic antidepressant, demonstrated efficacy in patients with more severe symptoms of major depressive disorder. However, it is associated with cardiovascular toxicity and anticholinergic side effects.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -617,14 +846,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 84.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 84,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8401986360549927,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -632,18 +860,17 @@
       "fact": {
         "drug_name": "desipramine",
         "condition_name": "major depressive disorder",
-        "relation": "TREATS",
+        "relation": "EFFECTIVE_IN_SUBGROUP",
         "outcome": null,
         "side_effects": [
           "cardiovascular toxicity",
-          "anticholinergic side effects",
-          "risk of lethal toxicity from overdoses"
+          "anticholinergic side effects"
         ],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Perspectives",
-        "span": "Desipramine, approved in 1959, showed efficacy in patients with more severe symptoms of major depressive disorder but is associated with cardiovascular toxicity and anticholinergic side effects. There is also a risk of lethal toxicity from overdoses.",
+        "span": "Desipramine, another tricyclic antidepressant, is effective in patients with more severe symptoms of major depressive disorder but carries risks of cardiovascular toxicity and anticholinergic side effects.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -653,14 +880,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 86.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 86,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8687146902084351,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -668,18 +894,17 @@
       "fact": {
         "drug_name": "nortriptyline",
         "condition_name": "major depressive disorder",
-        "relation": "TREATS",
+        "relation": "EFFECTIVE_IN_SUBGROUP",
         "outcome": null,
         "side_effects": [
           "cardiovascular toxicity",
-          "anticholinergic side effects",
-          "risk of lethal toxicity from overdoses"
+          "anticholinergic side effects"
         ],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Perspectives",
-        "span": "Nortriptyline demonstrated efficacy in patients with more severe symptoms of major depressive disorder but is associated with cardiovascular toxicity and anticholinergic side effects. There is also a risk of lethal toxicity from overdoses.",
+        "span": "Nortriptyline is effective in patients with more severe symptoms of major depressive disorder, though it is associated with cardiovascular toxicity and anticholinergic side effects.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -689,14 +914,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 88.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 88,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8810863494873047,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -704,18 +928,17 @@
       "fact": {
         "drug_name": "amitriptyline",
         "condition_name": "major depressive disorder",
-        "relation": "TREATS",
+        "relation": "EFFECTIVE_IN_SUBGROUP",
         "outcome": null,
         "side_effects": [
           "cardiovascular toxicity",
-          "anticholinergic side effects",
-          "risk of lethal toxicity from overdoses"
+          "anticholinergic side effects"
         ],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Perspectives",
-        "span": "Amitriptyline, approved in 1961, demonstrated efficacy in patients with more severe symptoms of major depressive disorder but is associated with cardiovascular toxicity and anticholinergic side effects. There is also a risk of lethal toxicity from overdoses.",
+        "span": "Amitriptyline has shown efficacy in patients with more severe symptoms of major depressive disorder, but it is linked to cardiovascular toxicity and anticholinergic side effects.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -725,14 +948,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 85.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 85,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.85530686378479,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -757,14 +979,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 80.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 80,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8055233359336853,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -789,14 +1010,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 69.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 69,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6952863931655884,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -821,14 +1043,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 68.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 68,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6815841197967529,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -853,20 +1076,54 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 75.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 75,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.7580887079238892,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
     {
       "fact": {
-        "drug_name": "cognitive behavioral analysis system of psychotherapy",
+        "drug_name": "mindfulness-based cognitive therapy",
+        "condition_name": "major depressive disorder",
+        "relation": "PREVENTS_RELAPSE_IN",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Overview of psychotherapy in depression",
+        "span": "After remission, CBT, PEI, and mindfulness-based cognitive therapy (MBCT) are proposed to maintain and prevent depression.",
+        "confidence": 0.8,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 90.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "Cognitive Behavioral Analysis System of Psychotherapy",
         "condition_name": "chronic depression",
         "relation": "TREATS",
         "outcome": null,
@@ -885,14 +1142,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 78.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 78,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.7800263166427612,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -907,7 +1163,7 @@
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Structured psychotherapies",
-        "span": "Acceptance and commitment therapy appears to be effective in reducing depressive symptoms and preventing relapses.",
+        "span": "Acceptance and commitment therapy is another form of CBT. This type of therapy, which is based on functional contextualism, can help patients accept and adjusting to persistent problems. It appears to be effective in reducing depressive symptoms and preventing relapses.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -917,14 +1173,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 95.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 95,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.9508889317512512,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -949,14 +1204,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 77.0,
+      "quality_score": 80.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 77,
+        "heuristic": {
+          "quality_score": 80,
           "likely_correct": true,
-          "similarity": 0.7789627909660339,
-          "method": "sentence_similarity"
+          "issues": [
+            "Span doesn't contain typical IMPROVES language"
+          ]
         }
       }
     },
@@ -981,20 +1237,52 @@
         "dose": null,
         "p_value": null
       },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "repetitive transcranial magnetic stimulation",
+        "condition_name": "depression",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "SOMATIC TREATMENTS",
+        "span": "In recent decades, various innovative techniques have been proposed, such as repetitive transcranial magnetic stimulation (rTMS), transcranial direct current stimulation (tDCS), vagus nerve stimulation (VNS), deep brain stimulation (DBS), and magnetic seizure therapy, with varying efficiency levels.",
+        "confidence": 0.7,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
       "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
+        "heuristic": {
           "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.9063780903816223,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
     {
       "fact": {
-        "drug_name": "repetitive transcranial magnetic stimulation (rTMS)",
+        "drug_name": "transcranial direct current stimulation",
         "condition_name": "depression",
         "relation": "TREATS",
         "outcome": null,
@@ -1013,20 +1301,21 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 66.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 66,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6617411375045776,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
     {
       "fact": {
-        "drug_name": "transcranial direct current stimulation (tDCS)",
+        "drug_name": "vagus nerve stimulation",
         "condition_name": "depression",
         "relation": "TREATS",
         "outcome": null,
@@ -1045,20 +1334,21 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 61.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 61,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6165875792503357,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
     {
       "fact": {
-        "drug_name": "vagus nerve stimulation (VNS)",
+        "drug_name": "deep brain stimulation",
         "condition_name": "depression",
         "relation": "TREATS",
         "outcome": null,
@@ -1077,46 +1367,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 48.0,
-      "likely_correct": false,
+      "quality_score": 90.0,
+      "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 48,
-          "likely_correct": false,
-          "similarity": 0.4806440472602844,
-          "method": "sentence_similarity"
-        }
-      }
-    },
-    {
-      "fact": {
-        "drug_name": "deep brain stimulation (DBS)",
-        "condition_name": "depression",
-        "relation": "TREATS",
-        "outcome": null,
-        "side_effects": [],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "SOMATIC TREATMENTS",
-        "span": "In recent decades, various innovative techniques have been proposed, such as repetitive transcranial magnetic stimulation (rTMS), transcranial direct current stimulation (tDCS), vagus nerve stimulation (VNS), deep brain stimulation (DBS), and magnetic seizure therapy, with varying efficiency levels.",
-        "confidence": 0.7,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "quality_score": 48.0,
-      "likely_correct": false,
-      "method_results": {
-        "nli": {
-          "quality_score": 48,
-          "likely_correct": false,
-          "similarity": 0.4863247275352478,
-          "method": "sentence_similarity"
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -1141,14 +1400,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 48.0,
-      "likely_correct": false,
+      "quality_score": 90.0,
+      "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 48,
-          "likely_correct": false,
-          "similarity": 0.48054879903793335,
-          "method": "sentence_similarity"
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -1173,14 +1433,44 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 74.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 74,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.7444881796836853,
-          "method": "sentence_similarity"
+          "issues": []
+        }
+      }
+    },
+    {
+      "fact": {
+        "drug_name": "ECT",
+        "condition_name": "severe and psychotic depression",
+        "relation": "FIRST_LINE_FOR",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "ECT",
+        "span": "ECT is typically recommended for patients with severe and psychotic depression, a high risk of suicide, or Parkinson's disease, as well as pregnant patients.",
+        "confidence": 0.8,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "quality_score": 100.0,
+      "likely_correct": true,
+      "method_results": {
+        "heuristic": {
+          "quality_score": 100,
+          "likely_correct": true,
+          "issues": []
         }
       }
     },
@@ -1189,7 +1479,7 @@
         "drug_name": "rTMS",
         "condition_name": "depression",
         "relation": "IMPROVES",
-        "outcome": "improvements in depressive symptoms",
+        "outcome": null,
         "side_effects": [],
         "effect_size": null,
         "confidence_interval": null,
@@ -1205,14 +1495,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 86.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 86,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.8611932992935181,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -1220,14 +1511,14 @@
       "fact": {
         "drug_name": "rTMS",
         "condition_name": "depression",
-        "relation": "AUGMENTS",
+        "relation": "EFFECTIVE_IN_SUBGROUP",
         "outcome": null,
         "side_effects": [],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "rTMS",
-        "span": "Preliminary research has revealed synergistic (e.g., rTMS/quetiapine) interactions between neuro-modulation and pharmacotherapy.",
+        "span": "Preliminary research has revealed synergistic (e.g., rTMS/quetiapine) and antagonizing (e.g., rTMS/cannabinoid receptor (CB1) antagonist) interactions between neuro-modulation and pharmacotherapy.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -1237,14 +1528,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 43.0,
-      "likely_correct": false,
+      "quality_score": 90.0,
+      "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 43,
-          "likely_correct": false,
-          "similarity": 0.4398629665374756,
-          "method": "sentence_similarity"
+        "heuristic": {
+          "quality_score": 90,
+          "likely_correct": true,
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -1252,7 +1544,7 @@
       "fact": {
         "drug_name": "rTMS",
         "condition_name": "depression",
-        "relation": "EQUIVALENT_TO",
+        "relation": "SUPERIOR_TO",
         "outcome": null,
         "side_effects": [],
         "effect_size": null,
@@ -1269,14 +1561,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 64.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 64,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.6414721012115479,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -1301,14 +1594,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 74.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 74,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.7429232597351074,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -1333,14 +1625,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 77.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 77,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.7755193710327148,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -1365,14 +1656,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 81.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 81,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8170883059501648,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -1397,14 +1687,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 85.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 85,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8540629148483276,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -1429,14 +1718,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 79.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 79,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.7928778529167175,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
@@ -1445,14 +1735,14 @@
         "drug_name": "DBS of the subgenual cingulate white matter",
         "condition_name": "resistant depression",
         "relation": "IMPROVES",
-        "outcome": "clinical response",
+        "outcome": "clinical response, clinical remission",
         "side_effects": [],
-        "effect_size": "60% response rate",
+        "effect_size": "60% response, 35% remission",
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "DBS",
-        "span": "According to the literature, DBS of the subgenual cingulate white matter (Brodmann area = BA 25) elicited a clinical response in 60% of resistant depression patients after six months and clinical remission in 35% of patients, with benefits maintained for over 12 mo.",
-        "confidence": 1.0,
+        "span": "According to the literature, DBS of the subgenual cingulate white matter (Brodmann area = BA 25) elicited a clinical response in 60% of resistant depression patients after six months and clinical remission in 35% of patients, with benefits maintained for over 12 mo[144].",
+        "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
         "study_design": null,
@@ -1461,46 +1751,15 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 82.0,
+      "quality_score": 80.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 82,
+        "heuristic": {
+          "quality_score": 80,
           "likely_correct": true,
-          "similarity": 0.8256392478942871,
-          "method": "sentence_similarity"
-        }
-      }
-    },
-    {
-      "fact": {
-        "drug_name": "DBS of the subgenual cingulate white matter",
-        "condition_name": "resistant depression",
-        "relation": "IMPROVES",
-        "outcome": "clinical remission",
-        "side_effects": [],
-        "effect_size": "35% remission rate",
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "DBS",
-        "span": "According to the literature, DBS of the subgenual cingulate white matter (Brodmann area = BA 25) elicited a clinical response in 60% of resistant depression patients after six months and clinical remission in 35% of patients, with benefits maintained for over 12 mo.",
-        "confidence": 1.0,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": "6 months",
-        "dose": null,
-        "p_value": null
-      },
-      "quality_score": 82.0,
-      "likely_correct": true,
-      "method_results": {
-        "nli": {
-          "quality_score": 82,
-          "likely_correct": true,
-          "similarity": 0.8256392478942871,
-          "method": "sentence_similarity"
+          "issues": [
+            "Span doesn't contain typical IMPROVES language"
+          ]
         }
       }
     },
@@ -1519,27 +1778,28 @@
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
-        "study_design": "observational",
+        "study_design": null,
         "sample_size": null,
         "duration": null,
         "dose": null,
         "p_value": null
       },
-      "quality_score": 58.0,
+      "quality_score": 90.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 58,
+        "heuristic": {
+          "quality_score": 90,
           "likely_correct": true,
-          "similarity": 0.5838045477867126,
-          "method": "sentence_similarity"
+          "issues": [
+            "Condition not explicitly mentioned in span"
+          ]
         }
       }
     },
     {
       "fact": {
         "drug_name": "ECT",
-        "condition_name": "certain forms of depression",
+        "condition_name": "depression",
         "relation": "MAINTENANCE_FOR",
         "outcome": null,
         "side_effects": [],
@@ -1557,14 +1817,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 74.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 74,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.7451825141906738,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     },
@@ -1589,14 +1848,13 @@
         "dose": null,
         "p_value": null
       },
-      "quality_score": 88.0,
+      "quality_score": 100.0,
       "likely_correct": true,
       "method_results": {
-        "nli": {
-          "quality_score": 88,
+        "heuristic": {
+          "quality_score": 100,
           "likely_correct": true,
-          "similarity": 0.8814876079559326,
-          "method": "sentence_similarity"
+          "issues": []
         }
       }
     }

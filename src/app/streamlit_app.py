@@ -18,6 +18,19 @@ from src.core.extract_llm import extract_pipeline
 from src.core.validate import validate_extracted_facts, save_validation_results
 from src.core.normalize_ontology import OntologyNormalizer
 
+
+def check_neo4j_connection(uri: str, user: str, password: str) -> tuple[bool, str]:
+    """Test Neo4j connection and return status."""
+    try:
+        from neo4j import GraphDatabase
+        driver = GraphDatabase.driver(uri, auth=(user, password))
+        with driver.session() as session:
+            session.run("RETURN 1")
+        driver.close()
+        return True, "✅ Connected"
+    except Exception as e:
+        return False, f"❌ Connection failed: {str(e)}"
+    
 # Page config
 st.set_page_config(
     page_title="Brightside Health AI Studio",
@@ -44,6 +57,13 @@ if 'execution_mode' not in st.session_state:
     st.session_state.execution_mode = 'direct'  # 'direct' or 'subprocess'
 if 'default_quality_methods' not in st.session_state:
     st.session_state.default_quality_methods = ['heuristic']
+
+if 'neo4j_uri' not in st.session_state:
+    st.session_state.neo4j_uri = os.getenv('NEO4J_URI', 'bolt://localhost:7687')
+if 'neo4j_user' not in st.session_state:
+    st.session_state.neo4j_user = os.getenv('NEO4J_USER', 'neo4j')
+if 'neo4j_password' not in st.session_state:
+    st.session_state.neo4j_password = os.getenv('NEO4J_PASSWORD', '')
 
 # Utility functions
 def reset_pipeline():
@@ -91,6 +111,37 @@ st.markdown("---")
 
 # Sidebar - Paper Selection & Settings
 with st.sidebar:
+    # Quick setup guide
+    with st.expander("⚡ Quick Setup Guide"):
+        st.markdown("""
+        **First Time Setup:**
+        
+        1. **Install Neo4j**
+           - Desktop: https://neo4j.com/download/
+           - Or Docker: `docker run -p 7474:7474 -p 7687:7687 neo4j:5.15`
+        
+        2. **Start Database**
+           - Neo4j Desktop: Create → Start
+           - Docker: Container auto-starts
+        
+        3. **Configure Connection**
+           - Scroll down to "Neo4j Database"
+           - Enter URI (default: bolt://localhost:7687)
+           - Enter username (default: neo4j)
+           - Enter password (set during installation)
+           - Click "Test Connection"
+        
+        4. **Set Environment**
+           - Edit `.env` file with your credentials
+           - Restart Streamlit if credentials change
+        
+        5. **Select Paper**
+           - Upload PDF, enter URL, or select existing
+           - Run through pipeline stages
+        """)
+    
+    st.markdown("---")
+ 
     st.header("📄 Paper Input")
     
     # Execution mode toggle
@@ -199,6 +250,61 @@ with st.sidebar:
         step=0.01,
         help="Minimum similarity for ontology matching"
     )
+    
+    # In the sidebar, after Pipeline Settings (around line 210)
+
+    st.markdown("---")
+    
+    # Neo4j Configuration
+    st.header("Neo4j Database")
+    
+    with st.expander("Database Connection", expanded=False):
+        st.markdown("""
+        **Setup Instructions:**
+        1. Install Neo4j Desktop or use Docker
+        2. Create a new database
+        3. Start the database instance
+        4. Note the Bolt URI (default: bolt://localhost:7687)
+        5. Note username (default: neo4j)
+        6. Set a password
+        """)
+        
+        st.session_state.neo4j_uri = st.text_input(
+            "Neo4j URI",
+            value=st.session_state.neo4j_uri,
+            help="Bolt protocol URI (e.g., bolt://localhost:7687)"
+        )
+        
+        st.session_state.neo4j_user = st.text_input(
+            "Username",
+            value=st.session_state.neo4j_user
+        )
+        
+        st.session_state.neo4j_password = st.text_input(
+            "Password",
+            value=st.session_state.neo4j_password,
+            type="password"
+        )
+        
+        if st.button("🔌 Test Connection"):
+            with st.spinner("Testing connection..."):
+                is_connected, message = check_neo4j_connection(
+                    st.session_state.neo4j_uri,
+                    st.session_state.neo4j_user,
+                    st.session_state.neo4j_password
+                )
+                if is_connected:
+                    st.success(message)
+                    st.session_state.neo4j_connected = True
+                else:
+                    st.error(message)
+                    st.session_state.neo4j_connected = False
+        
+        # Connection status indicator
+        if st.session_state.get('neo4j_connected'):
+            st.success("🟢 Database Connected")
+        else:
+            st.warning("🔴 Database Not Connected")
     
     st.markdown("---")
     
@@ -840,12 +946,12 @@ else:
                             import traceback
                             st.code(traceback.format_exc())
     
-    # Stage 6: Load to Graph (Coming Soon)
-    with st.expander("**6️⃣ Load to Knowledge Graph** 🚧", expanded=False):
+    # Stage 6: Load to Graph
+    with st.expander("**6️⃣ Load to Knowledge Graph**", expanded=st.session_state.pipeline_state['normalized'] and not st.session_state.pipeline_state['loaded_to_graph']):
         st.markdown("""
-        **Purpose:** Insert normalized facts into Neo4j/Kùzu graph database.
+        **Purpose:** Insert normalized facts into Neo4j graph database.
         
-        **Script:** `scripts/load_neo4j.py` *(in development)*
+        **Script:** `scripts/load_neo4j.py`
         
         **Output:** Knowledge graph with nodes and relationships
         """)
@@ -853,91 +959,254 @@ else:
         if not st.session_state.pipeline_state['normalized']:
             st.warning("⚠️ Complete Normalize step first")
         else:
-            st.info("🚧 **Coming Soon:** This stage is currently being refined.")
-            st.markdown("""
-            When ready, you'll be able to:
-            - Load normalized facts into Neo4j
-            - Visualize the knowledge graph
-            - Query relationships and provenance
-            - Mark edges as reviewed
+            normalized_path = Path("data/processed/normalized") / f"{paper_id}_normalized.json"
             
-            For now, you can manually load using:
-            ```bash
-            python scripts/load_neo4j.py --input data/processed/normalized/{paper_id}_normalized.json --clear
-            ```
-            """)
-            
-            # Manual load option
-            if st.checkbox("Show manual load interface"):
-                col1, col2 = st.columns(2)
-                with col1:
-                    clear_db = st.checkbox("Clear existing graph data", value=False)
-                with col2:
-                    neo4j_uri = st.text_input("Neo4j URI", value="bolt://localhost:7687")
+            # Check if already loaded
+            if st.session_state.pipeline_state['loaded_to_graph']:
+                st.success("✅ Already loaded to graph")
                 
-                if st.button("▶️ Load to Graph (Manual)", key="load_btn"):
-                    st.info("Graph loading will be available in the next release. Please use the command-line for now.")
-    
+                # Show graph statistics
+                if st.button("📊 Show Graph Statistics"):
+                    try:
+                        from neo4j import GraphDatabase
+                        driver = GraphDatabase.driver(
+                            st.session_state.neo4j_uri,
+                            auth=(st.session_state.neo4j_user, st.session_state.neo4j_password)
+                        )
+                        
+                        with driver.session() as session:
+                            # Node counts
+                            result = session.run("""
+                                MATCH (n)
+                                RETURN labels(n)[0] AS label, count(n) AS count
+                                ORDER BY count DESC
+                            """)
+                            node_stats = [{"Label": r["label"], "Count": r["count"]} for r in result]
+                            
+                            # Relationship counts
+                            result = session.run("""
+                                MATCH ()-[r]->()
+                                RETURN type(r) AS type, count(r) AS count
+                                ORDER BY count DESC
+                            """)
+                            rel_stats = [{"Type": r["type"], "Count": r["count"]} for r in result]
+                        
+                        driver.close()
+                        
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.markdown("**Nodes:**")
+                            st.dataframe(pd.DataFrame(node_stats), use_container_width=True)
+                        with col2:
+                            st.markdown("**Relationships:**")
+                            st.dataframe(pd.DataFrame(rel_stats), use_container_width=True)
+                    
+                    except Exception as e:
+                        st.error(f"Failed to fetch statistics: {e}")
+            
+            else:
+                # Pre-flight checks
+                st.markdown("### Pre-Flight Checks")
+                
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    # Check 1: Normalized file exists
+                    if normalized_path.exists():
+                        st.success(f"✅ Normalized file ready ({get_file_size(normalized_path)})")
+                    else:
+                        st.error("❌ Normalized file not found")
+                
+                with col2:
+                    # Check 2: Neo4j connection
+                    if st.session_state.get('neo4j_connected'):
+                        st.success("✅ Neo4j connected")
+                    else:
+                        st.error("❌ Neo4j not connected")
+                        st.info("Configure connection in sidebar")
+                
+                # Load options
+                st.markdown("### Load Options")
+                
+                clear_existing = st.checkbox(
+                    "🗑️ Clear existing graph data before loading",
+                    value=False,
+                    help="WARNING: This will delete ALL data in the Neo4j database"
+                )
+                
+                if clear_existing:
+                    st.warning("⚠️ This will DELETE all existing nodes and relationships!")
+                
+                # Show command that will be run
+                if st.session_state.execution_mode == 'subprocess':
+                    cmd = f"python scripts/load_neo4j.py --input \"{normalized_path}\""
+                    if clear_existing:
+                        cmd += " --clear"
+                    cmd += f" --uri \"{st.session_state.neo4j_uri}\" --user \"{st.session_state.neo4j_user}\" --password \"***\""
+                    st.code(cmd, language="bash")
+                
+                # Load button (only enabled if checks pass)
+                can_load = (
+                    normalized_path.exists() and
+                    st.session_state.get('neo4j_connected', False)
+                )
+                
+                if not can_load:
+                    st.warning("⚠️ Complete pre-flight checks before loading")
+                
+                if st.button("▶️ Load to Graph", key="load_btn", disabled=not can_load):
+                    with st.spinner("Loading facts into Neo4j..."):
+                        try:
+                            if st.session_state.execution_mode == 'direct':
+                                # Direct mode: import and call function
+                                from scripts.load_neo4j import Neo4jLoader, load_normalized_data
+                                
+                                loader = Neo4jLoader(
+                                    st.session_state.neo4j_uri,
+                                    st.session_state.neo4j_user,
+                                    st.session_state.neo4j_password
+                                )
+                                
+                                # Clear if requested
+                                if clear_existing:
+                                    with st.spinner("Clearing existing data..."):
+                                        loader.clear_database()
+                                        st.info("🗑️ Database cleared")
+                                
+                                # Load normalized data
+                                progress_placeholder = st.empty()
+                                progress_placeholder.info("📊 Loading normalized facts...")
+                                
+                                load_normalized_data(loader, str(normalized_path))
+                                
+                                # Get summary statistics
+                                with loader.driver.session() as session:
+                                    node_count = session.run("MATCH (n) RETURN count(n) AS count").single()["count"]
+                                    rel_count = session.run("MATCH ()-[r]->() RETURN count(r) AS count").single()["count"]
+                                
+                                loader.close()
+                                
+                                progress_placeholder.empty()
+                                st.success(f"✅ Load complete! {node_count} nodes, {rel_count} relationships (direct mode)")
+                            
+                            else:
+                                # Subprocess mode: run script
+                                args = [
+                                    "--input", str(normalized_path),
+                                    "--uri", st.session_state.neo4j_uri,
+                                    "--user", st.session_state.neo4j_user,
+                                    "--password", st.session_state.neo4j_password
+                                ]
+                                
+                                if clear_existing:
+                                    args.append("--clear")
+                                
+                                returncode, stdout, stderr = run_script_subprocess("load_neo4j", args)
+                                
+                                if returncode == 0:
+                                    st.success("✅ Load complete (subprocess mode)!")
+                                    with st.expander("Show output"):
+                                        st.code(stdout)
+                                else:
+                                    st.error(f"❌ Load failed (exit code {returncode})")
+                                    with st.expander("Show error"):
+                                        st.code(stderr)
+                                    st.stop()
+                            
+                            # Update state
+                            st.session_state.pipeline_state['loaded_to_graph'] = True
+                            st.rerun()
+                        
+                        except Exception as e:
+                            st.error(f"❌ Load failed: {e}")
+                            import traceback
+                            st.code(traceback.format_exc())
+                
+                # Manual Neo4j Browser link
+                st.markdown("---")
+                st.markdown("### 🔍 View in Neo4j Browser")
+                
+                browser_url = st.session_state.neo4j_uri.replace('bolt://', 'http://').replace(':7687', ':7474')
+                st.markdown(f"Open [Neo4j Browser]({browser_url}) to visualize and query the graph.")
+                
+                st.code("""
+// Example queries to try in Neo4j Browser:
+
+// 1. Show all node types and counts
+MATCH (n)
+RETURN labels(n)[0] AS type, count(n) AS count
+ORDER BY count DESC
+
+// 2. Find first-line treatments for depression
+MATCH (d:Drug)-[r:FIRST_LINE_FOR]->(c:Condition)
+WHERE c.normalized_name CONTAINS "depressive"
+RETURN d.name, r.confidence, r.evidence
+ORDER BY r.confidence DESC
+LIMIT 1000
+
+// 3. Show drug with most connections
+MATCH (d:Drug)-[r]->()
+RETURN d.name, count(r) AS connections
+ORDER BY connections DESC
+LIMIT 1000
+                """, language="cypher")
+                
     # Pipeline Summary
     st.markdown("---")
-    if all(st.session_state.pipeline_state[k] for k in ['parsed', 'extracted', 'validated', 'quality_checked', 'normalized']):
-        st.success("🎉 **Pipeline Complete!** (Up to normalization)")
+    all_stages_complete = all(st.session_state.pipeline_state[k] for k in ['parsed', 'extracted', 'validated', 'quality_checked', 'normalized', 'loaded_to_graph'])
+    
+    if all_stages_complete:
+        st.success("🎉 **Pipeline 100% Complete!**")
         
         col1, col2 = st.columns(2)
         
         with col1:
             st.markdown("""
             **✅ Completed Stages:**
-            - Parsed document structure
-            - Extracted clinical facts
-            - Validated fact quality
-            - Assessed precision
-            - Normalized to ontologies
+            - ✓ Parsed document structure
+            - ✓ Extracted clinical facts
+            - ✓ Validated fact quality
+            - ✓ Assessed precision
+            - ✓ Normalized to ontologies
+            - ✓ Loaded to Neo4j graph
             """)
         
         with col2:
-            st.markdown("""
+            st.markdown(f"""
             **📁 Output Files:**
             - `data/interim/{paper_id}_parsed.json`
             - `data/processed/extracted/{paper_id}_extracted.json`
             - `data/processed/validated/{paper_id}_validated.json`
             - `data/eval/{paper_id}_quality_report.json`
             - `data/processed/normalized/{paper_id}_normalized.json`
-            """.replace("{paper_id}", paper_id))
+            - **Neo4j Database:** [{st.session_state.neo4j_uri}]({st.session_state.neo4j_uri.replace('bolt://', 'http://').replace(':7687', ':7474')})
+            """)
         
         # Action buttons
-        st.markdown("### Next Steps")
+        st.markdown("### 🎯 Next Actions")
         col1, col2, col3 = st.columns(3)
         
         with col1:
+            if st.button("🔍 Open Neo4j Browser"):
+                browser_url = st.session_state.neo4j_uri.replace('bolt://', 'http://').replace(':7687', ':7474')
+                st.markdown(f"[Open Neo4j Browser]({browser_url})")
+        
+        with col2:
             if st.button("📊 View Quality Report"):
                 quality_path = Path("data/eval") / f"{paper_id}_quality_report.json"
                 if quality_path.exists():
                     data = load_json_safe(quality_path)
                     st.json(data)
         
-        with col2:
-            if st.button("🔍 View Unmatched Terms"):
-                normalized_path = Path("data/processed/normalized") / f"{paper_id}_normalized.json"
-                if normalized_path.exists():
-                    st.code(f"python scripts/show_unmatched_normalized.py --input \"{normalized_path}\"", language="bash")
-        
         with col3:
-            if st.button("📄 View All Outputs"):
-                st.markdown("### Output Files")
-                for stage in ['parsed', 'extracted', 'validated', 'quality_checked', 'normalized']:
-                    if st.session_state.pipeline_state[stage]:
-                        path_map = {
-                            'parsed': f"data/interim/{paper_id}_parsed.json",
-                            'extracted': f"data/processed/extracted/{paper_id}_extracted.json",
-                            'validated': f"data/processed/validated/{paper_id}_validated.json",
-                            'quality_checked': f"data/eval/{paper_id}_quality_report.json",
-                            'normalized': f"data/processed/normalized/{paper_id}_normalized.json"
-                        }
-                        path = Path(path_map[stage])
-                        if path.exists():
-                            st.markdown(f"- {stage.title()}: `{path}` ({get_file_size(path)})")
+            if st.button("📄 Add Another Paper"):
+                reset_pipeline()
+                st.session_state.current_paper = None
+                st.rerun()
     
+    elif all(st.session_state.pipeline_state[k] for k in ['parsed', 'extracted', 'validated', 'quality_checked', 'normalized']):
+        st.info("💡 **Almost Done!** Load to Neo4j to complete the pipeline")
+          
     # Debug panel
     with st.expander("🔧 Debug Info"):
         st.json({
