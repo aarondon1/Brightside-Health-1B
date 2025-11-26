@@ -1,4 +1,4 @@
-﻿# Brightside Health AI Studio — Clinical Knowledge Graph
+﻿![Brightside Health AI Studio — Clinical Knowledge Graph](media/social-share-banner.webp)
 
 > **Build a clinician-facing knowledge graph from depression/anxiety research papers.**  
 > **Pipeline:** Docling → GPT-4o extraction → validation → quality assessment → ontology normalization → **Neo4j** graph → **Streamlit** UI  
@@ -22,7 +22,7 @@
 
 ---
 
-## 🏗️ Architecture (End-to-End)
+## Architecture (End-to-End)
 
 ```mermaid
 flowchart TD
@@ -54,7 +54,7 @@ flowchart TD
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Component              | Technology                                  | Purpose                                           |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------- |
@@ -237,7 +237,7 @@ NEO4J_PASSWORD=your-password-here
 
 ---
 
-## 🎨 Two Ways to Run the Pipeline
+## Two Ways to Run the Pipeline
 
 ### **Option 1: Streamlit UI (Recommended - Human-in-the-Loop)**
 
@@ -821,16 +821,3 @@ pip install -r requirements.txt
 MIT License - see LICENSE file for details
 
 ---
-
-## 📧 Contact
-
-For questions or support:
-
-- GitHub Issues: https://github.com/your-org/brightside-health-ai/issues
-- Email: support@brightside.com
-
----
-
-**Last Updated:** January 2025  
-**Version:** 2.0.0  
-**Status:** Production Ready (MVP Complete)
