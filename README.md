@@ -119,7 +119,7 @@ brightside-health-ai/
     │   ├── validate.py               # Validation rules and logic
     │   └── normalize_ontology.py     # Ontology mapping
     ├── analytics/
-    │   └── networkx_sidecar.py       # Graph analytics (optional)
+    │   └── networkx_sidecar.py       # Graph analytics (future implementations)
     └── utils/                        # Shared utilities
 
 ```
@@ -823,4 +823,5 @@ pip install -r requirements.txt
 MIT License - see LICENSE file for details
 
 ---
+
 
