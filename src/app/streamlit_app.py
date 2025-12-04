@@ -347,7 +347,7 @@ if not st.session_state.current_paper:
     3. **Validate** - Check facts against schema and logical rules
     4. **Quality Check** - Assess precision using multiple methods (heuristic, NLI, LLM judge)
     5. **Normalize** - Map terms to standard ontology codes (RxNorm, SNOMED)
-    6. **Load to Graph** - Insert into Neo4j knowledge graph *(coming soon)*
+    6. **Load to Graph** - Insert into Neo4j knowledge graph
     
     Each stage requires **manual approval** to proceed, giving you full control.
     """)
@@ -453,7 +453,7 @@ else:
         if st.session_state.pipeline_state['loaded_to_graph']:
             st.success("✅ Loaded")
         else:
-            st.info("🚧 Coming Soon")
+            st.info("⏳ Load to Graph")
     
     st.markdown("---")
     

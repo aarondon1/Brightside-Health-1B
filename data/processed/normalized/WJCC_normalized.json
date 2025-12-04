@@ -556,6 +556,56 @@
     },
     {
       "raw_fact": {
+        "drug_name": "electroconvulsive therapy",
+        "condition_name": "major depressive disorder",
+        "relation": "TREATS",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "introduction",
+        "span": "Acute-phase treatment options include pharmacotherapy, depression-focused psychotherapy, combinations of medications and psychotherapy, and somatic therapies such as electroconvulsive therapy (ECT).",
+        "confidence": 0.8,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "electroconvulsive therapy",
+        "concept_id": "SNOMED:228557008",
+        "label": "Electroconvulsive therapy",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "TREATS",
+        "concept_id": "CUSTOM:0001",
+        "label": "TREATS",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": null,
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
         "drug_name": "pharmacotherapy",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
@@ -656,7 +706,7 @@
     },
     {
       "raw_fact": {
-        "drug_name": "electroconvulsive therapy",
+        "drug_name": "combinations of medications and psychotherapy",
         "condition_name": "major depressive disorder",
         "relation": "TREATS",
         "outcome": null,
@@ -676,12 +726,12 @@
         "p_value": null
       },
       "drug": {
-        "text": "electroconvulsive therapy",
-        "concept_id": "SNOMED:228557008",
-        "label": "Electroconvulsive therapy",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
+        "text": "combinations of medications and psychotherapy",
+        "concept_id": null,
+        "label": null,
+        "provider": null,
+        "match_type": "unmatched",
+        "score": 0.0
       },
       "condition": {
         "text": "major depressive disorder",
@@ -706,6 +756,56 @@
     },
     {
       "raw_fact": {
+        "drug_name": "selective serotonin reuptake inhibitors",
+        "condition_name": "depression",
+        "relation": "FIRST_LINE_FOR",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "PHARMACOTHERAPY",
+        "span": "While selective serotonin reuptake inhibitors (SSRIs) remain the gold-standard treatment for depression, new antidepressants are always being developed and tested.",
+        "confidence": 0.9,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "selective serotonin reuptake inhibitors",
+        "concept_id": "RXNORM:372652",
+        "label": "SSRIs",
+        "provider": "rxnorm",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "condition": {
+        "text": "depression",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "synonym",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "FIRST_LINE_FOR",
+        "concept_id": null,
+        "label": null,
+        "provider": null,
+        "match_type": "unmatched",
+        "score": 0.0
+      },
+      "outcome": null,
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
         "drug_name": "TCAs",
         "condition_name": "major depressive disorder",
         "relation": "EQUIVALENT_TO",
@@ -716,7 +816,7 @@
         "source_id": "WJCC",
         "section": "TCAs",
         "span": "TCAs-such as amitriptyline, nortriptyline, protriptyline, imipramine, desipramine, doxepin, and trimipramine-are about as effective as other classes of antidepressants-including SSRIs, SNRIs, and MAOIs-in treating major depression.",
-        "confidence": 0.8,
+        "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
         "study_design": "comparative",
@@ -806,56 +906,6 @@
     },
     {
       "raw_fact": {
-        "drug_name": "TCAs",
-        "condition_name": "major depressive disorder",
-        "relation": "CONTRAINDICATED_FOR",
-        "outcome": null,
-        "side_effects": [],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "TCAs",
-        "span": "In most cases, TCAs should generally be reserved for situations when first-line drug treatments have failed.",
-        "confidence": 0.8,
-        "treatment_line": "first",
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "drug": {
-        "text": "TCAs",
-        "concept_id": "RXNORM:321988",
-        "label": "TCAs",
-        "provider": "rxnorm",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "CONTRAINDICATED_FOR",
-        "concept_id": "CUSTOM:0005",
-        "label": "CONTRAINDICATED_FOR",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
-    },
-    {
-      "raw_fact": {
         "drug_name": "fluoxetine",
         "condition_name": "depression",
         "relation": "EQUIVALENT_TO",
@@ -919,7 +969,7 @@
         "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
-        "study_design": null,
+        "study_design": "systematic reviews and meta-analyses",
         "sample_size": null,
         "duration": null,
         "dose": null,
@@ -969,7 +1019,7 @@
         "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
-        "study_design": null,
+        "study_design": "systematic reviews and meta-analyses",
         "sample_size": null,
         "duration": null,
         "dose": null,
@@ -1131,10 +1181,10 @@
         "source_id": "WJCC",
         "section": "Norepinephrine reuptake inhibitors",
         "span": "Also, venlafaxine's efficacy is comparable to that of TCAs.",
-        "confidence": 0.8,
+        "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
-        "study_design": "individual studies",
+        "study_design": null,
         "sample_size": null,
         "duration": null,
         "dose": null,
@@ -1286,15 +1336,13 @@
         "condition_name": "major depressive disorder",
         "relation": "EQUIVALENT_TO",
         "outcome": null,
-        "side_effects": [
-          "hepatotoxicity"
-        ],
+        "side_effects": [],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Other antidepressants",
-        "span": "Nefazodone's structure is analogous to that of trazodone, though it has different pharmacological properties. Its efficacy and overall tolerability are comparable to those of SSRIs, as indicated by comparative trials. However, its use is associated with rare (but fatal) cases of clinical idiosyncratic hepatotoxicity.",
-        "confidence": 0.8,
+        "span": "Nefazodone's structure is analogous to that of trazodone, though it has different pharmacological properties. Its efficacy and overall tolerability are comparable to those of SSRIs, as indicated by comparative trials.",
+        "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
         "study_design": null,
@@ -1328,16 +1376,7 @@
         "score": 1.0
       },
       "outcome": null,
-      "side_effects": [
-        {
-          "text": "hepatotoxicity",
-          "concept_id": "SNOMED:235869004",
-          "label": "Drug-induced hepatitis",
-          "provider": "snomed",
-          "match_type": "synonym",
-          "score": 1.0
-        }
-      ],
+      "side_effects": [],
       "effect_size": null,
       "confidence_interval": null
     },
@@ -1346,16 +1385,16 @@
         "drug_name": "bupropion",
         "condition_name": "major depressive disorder",
         "relation": "EQUIVALENT_TO",
-        "outcome": "efficacy",
+        "outcome": null,
         "side_effects": [],
         "effect_size": null,
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Other antidepressants",
         "span": "However, for individuals with low to moderate levels of anxiety, the efficacy of bupropion in treating MDD is comparable to that of SSRIs.",
-        "confidence": 0.8,
+        "confidence": 0.9,
         "treatment_line": null,
-        "patient_subgroup": "low to moderate levels of anxiety",
+        "patient_subgroup": null,
         "study_design": null,
         "sample_size": null,
         "duration": null,
@@ -1386,14 +1425,57 @@
         "match_type": "exact",
         "score": 1.0
       },
-      "outcome": {
-        "text": "efficacy",
-        "concept_id": "SNOMED:246453008",
-        "label": "Treatment efficacy",
-        "provider": "snomed",
-        "match_type": "synonym",
+      "outcome": null,
+      "side_effects": [],
+      "effect_size": null,
+      "confidence_interval": null
+    },
+    {
+      "raw_fact": {
+        "drug_name": "bupropion",
+        "condition_name": "major depressive disorder",
+        "relation": "IMPROVES",
+        "outcome": null,
+        "side_effects": [],
+        "effect_size": null,
+        "confidence_interval": null,
+        "source_id": "WJCC",
+        "section": "Other antidepressants",
+        "span": "In addition, bupropion is more likely than some SSRIs to improve symptoms of fatigue and sleepiness.",
+        "confidence": 0.8,
+        "treatment_line": null,
+        "patient_subgroup": null,
+        "study_design": null,
+        "sample_size": null,
+        "duration": null,
+        "dose": null,
+        "p_value": null
+      },
+      "drug": {
+        "text": "bupropion",
+        "concept_id": "RXNORM:42347",
+        "label": "Bupropion",
+        "provider": "rxnorm",
+        "match_type": "exact",
         "score": 1.0
       },
+      "condition": {
+        "text": "major depressive disorder",
+        "concept_id": "SNOMED:35489007",
+        "label": "Major depressive disorder",
+        "provider": "snomed",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "relation": {
+        "text": "IMPROVES",
+        "concept_id": "CUSTOM:0002",
+        "label": "IMPROVES",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
+      },
+      "outcome": null,
       "side_effects": [],
       "effect_size": null,
       "confidence_interval": null
@@ -1412,7 +1494,7 @@
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Perspectives",
-        "span": "Imipramine, a tricyclic antidepressant, demonstrated efficacy in patients with more severe symptoms of major depressive disorder. However, it is associated with cardiovascular toxicity and anticholinergic side effects.",
+        "span": "Imipramine, a tricyclic antidepressant, demonstrated efficacy in patients with more severe symptoms of major depressive disorder. However, it is associated with cardiovascular toxicity and anticholinergic side effects, with a risk of lethal toxicity from overdoses.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -1482,7 +1564,7 @@
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Perspectives",
-        "span": "Desipramine, another tricyclic antidepressant, is effective in patients with more severe symptoms of major depressive disorder but carries risks of cardiovascular toxicity and anticholinergic side effects.",
+        "span": "Desipramine, another tricyclic antidepressant, is effective in patients with more severe symptoms of major depressive disorder. It carries risks of cardiovascular toxicity and anticholinergic side effects, and there is a risk of lethal toxicity from overdoses.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -1552,7 +1634,7 @@
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Perspectives",
-        "span": "Nortriptyline is effective in patients with more severe symptoms of major depressive disorder, though it is associated with cardiovascular toxicity and anticholinergic side effects.",
+        "span": "Nortriptyline is effective in patients with more severe symptoms of major depressive disorder. It is associated with cardiovascular toxicity and anticholinergic side effects, with a risk of lethal toxicity from overdoses.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -1622,7 +1704,7 @@
         "confidence_interval": null,
         "source_id": "WJCC",
         "section": "Perspectives",
-        "span": "Amitriptyline has shown efficacy in patients with more severe symptoms of major depressive disorder, but it is linked to cardiovascular toxicity and anticholinergic side effects.",
+        "span": "Amitriptyline has shown efficacy in patients with more severe symptoms of major depressive disorder. It is linked to cardiovascular toxicity and anticholinergic side effects, with a risk of lethal toxicity from overdoses.",
         "confidence": 0.8,
         "treatment_line": null,
         "patient_subgroup": null,
@@ -1880,106 +1962,6 @@
     },
     {
       "raw_fact": {
-        "drug_name": "mindfulness-based cognitive therapy",
-        "condition_name": "major depressive disorder",
-        "relation": "PREVENTS_RELAPSE_IN",
-        "outcome": null,
-        "side_effects": [],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "Overview of psychotherapy in depression",
-        "span": "After remission, CBT, PEI, and mindfulness-based cognitive therapy (MBCT) are proposed to maintain and prevent depression.",
-        "confidence": 0.8,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "drug": {
-        "text": "mindfulness-based cognitive therapy",
-        "concept_id": "SNOMED:718072006",
-        "label": "Mindfulness-based cognitive therapy",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "major depressive disorder",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "PREVENTS_RELAPSE_IN",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
-    },
-    {
-      "raw_fact": {
-        "drug_name": "Cognitive Behavioral Analysis System of Psychotherapy",
-        "condition_name": "chronic depression",
-        "relation": "TREATS",
-        "outcome": null,
-        "side_effects": [],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "Overview of psychotherapy in depression",
-        "span": "The European Psychiatric Association recommends using the Cognitive Behavioral Analysis System of Psychotherapy (CBASP) for treating chronic depression and utilizing specific approaches suited to each patient's preferences.",
-        "confidence": 0.9,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "drug": {
-        "text": "Cognitive Behavioral Analysis System of Psychotherapy",
-        "concept_id": "CUSTOM:PSY003",
-        "label": "Cognitive Behavioral Analysis System of Psychotherapy",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "chronic depression",
-        "concept_id": "SNOMED:191616004",
-        "label": "Chronic depression",
-        "provider": "snomed",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
-    },
-    {
-      "raw_fact": {
         "drug_name": "acceptance and commitment therapy",
         "condition_name": "major depressive disorder",
         "relation": "PREVENTS_RELAPSE_IN",
@@ -2089,7 +2071,7 @@
       "raw_fact": {
         "drug_name": "ECT",
         "condition_name": "resistant depression",
-        "relation": "TREATS",
+        "relation": "EFFECTIVE_IN_SUBGROUP",
         "outcome": null,
         "side_effects": [],
         "effect_size": null,
@@ -2123,12 +2105,12 @@
         "score": 1.0
       },
       "relation": {
-        "text": "TREATS",
-        "concept_id": "CUSTOM:0001",
-        "label": "TREATS",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
+        "text": "EFFECTIVE_IN_SUBGROUP",
+        "concept_id": null,
+        "label": null,
+        "provider": null,
+        "match_type": "unmatched",
+        "score": 0.0
       },
       "outcome": null,
       "side_effects": [],
@@ -2437,56 +2419,6 @@
     },
     {
       "raw_fact": {
-        "drug_name": "ECT",
-        "condition_name": "severe and psychotic depression",
-        "relation": "FIRST_LINE_FOR",
-        "outcome": null,
-        "side_effects": [],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "ECT",
-        "span": "ECT is typically recommended for patients with severe and psychotic depression, a high risk of suicide, or Parkinson's disease, as well as pregnant patients.",
-        "confidence": 0.8,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "drug": {
-        "text": "ECT",
-        "concept_id": "SNOMED:228557008",
-        "label": "Electroconvulsive therapy",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "severe and psychotic depression",
-        "concept_id": "SNOMED:310497006",
-        "label": "Severe depression with psychotic features",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "FIRST_LINE_FOR",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
-    },
-    {
-      "raw_fact": {
         "drug_name": "rTMS",
         "condition_name": "depression",
         "relation": "IMPROVES",
@@ -2539,57 +2471,7 @@
       "raw_fact": {
         "drug_name": "rTMS",
         "condition_name": "depression",
-        "relation": "EFFECTIVE_IN_SUBGROUP",
-        "outcome": null,
-        "side_effects": [],
-        "effect_size": null,
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "rTMS",
-        "span": "Preliminary research has revealed synergistic (e.g., rTMS/quetiapine) and antagonizing (e.g., rTMS/cannabinoid receptor (CB1) antagonist) interactions between neuro-modulation and pharmacotherapy.",
-        "confidence": 0.8,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": "preliminary research",
-        "sample_size": null,
-        "duration": null,
-        "dose": null,
-        "p_value": null
-      },
-      "drug": {
-        "text": "rTMS",
-        "concept_id": "SNOMED:427522004",
-        "label": "Repetitive transcranial magnetic stimulation",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "depression",
-        "concept_id": "SNOMED:35489007",
-        "label": "Major depressive disorder",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "EFFECTIVE_IN_SUBGROUP",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "outcome": null,
-      "side_effects": [],
-      "effect_size": null,
-      "confidence_interval": null
-    },
-    {
-      "raw_fact": {
-        "drug_name": "rTMS",
-        "condition_name": "depression",
-        "relation": "SUPERIOR_TO",
+        "relation": "AUGMENTS",
         "outcome": null,
         "side_effects": [],
         "effect_size": null,
@@ -2623,9 +2505,9 @@
         "score": 1.0
       },
       "relation": {
-        "text": "SUPERIOR_TO",
-        "concept_id": "CUSTOM:0006",
-        "label": "SUPERIOR_TO",
+        "text": "AUGMENTS",
+        "concept_id": "CUSTOM:0004",
+        "label": "AUGMENTS",
         "provider": "custom",
         "match_type": "exact",
         "score": 1.0
@@ -2650,7 +2532,7 @@
         "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
-        "study_design": "controlled",
+        "study_design": null,
         "sample_size": null,
         "duration": null,
         "dose": null,
@@ -2707,7 +2589,7 @@
         "confidence": 0.9,
         "treatment_line": null,
         "patient_subgroup": null,
-        "study_design": "controlled",
+        "study_design": null,
         "sample_size": null,
         "duration": null,
         "dose": null,
@@ -2908,63 +2790,6 @@
     },
     {
       "raw_fact": {
-        "drug_name": "DBS of the subgenual cingulate white matter",
-        "condition_name": "resistant depression",
-        "relation": "IMPROVES",
-        "outcome": "clinical response, clinical remission",
-        "side_effects": [],
-        "effect_size": "60% response, 35% remission",
-        "confidence_interval": null,
-        "source_id": "WJCC",
-        "section": "DBS",
-        "span": "According to the literature, DBS of the subgenual cingulate white matter (Brodmann area = BA 25) elicited a clinical response in 60% of resistant depression patients after six months and clinical remission in 35% of patients, with benefits maintained for over 12 mo[144].",
-        "confidence": 0.9,
-        "treatment_line": null,
-        "patient_subgroup": null,
-        "study_design": null,
-        "sample_size": null,
-        "duration": "6 months",
-        "dose": null,
-        "p_value": null
-      },
-      "drug": {
-        "text": "DBS of the subgenual cingulate white matter",
-        "concept_id": "SNOMED:80146002",
-        "label": "Deep brain stimulation",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "condition": {
-        "text": "resistant depression",
-        "concept_id": "SNOMED:36474008",
-        "label": "Treatment-resistant depression",
-        "provider": "snomed",
-        "match_type": "synonym",
-        "score": 1.0
-      },
-      "relation": {
-        "text": "IMPROVES",
-        "concept_id": "CUSTOM:0002",
-        "label": "IMPROVES",
-        "provider": "custom",
-        "match_type": "exact",
-        "score": 1.0
-      },
-      "outcome": {
-        "text": "clinical response, clinical remission",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
-      },
-      "side_effects": [],
-      "effect_size": "60% response, 35% remission",
-      "confidence_interval": null
-    },
-    {
-      "raw_fact": {
         "drug_name": "rTMS",
         "condition_name": "depression",
         "relation": "WELL_TOLERATED_IN",
@@ -3017,7 +2842,7 @@
       "raw_fact": {
         "drug_name": "ECT",
         "condition_name": "depression",
-        "relation": "MAINTENANCE_FOR",
+        "relation": "TREATS",
         "outcome": null,
         "side_effects": [],
         "effect_size": null,
@@ -3051,12 +2876,12 @@
         "score": 1.0
       },
       "relation": {
-        "text": "MAINTENANCE_FOR",
-        "concept_id": null,
-        "label": null,
-        "provider": null,
-        "match_type": "unmatched",
-        "score": 0.0
+        "text": "TREATS",
+        "concept_id": "CUSTOM:0001",
+        "label": "TREATS",
+        "provider": "custom",
+        "match_type": "exact",
+        "score": 1.0
       },
       "outcome": null,
       "side_effects": [],
