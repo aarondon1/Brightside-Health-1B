@@ -1,4 +1,6 @@
-﻿![Brightside Health AI Studio — Clinical Knowledge Graph](media/social-share-banner.webp)
+# Brightside Health AI Studio - Clinical Knowledge Graph
+
+ ![Brightside Health AI Studio — Clinical Knowledge Graph](media/social-share-banner.webp)
 
 > **Build a clinician-facing knowledge graph from depression/anxiety research papers.**  
 > **Pipeline:** Docling → GPT-4o extraction → validation → quality assessment → ontology normalization → **Neo4j** graph → **Streamlit** UI  
@@ -117,7 +119,7 @@ brightside-health-ai/
     │   ├── validate.py               # Validation rules and logic
     │   └── normalize_ontology.py     # Ontology mapping
     ├── analytics/
-    │   └── networkx_sidecar.py       # Graph analytics (optional)
+    │   └── networkx_sidecar.py       # Graph analytics (future implementations)
     └── utils/                        # Shared utilities
 
 ```
@@ -821,3 +823,5 @@ pip install -r requirements.txt
 MIT License - see LICENSE file for details
 
 ---
+
+
