@@ -1,6 +1,6 @@
 # Brightside Health AI Studio - Clinical Knowledge Graph
 
- ![Brightside Health AI Studio — Clinical Knowledge Graph](media/social-share-banner.webp)
+![Brightside Health AI Studio — Clinical Knowledge Graph](media/social-share-banner.webp)
 
 > **Build a clinician-facing knowledge graph from depression/anxiety research papers.**  
 > **Pipeline:** Docling → GPT-4o extraction → validation → quality assessment → ontology normalization → **Neo4j** graph → **Streamlit** UI  
@@ -123,6 +123,15 @@ brightside-health-ai/
     └── utils/                        # Shared utilities
 
 ```
+
+---
+
+## 🔎 Demo Snapshot (Pre-run Example)
+
+A snapshot of the knowledge graph for demonstration purposes:
+
+- View: https://graphxr.kineviz.com/share/69223a6664d44cc4b9506b1f/Brightside/693b2fb1729dbcca686fda9f/Knowledge%20Graph
+- Note: This is a pre-run example to illustrate structure and relationships.
 
 ---
 
@@ -804,17 +813,114 @@ pip install -r requirements.txt
 
 ## 📚 Additional Resources
 
-### Papers & References
+### Core Libraries
 
-- Docling: https://github.com/DS4SD/docling
-- RxNorm: https://www.nlm.nih.gov/research/umls/rxnorm/
-- SNOMED CT: https://www.snomed.org/
-- Neo4j Cypher: https://neo4j.com/docs/cypher-manual/
+- Docling (PDF/HTML parsing)
+  - https://github.com/DS4SD/docling
+- OpenAI Python SDK (LLM extraction, optional LLM judge)
+  - https://github.com/openai/openai-python
+- Pydantic (schemas for validation)
+  - https://docs.pydantic.dev/
+- sentence-transformers (NLI similarity for quality assessment)
+  - https://www.sbert.net/
+- RapidFuzz (fuzzy ontology matching)
+  - https://github.com/maxbachmann/RapidFuzz
+- NetworkX (graph analytics – future implementations)
+  - https://networkx.org/
+- pandas (tabular previews in UI)
+  - https://pandas.pydata.org/
+- python-dotenv (env management)
+  - https://github.com/theskumar/python-dotenv
+- requests (URL fetching for ingestion)
+  - https://requests.readthedocs.io/
 
-### Related Tools
+### Graph & DB
 
-- sentence-transformers: https://www.sbert.net/ (for NLI quality checks)
-- NetworkX: https://networkx.org/ (for graph analytics - optional)
+- Neo4j (graph database)
+  - https://neo4j.com/
+- Neo4j Python Driver
+  - https://github.com/neo4j/neo4j-python-driver
+- Cypher (query language)
+  - https://neo4j.com/docs/cypher-manual/
+
+### UI & Orchestration
+
+- Streamlit (human-in-the-loop pipeline UI)
+  - https://streamlit.io/
+- Mermaid (architecture diagrams in README)
+  - https://mermaid.js.org/
+- Make (CLI shortcuts; macOS/Linux)
+  - https://www.gnu.org/software/make/
+- PowerShell (Windows tasks)
+  - https://learn.microsoft.com/powershell/
+- Docker (containerization; optional)
+  - https://www.docker.com/
+
+### Python Runtime
+
+- Python 3.11+ (core runtime)
+  - https://www.python.org/downloads/
+- pip / uv (dependency management)
+  - pip: https://pip.pypa.io/
+  - uv: https://github.com/astral-sh/uv
+
+### Medical Ontologies
+
+- RxNorm (drug normalization)
+  - https://www.nlm.nih.gov/research/umls/rxnorm/
+- SNOMED CT (condition normalization)
+  - https://www.snomed.org/
+- UMLS (optional cross-references)
+
+  - https://www.nlm.nih.gov/research/umls/### Graph & DB
+
+- Neo4j (graph database)
+  - https://neo4j.com/
+- Neo4j Python Driver
+  - https://github.com/neo4j/neo4j-python-driver
+- Cypher (query language)
+  - https://neo4j.com/docs/cypher-manual/
+
+### UI & Orchestration
+
+- Streamlit (human-in-the-loop pipeline UI)
+  - https://streamlit.io/
+- Mermaid (architecture diagrams in README)
+  - https://mermaid.js.org/
+- Make (CLI shortcuts; macOS/Linux)
+  - https://www.gnu.org/software/make/
+- PowerShell (Windows tasks)
+  - https://learn.microsoft.com/powershell/
+- Docker (containerization; optional)
+  - https://www.docker.com/
+
+### Python Runtime
+
+- Python 3.11+ (core runtime)
+  - https://www.python.org/downloads/
+- pip / uv (dependency management)
+  - pip: https://pip.pypa.io/
+  - uv: https://github.com/astral-sh/uv
+
+### Medical Ontologies
+
+- RxNorm (drug normalization)
+  - https://www.nlm.nih.gov/research/umls/rxnorm/
+- SNOMED CT (condition normalization)
+  - https://www.snomed.org/
+- UMLS (optional cross-references)
+  - https://www.nlm.nih.gov/research/umls/
+
+### Project Files Referencing These Components
+
+- UI: [`src/app/streamlit_app.py`](src/app/streamlit_app.py)
+- Parsing: [`src/core/ingest_docling.py`](src/core/ingest_docling.py), [`scripts/parse_doc.py`](scripts/parse_doc.py)
+- Extraction: [`src/core/extract_llm.py`](src/core/extract_llm.py), [`scripts/extract.py`](scripts/extract.py)
+- Validation: [`src/core/validate.py`](src/core/validate.py), [`src/schemas/triples.py`](src/schemas/triples.py), [`scripts/validate.py`](scripts/validate.py)
+- Quality: [`scripts/auto_validate_quality.py`](scripts/auto_validate_quality.py)
+- Normalization: [`src/core/normalize_ontology.py`](src/core/normalize_ontology.py), [`scripts/normalize.py`](scripts/normalize.py)
+- Graph Load: [`scripts/load_neo4j.py`](scripts/load_neo4j.py)
+- Configs: [`configs/mappings.yaml`](configs/mappings.yaml), [`configs/relations.yaml`](configs/relations.yaml), [`configs/weights.yaml`](configs/weights.yaml)
 
 ---
 
@@ -823,5 +929,3 @@ pip install -r requirements.txt
 MIT License - see LICENSE file for details
 
 ---
-
-
