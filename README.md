@@ -924,6 +924,26 @@ pip install -r requirements.txt
 
 ---
 
+## Acknowledgments
+
+We are grateful to everyone who contributed to this project.
+
+- Team
+
+  - Aaron Don
+  - Khushi Gauli
+  - Guan Ying Goh
+
+- Advisors
+
+  - Andrew Norris
+  - Diane Bernardoni
+
+- Coach
+  - Harshini Donepudi
+
+---
+
 ## 📄 License
 
 MIT License - see LICENSE file for details
